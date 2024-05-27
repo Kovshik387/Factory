@@ -180,3 +180,4 @@ export default function MainPage() {
 const catalogStyle: React.CSSProperties = {
     height: '94%'
 }
+
