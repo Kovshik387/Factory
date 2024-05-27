@@ -22,9 +22,19 @@ a:hover {
 } */
 
 a {
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu", sans-serif;
   text-decoration: none;
   color: white;
+}
+
+p {
+  color: '#FFF';
+  font-family: "Ubuntu", sans-serif;
+}
+
+h1, h2 {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
 }
 
 html, body {
