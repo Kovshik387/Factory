@@ -7,6 +7,12 @@ export default function Contacts(): React.JSX.Element {
         <Container>
             <Row className='justify-content-md-center'>
                 <Col md={10}>
+                    <div style={{
+                        backgroundImage: 'url("/contacts.png")',
+                        widows: '100%'
+                    }}>
+
+                    </div>
                 </Col>
             </Row>
         </Container>

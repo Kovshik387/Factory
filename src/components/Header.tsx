@@ -12,7 +12,7 @@ export default function Header(props: HeaderProps): React.JSX.Element {
         <Container>
             <Row className="justify-content-md-between align-items-md-center">
                 <Col md={2}>
-                    <a href={''} style={contactButton}>Связаться с нами</a>
+                    <a href={'/contacts'} style={contactButton}>Связаться с нами</a>
                 </Col>
                 <Col md={2}>
                     <img style={imageStyle} src='logoHeader.png' alt='...'/>
