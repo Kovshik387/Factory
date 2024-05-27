@@ -25,3 +25,4 @@ const catalogStyle: React.CSSProperties = {
     margin: '56px 0px',
     height: '94%'
 }
+

@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import './App.css';
-import Catalog from './pages/Catalog';
-import NewComponent from './pages/Test';
 import MainPage from './pages/Main';
+import About from './pages/About';
 
 const App: React.FC = () => {
 	const [currentComponent, setCurrentComponent] = useState<number>(0);
 	const [nextComponent, setNextComponent] = useState<number | null>(null);
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
-	const components = [<MainPage key="main" />, <Catalog key="catalog" />, <NewComponent key="new" />];
+	const components = [<MainPage key="main" />, <About key="about"/>];
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const animationDuration = 500;
