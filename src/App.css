@@ -1,0 +1,18 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+  height: 100%;
+  width: 100%;  
+}
+.main-site-content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+
+  background: url('/background.jfif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: inset 0px 0px 400px #000;
+}
