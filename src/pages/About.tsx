@@ -39,7 +39,7 @@ export default function About() {
     position: 'relative',
     zIndex: 3,
     textAlign: "right",
-    fontSize: "20px"
+    fontSize: "20px", 
   };
 
   const textLeft: React.CSSProperties = {
@@ -48,7 +48,11 @@ export default function About() {
     fontSize: "20px",
     textAlign: "left"
   };
-
+  const paragStyle: React.CSSProperties = {
+    fontFamily: '"HeroBold"',
+    fontSize: '18px',
+    margin: '0px 0px 10px'
+  }
   return (
       <div style={containerStyle}>
           <div style={leftBlockStyle}>
@@ -56,9 +60,9 @@ export default function About() {
               <h2>Почему выбирают нас?</h2>
               <br/>
               <br/>
-              <p>Все просто.</p>
-              <p>Ведь нам присущи те качества, которые для вас необходимы.</p>
-              <p>
+              <p style={paragStyle}>Все просто.</p>
+              <p style={paragStyle}>Ведь нам присущи те качества, которые для вас необходимы.</p>
+              <p style={paragStyle}>
                 Мы ценим доверие наших заказчиков и работаем с каждым индивидуально, исходя из принципа комплексного подхода к поставленным задачам и взаимного долгосрочного партнерства.
               </p>
             </div>
@@ -66,18 +70,18 @@ export default function About() {
           <div style={rightBlockStyle}>
             <div style={textRight}>
               <ul>
-                <p>- Профессионализм</p>
-                <p>- Собственные разработки</p>
-                <p>- Высокое качество</p>
-                <p>- Контроль продукции</p>
-                <p>- Конкурентоспособность</p>
-                <p>- Надежное партнерство</p>
-                <p>- Быстрая доставка (вы получите ваш </p> 
-                <p>заказ в согласованные сроки)</p>
-                <p>Ответственность за результат</p>
+                <p style={paragStyle}>- Профессионализм</p>
+                <p style={paragStyle}>- Собственные разработки</p>
+                <p style={paragStyle}>- Высокое качество</p>
+                <p style={paragStyle}>- Контроль продукции</p>
+                <p style={paragStyle}>- Конкурентоспособность</p>
+                <p style={paragStyle}>- Надежное партнерство</p>
+                <p style={paragStyle}>- Быстрая доставка (вы получите ваш </p> 
+                <p style={paragStyle}>заказ в согласованные сроки)</p>
+                <p style={paragStyle}>Ответственность за результат</p>
               </ul>
             </div>
           </div>
       </div>
   );
-};
+}
