@@ -15,7 +15,7 @@ export default function Contacts(): React.JSX.Element {
 
     const setStyle = (anim: string): React.CSSProperties => ({
         marginTop: windowSize.height < 800 ? '100px' : '150px', 
-        animation: `${anim} 1s`
+        animation: window.location.pathname == '/' ? 'none' : `${anim} 1s`
     })
     React.useEffect(() => {
         const handleResize = () => {
@@ -44,7 +44,6 @@ export default function Contacts(): React.JSX.Element {
                         backgroundImage: "url('/contacts.png')",
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'contain',
-                        backgroundAttachment: 'fixed',
                         width: '100%',
                         height: '100%',
                         boxShadow: '0px 20px 20px #444'
