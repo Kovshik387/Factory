@@ -61,7 +61,7 @@ export const Database: IDatabaseRecord[] = [
     <PrimingEnamel>{
         id: 1,
         name: 'Грунт-эмаль 3 в 1',
-        category: "Эмаль",
+        category: "Грунт",
         image: `/product.png`,
         color: [
             { name: '7004', value: '#9fa0a2' },
