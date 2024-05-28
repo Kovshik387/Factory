@@ -8,6 +8,7 @@ import Contacts from './pages/Contacts';
 import Navigation from './pages/Navigation';
 import Sertificat from './pages/Sertificat';
 import Catalog from './pages/Catalog';
+import Product from './pages/Product';
 
 export const headerRef = createRef<HeaderHandler>();
 
@@ -33,6 +34,10 @@ const App: React.FC = () => {
 		{
 			path: "/catalog",
 			element: <Catalog/>
+		},
+		{
+			path: '/product/:id',
+			element: <Product />
 		}
 	]);
 	return (

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 interface ProductItemProps {
     product: Product;
 }
-
 export default function ProductCard({product}: ProductItemProps) {
     const navigation = useNavigate();
     return (
