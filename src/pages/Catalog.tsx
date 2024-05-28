@@ -11,7 +11,7 @@ export default function Catalog() {
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
     }
-    
+
     const filteredProducts = Database.filter(product =>
         (selectCategory == "Все" || product.category === selectCategory) &&
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -29,21 +29,21 @@ export default function Catalog() {
                             <div style={{
                                 margin: '0px 0px 40px'
                             }}>
-                                <SearchBar onSearch={setSearchQuery}></SearchBar>
+                                <SearchBar onSearch={setSearchQuery} />
                             </div>
                             <div style={categoriesStyle}>Категории</div>
                             <ul style={{ textAlign: "left", paddingLeft: "70px" }}>
-                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Все' ? 'underline' : 'none',textUnderlineOffset: "5px" } } onClick={() => handleCategoryClick('Все')}>Все</p>
-                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Грунт' ? 'underline' : 'none',textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Грунт')}>Грунты</p>
-                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Эмаль' ? 'underline' : 'none',textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Эмаль')}>Эмали</p>
-                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Лак' ? 'underline' : 'none',textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Лак')}>Лаки</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Все' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Все')}>Все</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Грунт' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Грунт')}>Грунты</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Эмаль' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Эмаль')}>Эмали</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Лак' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Лак')}>Лаки</p>
                             </ul>
                         </div>
                         <Col sm={10} style={{ ...categoryContainerStyle, alignItems: "start", height: "100%" }}>
                             <Row style={{ margin: '10px' }}>
                                 {filteredProducts.map((item, index) => (
                                     <Col md={4} lg={3} key={index}>
-                                        <ProductCard product={item} ></ProductCard>
+                                        <ProductCard product={item} />
                                     </Col>
                                 ))}
                             </Row>
