@@ -4,7 +4,6 @@ import { IDatabaseRecord } from "../services/Database";
 interface ProductItemProps {
     product: IDatabaseRecord;
 }
-
 export default function ProductCard({product}: ProductItemProps) {
     const navigation = useNavigate();
     return (
