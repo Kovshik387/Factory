@@ -17,6 +17,7 @@
   box-shadow: inset 0px 0px 400px #000;
 }
 
+
 @keyframes slideInFromTop {
   from {
     transform: translateY(-100%);

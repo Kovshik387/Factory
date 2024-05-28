@@ -16,7 +16,7 @@ export default function About() {
 
   const rightBlockStyle: React.CSSProperties = {
     backgroundImage: `url("aboutRight.png")`,
-    backgroundSize: "100% 100% 20%",
+    backgroundSize: "100% 100%",
     color: 'white',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     zIndex: 1,
