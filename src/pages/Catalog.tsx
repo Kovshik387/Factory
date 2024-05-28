@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row, Stack } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import SearchBar from '../components/SearchBar';
 
 export default function Catalog() {
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [all,setAll] = useState<boolean>(true);
+    const [priming,setPriming] = useState<boolean>(false);
+    const [enamel,setEnamel] = useState<boolean>(false);
+    const [varnishes,setVarnishes] = useState<boolean>(false);
 
     const products = [
         { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "/product.png" },
@@ -26,11 +31,15 @@ export default function Catalog() {
         { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
     ];
 
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div style={catalogStyle}>
             <Container>
                 <div style={catalogBodyStyle}>
-                    <Stack direction='horizontal' >
+                    <Stack direction='horizontal' style={{ marginBottom: "20px" }}>
                         <Col sm={2} style={{
                             alignSelf: 'baseline',
                             padding: '50px 0px 0px'
@@ -38,21 +47,21 @@ export default function Catalog() {
                             <div style={{
                                 margin: '0px 0px 40px'
                             }}>
-                                <SearchBar></SearchBar>
+                                <SearchBar onSearch={setSearchQuery}></SearchBar>
                             </div>
                             <div style={categoriesStyle}>Категории</div>
-                            <ul style={{textAlign: "left", paddingLeft: "70px"}}>
-                                <p style={{margin: '0px 0px 5px'}}>Все</p>
-                                <p style={{margin: '0px 0px 5px'}}>Грунты</p>
-                                <p style={{margin: '0px 0px 5px'}}>Эмали</p>
-                                <p style={{margin: '0px 0px 5px'}}>Лаки</p>
+                            <ul style={{ textAlign: "left", paddingLeft: "70px" }}>
+                                <p style={{ margin: '0px 0px 5px' }}>Все</p>
+                                <p style={{ margin: '0px 0px 5px' }}>Грунты</p>
+                                <p style={{ margin: '0px 0px 5px' }}>Эмали</p>
+                                <p style={{ margin: '0px 0px 5px' }}>Лаки</p>
                             </ul>
                         </Col>
                         <Col sm={10} style={categoryContainerStyle}>
                             <Row style={{ margin: '10px' }}>
-                                {products.map((item, index) => (
-                                    <Col sm={2} md={4} lg={3}>
-                                        <ProductCard product={item} key={index}></ProductCard>
+                                {filteredProducts.map((item, index) => (
+                                    <Col sm={2} md={4} lg={3} key={index}>
+                                        <ProductCard product={item} ></ProductCard>
                                     </Col>
                                 ))}
                             </Row>
@@ -74,7 +83,8 @@ const categoryContainerStyle: React.CSSProperties = {
 }
 
 const catalogBodyStyle: React.CSSProperties = {
-    height: '100%',
+    marginTop: "30px",
+    height: '80vh',
     maxWidth: "100%",
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',

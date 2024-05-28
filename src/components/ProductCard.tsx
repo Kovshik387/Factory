@@ -1,15 +1,11 @@
-const titleStyle: React.CSSProperties = {
-    fontSize: '16px',
-    color: '#333',
-    marginBottom: '10px',
-    textAlign: 'center',
-};
+import { useNavigate } from "react-router-dom";
 
 interface ProductItemProps {
     product: Product;
 }
 
 export default function ProductCard({product}: ProductItemProps) {
+    const navigation = useNavigate();
     return (
         <div style={cardStyle}>
 
@@ -29,9 +25,17 @@ export default function ProductCard({product}: ProductItemProps) {
                     )
             }
             <div style={titleStyle}>{product.name}</div>
-            <button style={buttonStyle}>Подробнее</button>
+            <button style={buttonStyle} onClick={() => {navigation(`/product/${product.id}`)}}>Подробнее</button>
         </div>
     );
+};
+
+const titleStyle: React.CSSProperties = {
+    fontSize: '16px',
+    color: '#333',
+    marginBottom: '10px',
+    textAlign: 'center',
+    height: "160px"
 };
 
 const imageStyle: React.CSSProperties = {

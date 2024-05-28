@@ -2,24 +2,26 @@ import { useState } from "react"
 import { Stack } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons"
 
-export default function SearchBar() {
-    const [searchItem, setSearch] = useState("");
+interface SearchProps {
+    onSearch: (query: string) => void;
+}
 
+export default function SearchBar({ onSearch }: SearchProps) {
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
+        onSearch(e.target.value);
     };
     return (
-    <div style={{
-        borderColor: '#000',
-        borderBottom: '1px solid',
-        marginLeft: '10px'
-    }}>
-        <Stack direction="horizontal" gap={2}>
-            <Search color='#000' width={30} height={30}/>
-            <input placeholder="Поиск" style={searchStyle} value={searchItem} 
-                onChange={onChangeHandler}/>
-        </Stack>
-    </div>
+        <div style={{
+            borderColor: '#000',
+            borderBottom: '1px solid',
+            marginLeft: '10px'
+        }}>
+            <Stack direction="horizontal" gap={2}>
+                <Search color='#000' width={30} height={30} />
+                <input placeholder="Поиск" style={searchStyle}
+                    onChange={onChangeHandler} />
+            </Stack>
+        </div>
     )
 }
 
