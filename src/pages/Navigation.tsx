@@ -9,7 +9,7 @@ export default function Navigation(): React.JSX.Element {
     return (
     <div style={navigationStyle}>
         <a href={'/sertificat'} style={linkStyle}>Сертификаты</a>
-        <a href={''} style={linkStyle}>Каталог</a>
+        <a href={'/catalog'} style={linkStyle}>Каталог</a>
     </div>
     )
 }

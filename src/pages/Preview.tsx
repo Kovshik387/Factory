@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import MainPage from "./Main";
-import Catalog from "./Catalog";
+import About from "./About";
 
 export default function Preview(): React.JSX.Element {
     const [currentComponent, setCurrentComponent] = useState<number>(0);
 	const [nextComponent, setNextComponent] = useState<number | null>(null);
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
-	const components = [<MainPage key="main" />, <Catalog key="catalog" />];
+	const components = [<MainPage key="main" />, <About key="about" />];
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const animationDuration = 500;

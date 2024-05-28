@@ -24,12 +24,12 @@ export default function Contacts(): React.JSX.Element {
                 height: window.innerHeight
             });
         }; 
-        const animationEnd = (ev: AnimationEvent) => {
-            // if(ev.animationName == 'fadeOut' && redirectLink != null) {
+        // const animationEnd = (ev: AnimationEvent) => {
+        //     // if(ev.animationName == 'fadeOut' && redirectLink != null) {
 
-            // }
-        } 
-        rootRef.current!.addEventListener('animationend', animationEnd)
+        //     // }
+        // } 
+        // rootRef.current!.addEventListener('animationend', animationEnd)
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);

@@ -1,28 +1,94 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Stack } from 'react-bootstrap';
+import ProductCard from '../components/ProductCard';
+import { Search } from 'react-bootstrap-icons';
+import SearchBar from '../components/SearchBar';
 
 export default function Catalog() {
+
+    const products: Product[] = [
+        { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "./public/product.png" },
+        { id: 2, name: 'Грунт белый полиуретановый', imageUrl: null },
+        { id: 3, name: 'Грунт белый полиуретановый ...', imageUrl: null },
+        { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
+        { id: 5, name: 'Грунт черный полиуретановый', imageUrl: null },
+        { id: 6, name: 'Грунт-порозаполнитель', imageUrl: null },
+        { id: 7, name: 'Грунт-изолятор', imageUrl: null },
+        { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
+        { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
+        { id: 5, name: 'Грунт черный полиуретановый', imageUrl: null },
+        { id: 6, name: 'Грунт-порозаполнитель', imageUrl: null },
+        { id: 7, name: 'Грунт-изолятор', imageUrl: null },
+        { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
+        { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
+        { id: 5, name: 'Грунт черный полиуретановый', imageUrl: null },
+        { id: 6, name: 'Грунт-порозаполнитель', imageUrl: null },
+        { id: 7, name: 'Грунт-изолятор', imageUrl: null },
+        { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
+    ];
+
     return (
-    <div style={catalogStyle}>
-        <Container>
-            <Row className='justify-content-md-center' >
-                <Col md={10}>
-                    <div style={catalogBodyStyle}>
-                        <h1>Два</h1>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
-    </div>
+        <div style={catalogStyle}>
+            <Container>
+                <div style={catalogBodyStyle}>
+                    <Stack direction='horizontal' >
+                        <Col sm={2} style={{
+                            alignSelf: 'baseline',
+                            padding: '50px 0px 0px'
+                        }}>
+                            <div style={{
+                                margin: '0px 0px 40px'
+                            }}>
+                                <SearchBar></SearchBar>
+                            </div>
+                            <div style={categoriesStyle}>Категории</div>
+                            <ul style={{textAlign: "left", paddingLeft: "70px"}}>
+                                <p style={{margin: '0px 0px 5px'}}>Все</p>
+                                <p style={{margin: '0px 0px 5px'}}>Грунты</p>
+                                <p style={{margin: '0px 0px 5px'}}>Эмали</p>
+                                <p style={{margin: '0px 0px 5px'}}>Лаки</p>
+                            </ul>
+                        </Col>
+                        <Col sm={10} style={categoryContainerStyle}>
+                            <Row style={{margin: "5px"}}>
+                                {products.map((item, index) => (
+                                    <Col sm={2} md={4} lg={3}>
+                                        <ProductCard product={item} key={index}></ProductCard>
+                                    </Col>
+                                ))}
+                            </Row>
+                        </Col>
+                    </Stack>
+                </div>
+            </Container>
+        </div >
     );
 }
+
+const categoryContainerStyle: React.CSSProperties = {
+    overflowY: 'auto',
+    maxHeight: "700px",
+}
+
 const catalogBodyStyle: React.CSSProperties = {
-    height: '700px',
+    height: '100%',
+    maxWidth: "100%",
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    
+    display: 'flex',
 }
 const catalogStyle: React.CSSProperties = {
-    margin: '56px 0px',
-    height: '94%'
+    margin: '100px 0px',
+    height: '94%',
+    animation: 'fadeIn 1s'
+}
+
+const categoriesStyle: React.CSSProperties = {
+    fontSize: "24px",
+    fontWeight: "bold",
+    marginBottom: '10px'
+}
+
+const categoryItemStyle: React.CSSProperties = {
+    margin: "0px 0px 0px 10px"
 }

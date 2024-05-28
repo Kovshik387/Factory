@@ -20,12 +20,12 @@ export default function About() {
     color: 'white',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     zIndex: 1,
-    paddingTop: "70px",
+    paddingTop: "120px",
     borderRadius: '10px',
-    paddingRight: "5px",
+    paddingRight: "30px",
     width: '30%',
-    height: "60%",
-    marginLeft: "-10%"
+    height: "70%",
+    marginLeft: "-5%"
   };
 
   const containerStyle: React.CSSProperties = {
@@ -40,12 +40,14 @@ export default function About() {
   const textRight: React.CSSProperties = {
     position: 'relative',
     zIndex: 3,
-    textAlign: "right"
+    textAlign: "right",
+    fontSize: "20px"
   };
 
   const textLeft: React.CSSProperties = {
     position: 'relative',
     zIndex: 3,
+    fontSize: "20px",
     textAlign: "left"
   };
 
@@ -66,14 +68,14 @@ export default function About() {
           <div style={rightBlockStyle}>
             <div style={textRight}>
               <ul>
-                <p>Профессионализм</p>
-                <p>Собственные разработки</p>
-                <p>Высокое качество</p>
-                <p>Контроль продукции</p>
-                <p>Конкурентоспособность</p>
-                <p>Надежное партнерство</p>
-                <p>Быстрая доставка </p>
-                <p>(вы получите ваш заказ в согласованные сроки)</p>
+                <p>- Профессионализм</p>
+                <p>- Собственные разработки</p>
+                <p>- Высокое качество</p>
+                <p>- Контроль продукции</p>
+                <p>- Конкурентоспособность</p>
+                <p>- Надежное партнерство</p>
+                <p>- Быстрая доставка (вы получите ваш </p> 
+                <p>заказ в согласованные сроки)</p>
                 <p>Ответственность за результат</p>
               </ul>
             </div>

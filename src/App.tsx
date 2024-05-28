@@ -7,8 +7,10 @@ import Preview from './pages/Preview';
 import Contacts from './pages/Contacts';
 import Navigation from './pages/Navigation';
 import Sertificat from './pages/Sertificat';
+import Catalog from './pages/Catalog';
 
 export const headerRef = createRef<HeaderHandler>();
+
 
 const App: React.FC = () => {
 	const router = createBrowserRouter([
@@ -27,6 +29,10 @@ const App: React.FC = () => {
 		{
 			path: '/sertificat',
 			element: <Sertificat/>
+		},
+		{
+			path: "/catalog",
+			element: <Catalog/>
 		}
 	]);
 	return (
