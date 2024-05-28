@@ -67,14 +67,13 @@ const categoryContainerStyle: React.CSSProperties = {
 const catalogBodyStyle: React.CSSProperties = {
     marginTop: "30px",
     height: '80vh',
-    maxWidth: "100%",
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    display: 'flex',
+    width: "100%"
 }
+
 const catalogStyle: React.CSSProperties = {
     margin: '100px 0px',
-    // height: '94%',
     animation: 'fadeIn 1s'
 }
 
