@@ -59,7 +59,7 @@ export default function Preview(): React.JSX.Element {
 	const nextStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideInFromBottom' : 'slideInFromTop');
 
 	return (
-		<div className="main-site-content">
+		<div style={{animation: 'fadeIn 1s'}}>
 			
 			<div
 				ref={containerRef}

@@ -1,44 +1,70 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/ban-types */
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Justify } from 'react-bootstrap-icons'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-export interface HeaderProps {
 
+type HeaderProps = {
+    color: string,
 }
-export default function Header(props: HeaderProps): React.JSX.Element {
+function HeaderComponent({color}: HeaderProps): React.JSX.Element {
+    const [ navPath, setNavPath ] = useState('/nav');
+    useEffect(() => {
+        setNavPath(document.location.pathname == '/nav' ? document.referrer : '/nav')
+    }, [])
     return (
     <div style={headerStyle}>
         <Container>
             <Row className="justify-content-md-between align-items-md-center">
                 <Col md={2}>
-                    <a href={'/contacts'} style={contactButton}>Связаться с нами</a>
+                    <a href={'/contacts'} style={{
+                        
+                        fontSize: '16px',
+                        fontFamily: '"Ubuntu", sans-serif',
+                        letterSpacing: '.1rem',
+                        color: color 
+                    }}>Связаться с нами</a>
                 </Col>
                 <Col md={2}>
-                    <img style={imageStyle} src='logoHeader.png' alt='...'/>
+                    <a href='/'>
+                        <img style={imageStyle} src='logoHeader.png' alt='...'/>
+                    </a>
                 </Col>
                 <Col md={2}>
-                    <a href={''} style={navigationButton}><Justify height={24} width={24}/></a>
+                    <a style={{
+                        display: 'flex',
+                        flexFlow: 'row',
+                        justifyContent: 'end',
+                        color: color,
+                        border: 'none',
+                        backgroundColor: 'transparent'
+                    }} href={navPath}>
+                        <Justify height={24} width={24} color={color}/>
+                    </a>
                 </Col>
             </Row>
         </Container>
     </div>
     )   
 }
+export interface HeaderHandler {
+    setColor: (color: string) => void;
+}
+export const Header = forwardRef<HeaderHandler, {}>((_, ref) => {
+    const [ color, setColor ] = useState<string>('#000');
+    useImperativeHandle(ref, () => ({
+        setColor: (color) => setColor(color),
+    }))
+    return (<HeaderComponent color={color}/>)
+})
 const imageStyle: React.CSSProperties = {
     width: '168px',
     height: '70px'
 }
-const contactButton: React.CSSProperties = {
-    fontSize: '16px',
-}
-const navigationButton: React.CSSProperties = {
-    display: 'flex',
-    flexFlow: 'row',
-    justifyContent: 'end'
-}
 const headerStyle: React.CSSProperties = {
     padding: '12px 0px',
+    zIndex: '1',
     position: 'fixed',
     backgroundColor: 'transparent',
     width: '100%',
