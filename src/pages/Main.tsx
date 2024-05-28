@@ -64,8 +64,9 @@ export default function MainPage() {
                     <h2 style={{
                         fontSize: '32px',
                         color: '#FFF',
-                        letterSpacing: '.2em',
-                        margin: '0px 0px 40px 0px'
+                        letterSpacing: '.4rem',
+                        margin: '0px 0px 40px 0px',
+                        fontFamily: '"HeroBold"'
                     }}>
                         Грунт-эмаль <span style={{color: '#FF0000'}}>3</span> в 1
                     </h2>
@@ -78,19 +79,21 @@ export default function MainPage() {
                             display: 'flex',
                             justifyContent: 'space-between',
                             color: '#FFF',
-                            fontFamily: 'Ubuntu'
                         }}>
                             <div>
                                 <p style={{
                                     margin: '0px 0px 5px',
                                     fontSize: '32px',
-                                    textAlign: 'start'
+                                    textAlign: 'start',
+                                    fontFamily: '"HeroBold"',
+                                    letterSpacing: '.2rem'
                                 }}
                                 >Адгезия</p>
                                 <div style={{width: '100%', height: '1px', backgroundColor: '#FFF'}}></div>
                                 <p style={{
                                     fontSize: '16px',
-                                    textAlign: 'start'
+                                    textAlign: 'start',
+                                    fontFamily: '"Hero"'
                                 }}>Не более 1</p>
                             </div>
                             <Stack direction="horizontal">
@@ -115,7 +118,8 @@ export default function MainPage() {
                                             
                                             </div>
                                             <p style={{
-                                                fontSize: '14px'
+                                                fontSize: '14px',
+                                                fontFamily: '"Hero"'
                                             }}>{item.text}</p>
                                         </div>
                                     )
@@ -128,7 +132,8 @@ export default function MainPage() {
                                 fontSize: '32px',
                                 textAlign: 'start',
                                 lineHeight: '40px',
-                                color: '#FFF'
+                                color: '#FFF',
+                                fontFamily: '"Hero"'
                             }}>
                                 Время высыхания до степени 3 при t (20,0±0,5)°С, мин
                             </p>
@@ -136,7 +141,8 @@ export default function MainPage() {
                             <p style={{
                                 color: '#FFF',
                                 fontSize: '16px',
-                                textAlign: 'start'
+                                textAlign: 'start',
+                                fontFamily: '"Hero"'
                             }}>
                                 Не более 30
                             </p>
@@ -146,7 +152,8 @@ export default function MainPage() {
                                 fontSize: '32px',
                                 textAlign: 'start',
                                 lineHeight: '40px',
-                                color: '#FFF'
+                                color: '#FFF',
+                                fontFamily: '"Hero"'
                             }}>
                                 Условная вязкость по В3-246 (сопло 4), сек
                             </p>
@@ -154,7 +161,8 @@ export default function MainPage() {
                             <p style={{
                                 color: '#FFF',
                                 fontSize: '16px',
-                                textAlign: 'start'
+                                textAlign: 'start',
+                                fontFamily: '"Hero"'
                             }}>
                                 Не менее 80
                             </p>
@@ -170,7 +178,8 @@ export default function MainPage() {
                                 borderRadius: '10px',
                                 position: 'absolute',
                                 top: '-24px',
-                                left: '0px'
+                                left: '0px',
+                                fontFamily: '"Hero"'
                             }}>
                                 ПОДРОБНЕЕ
                             </button>
@@ -181,8 +190,5 @@ export default function MainPage() {
         </Container>
     </div>
     );
-}
-const catalogStyle: React.CSSProperties = {
-    height: '94%'
 }
 

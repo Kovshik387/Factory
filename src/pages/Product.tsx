@@ -47,7 +47,7 @@ export default function Product(): React.JSX.Element {
         }
         return (
             product == undefined ? <div></div> : <Container style={{maxHeight: `${windowSize.height - 100}px`}}>
-            <Row className='justify-content-center' style={{maxHeight: `${windowSize.height - 100}px`}}>
+            <Row className='justify-content-center' style={{height: `${windowSize.height - 200}px`}}>
                 <Col md={8} style={{
                     display: 'flex',
                     alignItems: 'start',
@@ -160,7 +160,15 @@ export default function Product(): React.JSX.Element {
                     }}>Назад</a>
                     {
                         product!.image == null ? 
-                        <p>Нет фото</p> :
+                        <p style={{
+                            fontSize: '30px',
+                            letterSpacing: '.2rem',
+                            height: '200px',
+                            justifyContent: 'center',
+                            lineHeight: '200px',
+                            fontFamily: '"Ubuntu", sans-serif',
+                            fontWeight: 'lighter'
+                        }}>Нет фото</p> :
                         <img src={product!.image} alt='...' style={{
                             width: '220px'
                         }} />
