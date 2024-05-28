@@ -38,7 +38,14 @@ const App: React.FC = () => {
 	return (
 		<div className="main-site-content">
 			<Header ref={headerRef}/>
-			<RouterProvider router={router} />
+			<div style={{
+				position:'absolute',
+				backgroundColor: '#00000044',
+				width: '100%',
+				height: '100%'
+			}}>
+				<RouterProvider router={router} />
+			</div>
 		</div>
 	);
 };
