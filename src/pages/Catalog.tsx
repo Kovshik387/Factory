@@ -5,13 +5,10 @@ import SearchBar from '../components/SearchBar';
 
 export default function Catalog() {
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const [all,setAll] = useState<boolean>(true);
-    const [priming,setPriming] = useState<boolean>(false);
-    const [enamel,setEnamel] = useState<boolean>(false);
-    const [varnishes,setVarnishes] = useState<boolean>(false);
+    const [selectCategory, setSelectedCategory] = useState<string>("Все");
 
     const products = [
-        { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "/product.png" },
+        { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "/product.png", category: "Эмаль" },
         { id: 2, name: 'Грунт белый полиуретановый', imageUrl: null },
         { id: 3, name: 'Грунт белый полиуретановый ...', imageUrl: null },
         { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
@@ -31,7 +28,12 @@ export default function Catalog() {
         { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
     ];
 
+    const handleCategoryClick = (category: string) => {
+        setSelectedCategory(category);
+    }
+
     const filteredProducts = products.filter(product =>
+        (selectCategory == "Все" || product.category === selectCategory) &&
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -40,7 +42,7 @@ export default function Catalog() {
             <Container>
                 <div style={catalogBodyStyle}>
                     <Stack direction='horizontal' style={{ marginBottom: "20px" }}>
-                        <Col sm={2} style={{
+                        <div style={{
                             alignSelf: 'baseline',
                             padding: '50px 0px 0px'
                         }}>
@@ -51,16 +53,16 @@ export default function Catalog() {
                             </div>
                             <div style={categoriesStyle}>Категории</div>
                             <ul style={{ textAlign: "left", paddingLeft: "70px" }}>
-                                <p style={{ margin: '0px 0px 5px' }}>Все</p>
-                                <p style={{ margin: '0px 0px 5px' }}>Грунты</p>
-                                <p style={{ margin: '0px 0px 5px' }}>Эмали</p>
-                                <p style={{ margin: '0px 0px 5px' }}>Лаки</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Все' ? 'underline' : 'none',textUnderlineOffset: "5px" } } onClick={() => handleCategoryClick('Все')}>Все</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Грунт' ? 'underline' : 'none',textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Грунт')}>Грунты</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Эмаль' ? 'underline' : 'none',textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Эмаль')}>Эмали</p>
+                                <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Лак' ? 'underline' : 'none',textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Лак')}>Лаки</p>
                             </ul>
-                        </Col>
-                        <Col sm={10} style={categoryContainerStyle}>
+                        </div>
+                        <Col sm={10} style={{ ...categoryContainerStyle, alignItems: "start", height: "100%" }}>
                             <Row style={{ margin: '10px' }}>
                                 {filteredProducts.map((item, index) => (
-                                    <Col sm={2} md={4} lg={3} key={index}>
+                                    <Col md={4} lg={3} key={index}>
                                         <ProductCard product={item} ></ProductCard>
                                     </Col>
                                 ))}
@@ -68,7 +70,7 @@ export default function Catalog() {
                         </Col>
                     </Stack>
                 </div>
-            </Container>
+            </Container >
         </div >
     );
 }
@@ -92,7 +94,7 @@ const catalogBodyStyle: React.CSSProperties = {
 }
 const catalogStyle: React.CSSProperties = {
     margin: '100px 0px',
-    height: '94%',
+    // height: '94%',
     animation: 'fadeIn 1s'
 }
 

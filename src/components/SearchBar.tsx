@@ -17,7 +17,7 @@ export default function SearchBar({ onSearch }: SearchProps) {
             marginLeft: '10px'
         }}>
             <Stack direction="horizontal" gap={2}>
-                <Search color='#000' width={30} height={30} />
+                <Search color='#000' width={10} height={20} />
                 <input placeholder="Поиск" style={searchStyle}
                     onChange={onChangeHandler} />
             </Stack>
