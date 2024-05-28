@@ -2,19 +2,19 @@ export interface IDatabaseRecord {
     id: number;
     name: string;
     category: 'Эмаль' | 'Грунт' | 'Лак';
-    image: string;
+    image: string | null;
     expirationDate: string;
     description: string;
+    colorName: string;
 }
 // Смола
-export interface Enamel extends IDatabaseRecord {
+export interface PrimingEnamel extends IDatabaseRecord {
     color: {
         value: string,
         name: string
     }[];
     baseMaterial: string;
     skinView: string; // вид пленки
-    colorName: string;
     viscosity: string; // вязкость
     adhesion: string; // адгезия
     appointment: string[]; // назначение
@@ -53,7 +53,7 @@ export const Database: IDatabaseRecord[] = [
         id: 1,
         name: 'Грунт-эмаль 3 в 1',
         category: "Эмаль",
-        image: '/product',
+        image: '/product.png',
         color: [
             { name: '7004', value: '#9fa0a2' },
             { name: '6005', value: '#013427' },

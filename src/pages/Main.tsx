@@ -100,11 +100,11 @@ export default function MainPage() {
                                     {color: '#4a1a01', text: '8017'},
                                     {color: '#08382b', text: '6005'},
                                     {color: '#949494', text: '7004'},
-                                ].map((item) => {
+                                ].map((item, index) => {
                                     return (
                                         <div style={{
                                             padding: '0px 16px'
-                                        }}>
+                                        }} key={index}>
                                             <div style={{
                                                 backgroundColor: item.color,
                                                 width: '46px',
