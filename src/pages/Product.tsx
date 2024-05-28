@@ -18,18 +18,27 @@ export default function Product(): React.JSX.Element {
 
     const productRender = (): React.JSX.Element => {
         return (
-        
+        <Container>
+            <Row className='justify-content-center'>
+                <Col md={8}>
+
+                </Col>
+                <Col md={4} style={{
+                    display: 'flex',
+                    flexFlow: 'column'
+                }}>
+                    <img src={product?.image} alt='...' />
+                </Col>
+            </Row>
+        </Container>
         )
     }
-
     return (
     <div style={{}}>
         <Container>
             <Row className='justify-content-center'>
                 <Col md={10}>
-                    <div style={productStyle}>
-
-                    </div>
+                    <div style={productStyle}>{productRender()}</div>
                 </Col>
             </Row>
         </Container>
@@ -41,5 +50,4 @@ const productStyle: React.CSSProperties = {
     maxWidth: "100%",
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    display: 'flex',
 }
