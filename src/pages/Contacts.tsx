@@ -10,7 +10,7 @@ export default function Contacts(): React.JSX.Element {
         width: window.innerWidth,
         height: window.innerHeight
     });
-    const [ animation, setAnimation ] = useState<string>('fadeIn');
+    const [ animation ] = useState<string>('fadeIn');
     const rootRef = useRef<HTMLDivElement>(null);
 
     const setStyle = (anim: string): React.CSSProperties => ({
