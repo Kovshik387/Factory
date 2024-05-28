@@ -1,11 +1,13 @@
 import React from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export type WindowSize = {
     width: number;
     height: number
 }
 export default function MainPage() {
+    const navigator = useNavigate();
     const [windowSize, setWindowSize] = React.useState<WindowSize>({
         width: window.innerWidth,
         height: window.innerHeight
@@ -21,6 +23,9 @@ export default function MainPage() {
         return () => {
             window.removeEventListener('resize', handleResize);
         }; 
+    }, [])
+    const catalogHandler = React.useCallback(() => {
+        navigator('/catalog')
     }, [])
     return (
     <div style={{
@@ -47,7 +52,7 @@ export default function MainPage() {
                         backgroundColor: '#E54E4E',
                         fontFamily: 'Ubuntu',
                         color: '#FFF'
-                    }}>
+                    }} onClick={catalogHandler}>
                         КАТАЛОГ
                     </button>
                 </Col>

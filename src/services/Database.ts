@@ -1,5 +1,6 @@
 export interface IDatabaseRecord {
     id: number;
+    name: string;
     category: string;
     image: string;
     expirationDate: string;
@@ -35,6 +36,6 @@ export interface Varnish extends IDatabaseRecord {
 }
 export const Database: IDatabaseRecord[] = [
     <Varnish>{
-        
+
     }
 ]
