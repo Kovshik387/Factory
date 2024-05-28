@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { IDatabaseRecord } from "../services/Database";
 
 interface ProductItemProps {
-    product: Product;
+    product: IDatabaseRecord;
 }
 
 export default function ProductCard({product}: ProductItemProps) {
@@ -10,9 +11,9 @@ export default function ProductCard({product}: ProductItemProps) {
         <div style={cardStyle}>
 
             {
-                product.imageUrl ?
+                product.image ?
                     (
-                        <img src={product.imageUrl} alt={product.name} style={imageStyle}/>
+                        <img src={product.image} alt={product.name} style={imageStyle}/>
                     )
                     :
                     (

@@ -2,37 +2,17 @@ import React, { useState } from 'react';
 import { Col, Container, Row, Stack } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import SearchBar from '../components/SearchBar';
+import { Database } from '../services/Database';
 
 export default function Catalog() {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [selectCategory, setSelectedCategory] = useState<string>("Все");
 
-    const products = [
-        { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "/product.png", category: "Эмаль" },
-        { id: 2, name: 'Грунт белый полиуретановый', imageUrl: null },
-        { id: 3, name: 'Грунт белый полиуретановый ...', imageUrl: null },
-        { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
-        { id: 5, name: 'Грунт черный полиуретановый', imageUrl: null },
-        { id: 6, name: 'Грунт-порозаполнитель', imageUrl: null },
-        { id: 7, name: 'Грунт-изолятор', imageUrl: null },
-        { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
-        { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
-        { id: 5, name: 'Грунт черный полиуретановый', imageUrl: null },
-        { id: 6, name: 'Грунт-порозаполнитель', imageUrl: null },
-        { id: 7, name: 'Грунт-изолятор', imageUrl: null },
-        { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
-        { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
-        { id: 5, name: 'Грунт черный полиуретановый', imageUrl: null },
-        { id: 6, name: 'Грунт-порозаполнитель', imageUrl: null },
-        { id: 7, name: 'Грунт-изолятор', imageUrl: null },
-        { id: 8, name: 'Грунт-порозаполнитель', imageUrl: null },
-    ];
-
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
     }
-
-    const filteredProducts = products.filter(product =>
+    
+    const filteredProducts = Database.filter(product =>
         (selectCategory == "Все" || product.category === selectCategory) &&
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
