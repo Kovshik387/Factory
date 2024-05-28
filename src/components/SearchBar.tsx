@@ -30,6 +30,6 @@ const searchStyle: React.CSSProperties = {
     flex: "1",
     fontSize: "16px",
     color: '#000',
-    background: "rgba(255, 255, 255, 0.1)"
+    backgroundColor: 'transparent'
 }
 

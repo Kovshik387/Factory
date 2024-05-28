@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 
 export default function About() {
   const leftBlockStyle: React.CSSProperties = {
@@ -27,12 +26,11 @@ export default function About() {
     height: "70%",
     marginLeft: "-5%"
   };
-
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
+    height: '90vh',
     width: '100%',
     position: 'relative',
   };

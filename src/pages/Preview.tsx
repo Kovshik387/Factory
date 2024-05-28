@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import MainPage from "./Main";
 import About from "./About";
+import Contacts from "./Contacts";
 
 export default function Preview(): React.JSX.Element {
     const [currentComponent, setCurrentComponent] = useState<number>(0);
 	const [nextComponent, setNextComponent] = useState<number | null>(null);
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
-	const components = [<MainPage key="main" />, <About key="about" />];
+	const components = [ <MainPage key="main" />, <About key="about" />, <Contacts key="contacts" /> ];
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const animationDuration = 500;
@@ -63,7 +64,7 @@ export default function Preview(): React.JSX.Element {
 			
 			<div
 				ref={containerRef}
-				style={{ flexGrow: 1, margin: "52px 0px", height: 'calc(100vh - 82px)', overflow: 'hidden', position: 'relative' }}
+				style={{ flexGrow: 1, margin: "52px 0px 20px", height: 'calc(100vh - 82px)', overflow: 'hidden', position: 'relative' }}
 			>
 				<div style={!isAnimating ? {} : currentStyle}>
 					{components[currentComponent]}

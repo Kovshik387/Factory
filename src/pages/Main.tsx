@@ -93,7 +93,7 @@ export default function MainPage() {
                                 [
                                     {color: '#0F0E0E', text: '9005'},
                                     {color: '#4a1a01', text: '8017'},
-                                    {color: '#007308', text: '6005'},
+                                    {color: '#08382b', text: '6005'},
                                     {color: '#949494', text: '7004'},
                                 ].map((item) => {
                                     return (

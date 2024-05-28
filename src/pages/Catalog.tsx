@@ -1,13 +1,12 @@
 import React from 'react';
 import { Col, Container, Row, Stack } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
-import { Search } from 'react-bootstrap-icons';
 import SearchBar from '../components/SearchBar';
 
 export default function Catalog() {
 
-    const products: Product[] = [
-        { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "./public/product.png" },
+    const products = [
+        { id: 1, name: 'Грунт-эмаль 3 в 1', imageUrl: "/product.png" },
         { id: 2, name: 'Грунт белый полиуретановый', imageUrl: null },
         { id: 3, name: 'Грунт белый полиуретановый ...', imageUrl: null },
         { id: 4, name: 'Грунт прозрачный полиуретановый', imageUrl: null },
@@ -50,7 +49,7 @@ export default function Catalog() {
                             </ul>
                         </Col>
                         <Col sm={10} style={categoryContainerStyle}>
-                            <Row style={{margin: "5px"}}>
+                            <Row style={{ margin: '10px' }}>
                                 {products.map((item, index) => (
                                     <Col sm={2} md={4} lg={3}>
                                         <ProductCard product={item} key={index}></ProductCard>
@@ -66,8 +65,12 @@ export default function Catalog() {
 }
 
 const categoryContainerStyle: React.CSSProperties = {
-    overflowY: 'auto',
+    overflowY: 'scroll',
+    width: '80%',
+    margin: '20px 0px',
     maxHeight: "700px",
+    scrollbarColor: '#888 #00000000',
+    scrollbarWidth: 'thin'
 }
 
 const catalogBodyStyle: React.CSSProperties = {
@@ -87,8 +90,4 @@ const categoriesStyle: React.CSSProperties = {
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: '10px'
-}
-
-const categoryItemStyle: React.CSSProperties = {
-    margin: "0px 0px 0px 10px"
 }
