@@ -24,6 +24,9 @@ export default function MainPage() {
             window.removeEventListener('resize', handleResize);
         }; 
     }, [])
+    const detailsHandler = React.useCallback(() => {
+        navigator('/product/1')
+    }, [])
     const catalogHandler = React.useCallback(() => {
         navigator('/catalog')
     }, [])
@@ -180,7 +183,7 @@ export default function MainPage() {
                                 top: '-24px',
                                 left: '0px',
                                 fontFamily: '"Hero"'
-                            }}>
+                            }} onClick={detailsHandler}>
                                 ПОДРОБНЕЕ
                             </button>
                         </div>

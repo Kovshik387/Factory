@@ -8,8 +8,12 @@ export default function Navigation(): React.JSX.Element {
     }, [])
     return (
     <div style={navigationStyle}>
-        <a href={'/sertificat'} style={linkStyle}>Сертификаты</a>
-        <a href={'/catalog'} style={linkStyle}>Каталог</a>
+        <div style={{marginBottom: '20px'}}>
+            <a href={'/sertificat'} style={linkStyle}>Сертификаты</a>
+        </div>
+        <div style={{marginBottom: '20px'}}>
+            <a href={'/catalog'} style={linkStyle}>Каталог</a>
+        </div>
     </div>
     )
 }
@@ -27,7 +31,6 @@ const navigationStyle: React.CSSProperties = {
 }
 const linkStyle: React.CSSProperties = {
     fontSize: '24px',
-    marginBottom: '20px',
     letterSpacing: '.2rem',
     fontFamily: '"Ubuntu", sans-serif'
 }
