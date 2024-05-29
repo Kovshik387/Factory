@@ -9,6 +9,23 @@ export type WindowSize = {
     width: number;
     height: number
 }
+type productFieldinfo = { name: string, property: string };
+
+const productFields: productFieldinfo[] = [
+    { name: 'Основа материала:', property: 'baseMaterial' },
+    { name: 'Внешний вид пленки:', property: 'skinView' },
+    { name: 'Цвет:', property: 'colorName' },
+    { name: 'Условная вязкость по В3-246 (сопло 4), сек, не менее:', property: 'viscosity' },
+    { name: 'Адгезия, балл, не более:', property: 'adhesion' },
+    { name: 'Массовая доля нелетучих веществ, %:', property: 'volatiles' },
+    { name: 'Смола:', property: 'resin' },
+    { name: 'Растворитель:', property: 'solvent' },
+    { name: 'Пожароопасность:', property: 'fireHazard' },
+    { name: 'Морозостойкость:', property: 'coldResist' },
+    { name: 'Вязкость (ВЗ-246):', property: 'viscosity' },
+    { name: 'Плотность:', property: 'density' },
+    { name: 'Степень блеска %:', property: 'shine' },
+]
 export default function Product(): React.JSX.Element {
     const navigation = useParams();
     const [product, setProfuct] = useState<IDatabaseRecord>();
@@ -59,61 +76,15 @@ export default function Product(): React.JSX.Element {
                 }}>
                     <p style={paragStyle}>Название: {product.name}</p>
                     <p style={paragStyle}>Категория: {product.category}</p>
-                    { 
-                        (product as any).baseMaterial == undefined ? <div></div> :
-                        <p style={paragStyle}>Основа материала: {(product as any).baseMaterial}</p>
-                    }
-                    { 
-                        (product as any).skinView == undefined ? <div></div> :
-                        <p style={paragStyle}>Внешний вид пленки: {(product as any).skinView}</p>
-                    }
-                    { 
-                        (product as any).colorName == undefined ? <div></div> :
-                        <p style={paragStyle}>Цвет: {(product as any).colorName}</p>
-                    }
-                    { 
-                        (product as any).colorName == undefined ? <div></div> :
-                        <p style={paragStyle}>Цвет: {(product as any).colorName}</p>
-                    }
-                    { 
-                        (product as any).viscosity == undefined ? <div></div> :
-                        <p style={paragStyle}>Условная вязкость по В3-246 (сопло 4), сек, не менее: {(product as any).viscosity}</p>
-                    }
-                    { 
-                        (product as any).adhesion == undefined ? <div></div> :
-                        <p style={paragStyle}>Адгезия, балл, не более: {(product as any).adhesion}</p>
-                    }
-                    { 
-                        (product as any).volatiles == undefined ? <div></div> :
-                        <p style={paragStyle}>Массовая доля нелетучих веществ, %: {(product as any).volatiles}</p>
-                    }
-                    { 
-                        (product as any).resin == undefined ? <div></div> :
-                        <p style={paragStyle}>Смола: {(product as any).resin}</p>
-                    }
-                    { 
-                        (product as any).solvent == undefined ? <div></div> :
-                        <p style={paragStyle}>Растворитель: {(product as any).solvent}</p>
-                    }
-                    { 
-                        (product as any).fireHazard == undefined ? <div></div> :
-                        <p style={paragStyle}>Пожароопасность: {(product as any).fireHazard}</p>
-                    }
-                    { 
-                        (product as any).coldResist == undefined ? <div></div> :
-                        <p style={paragStyle}>Морозостойкость: {(product as any).coldResist}</p>
-                    }
-                    { 
-                        (product as any).viscosity == undefined ? <div></div> :
-                        <p style={paragStyle}>Вязкость (ВЗ-246): {(product as any).viscosity}</p>
-                    }
-                    { 
-                        (product as any).density == undefined ? <div></div> :
-                        <p style={paragStyle}>Плотность: {(product as any).density}</p>
-                    }
-                    { 
-                        (product as any).shine == undefined ? <div></div> :
-                        <p style={paragStyle}>Степень блеска %: {(product as any).shine}</p>
+                    {
+                        productFields.map(item => {
+                            for(const prop in product) {
+                                if (prop == item.property) return (
+                                    <p style={paragStyle}>{item.name} {(product as any)[prop]}</p>
+                                )    
+                            }
+                            return null;
+                        })
                     }
                     <p style={paragStyle}>Срок годности: {product.expirationDate}</p>
                     <br/>
