@@ -21,7 +21,7 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
                         <a style={{
                             display: 'flex',
                             flexFlow: 'row',
-                            justifyContent: 'center',
+                            justifyContent: 'start',
                             color: color,
                             border: 'none',
                             backgroundColor: 'transparent'
@@ -34,7 +34,7 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
                             <img style={imageStyle} src='logoHeader.svg' alt='...' />
                         </a>
                     </Col>
-                    <Col md={3}> 
+                    <Col md={2}> 
                     {/* href={'/contacts'}  */}
                         <p style={{
                             fontSize: '16px',
