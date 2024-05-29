@@ -15,7 +15,7 @@ export default function Navigation(): React.JSX.Element {
             <a href={'/catalog'} style={linkStyle}>Каталог</a>
         </div>
         <div style={{marginBottom: '20px'}}>
-            <a href={'/'} style={linkStyle}>Контакты</a>
+            <a href={'/?contact'} style={linkStyle}>Контакты</a>
         </div>
     </div>
     )

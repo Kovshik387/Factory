@@ -16,7 +16,7 @@ export const headerRef = createRef<HeaderHandler>();
 const App: React.FC = () => {
 	const router = createBrowserRouter([
 		{
-			path: "/",
+			path: "/?:step?",
 			element: <Preview/>,
 		},
 		{

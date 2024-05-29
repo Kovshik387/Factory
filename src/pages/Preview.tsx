@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import MainPage from "./Main";
 import About from "./About";
 import Contacts from "./Contacts";
+import { useLocation, useParams } from "react-router-dom";
 
 export default function Preview(): React.JSX.Element {
 	const [currentComponent, setCurrentComponent] = useState<number>(0);
@@ -11,6 +12,8 @@ export default function Preview(): React.JSX.Element {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const animationDuration = 500;
 
+	const { search } = useLocation();
+	const [ paramGone, setParamGone ] = useState<boolean>(false);
 	const handleWheel = (event: WheelEvent) => {
 		if (isAnimating) return;
 
@@ -34,6 +37,10 @@ export default function Preview(): React.JSX.Element {
 	};
 
 	useEffect(() => {
+		if (search == '?contact' && !paramGone) { 
+			setCurrentComponent(2); 
+			setParamGone(true)
+		} 
 		const container = containerRef.current;
 		if (container) {
 			container.addEventListener('wheel', handleWheel);
@@ -44,7 +51,7 @@ export default function Preview(): React.JSX.Element {
 				container.removeEventListener('wheel', handleWheel);
 			}
 		};
-	}, [currentComponent, components.length, isAnimating]);
+	}, [currentComponent, components.length, isAnimating, paramGone]);
 
 	const getPageStyle = (direction: string): React.CSSProperties => ({
 		animation: `${direction} ${animationDuration}ms forwards`,
