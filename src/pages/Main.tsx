@@ -53,7 +53,7 @@ export default function MainPage() {
                         borderRadius: '10px', 
                         padding: '12px 56px',
                         backgroundColor: '#E54E4E',
-                        fontFamily: 'Ubuntu',
+                        fontFamily: '"Ubuntu"',
                         color: '#FFF'
                     }} onClick={catalogHandler}>
                         КАТАЛОГ
