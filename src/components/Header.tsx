@@ -21,7 +21,7 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
                         <a style={{
                             display: 'flex',
                             flexFlow: 'row',
-                            justifyContent: 'end',
+                            justifyContent: 'center',
                             color: color,
                             border: 'none',
                             backgroundColor: 'transparent'
@@ -40,8 +40,9 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
                             fontSize: '16px',
                             fontFamily: '"Ubuntu", sans-serif',
                             letterSpacing: '.1rem',
-                            color: color
-                        }}>Телефон: +7 499 840 33 17</p>
+                            color: color,
+                            margin: '0px'
+                        }}>+7 499 840 33 17</p>
 
                     </Col>
                 </Row>
