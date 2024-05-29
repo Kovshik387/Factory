@@ -1,8 +1,8 @@
 import React from 'react';
 import { headerRef } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navigation(): React.JSX.Element {
-    
     React.useEffect(() => {
         headerRef.current?.setColor('#FFF')
     }, [])
@@ -14,9 +14,13 @@ export default function Navigation(): React.JSX.Element {
         <div style={{marginBottom: '20px'}}>
             <a href={'/catalog'} style={linkStyle}>Каталог</a>
         </div>
+        <div style={{marginBottom: '20px'}}>
+            <a href={'/'} style={linkStyle}>Контакты</a>
+        </div>
     </div>
     )
 }
+
 const navigationStyle: React.CSSProperties = {
     backgroundColor: 'rgba(24, 24, 24, 0.7)',
     position: 'absolute',

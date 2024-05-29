@@ -46,7 +46,7 @@ export default function MainPage() {
                         lineHeight: '60px',
                         marginBottom: '32px'
                     }}>
-                        Российский производитель лакокрасочный продукции
+                        Российский производитель лакокрасочной продукции
                     </h1>
                     <button style={{
                         border: 'none', 
@@ -116,6 +116,7 @@ export default function MainPage() {
                                                 width: '46px',
                                                 height: '46px',
                                                 borderRadius: '100px',
+                                                border: '1px solid #626262',
                                                 margin: '0px 0px 10px'
                                             }}>
                                             

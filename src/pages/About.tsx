@@ -77,7 +77,7 @@ export default function About() {
                 <p style={paragStyle}>- Надежное партнерство</p>
                 <p style={paragStyle}>- Быстрая доставка (вы получите ваш </p> 
                 <p style={paragStyle}>заказ в согласованные сроки)</p>
-                <p style={paragStyle}>Ответственность за результат</p>
+                <p style={paragStyle}>- Ответственность за результат</p>
               </ul>
             </div>
           </div>

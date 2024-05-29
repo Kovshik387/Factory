@@ -69,7 +69,8 @@ export default function Contacts(): React.JSX.Element {
                                     color: '#FFF',
                                     margin: '0px',
                                     fontSize: '28px',
-                                    marginBottom: '10px'
+                                    marginBottom: '10px',
+                                    border: ""
                                 }}>
                                 Телефон: +7 499 840 33 17
                                 </p>
@@ -91,12 +92,12 @@ export default function Contacts(): React.JSX.Element {
                         }}>
                             <div style={{ width: '50%', margin: '0px 10px' }}>
                                 <p style={{color: '#FFF', fontSize: '20px' }}>
-                                Адрес производства: Московская область, г.Сергиев-Посад, Московское шоссе, д. 22А
+                                Почтовый адрес: 141407, Московская область, г. Химки, ул. Бабакина, д. 5А, пом. 014-8
                                 </p>
                             </div>
                             <div style={{ width: '50%', margin: '0px 10px' }}>
                                 <p style={{color: '#FFF', fontSize: '20px' }}>
-                                Почтовый адрес: 141407, Московская область, г. Химки, ул. Бабакина, д. 5А, пом. 014-8
+                                Адрес производства: Московская область, г.Сергиев-Посад, Московское шоссе, д. 22А
                                 </p>
                             </div>
                         </div>

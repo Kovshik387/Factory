@@ -4,12 +4,11 @@ import About from "./About";
 import Contacts from "./Contacts";
 
 export default function Preview(): React.JSX.Element {
-    const [currentComponent, setCurrentComponent] = useState<number>(0);
+	const [currentComponent, setCurrentComponent] = useState<number>(0);
 	const [nextComponent, setNextComponent] = useState<number | null>(null);
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
-	const components = [ <MainPage key="main" />, <About key="about" />, <Contacts key="contacts" /> ];
+	const components = [<MainPage key="main" />, <About key="about" />, <Contacts key="contacts" />];
 	const containerRef = useRef<HTMLDivElement>(null);
-
 	const animationDuration = 500;
 
 	const handleWheel = (event: WheelEvent) => {
@@ -60,8 +59,8 @@ export default function Preview(): React.JSX.Element {
 	const nextStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideInFromBottom' : 'slideInFromTop');
 
 	return (
-		<div style={{animation: 'fadeIn 1s'}}>
-			
+		<div style={{ animation: 'fadeIn 1s' }}>
+
 			<div
 				ref={containerRef}
 				style={{ flexGrow: 1, margin: "52px 0px 20px", height: 'calc(100vh - 82px)', overflow: 'hidden', position: 'relative' }}
