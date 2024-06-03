@@ -42,9 +42,9 @@ export default function Catalog() {
                                 </ul>
                             </div>
                             <Col sm={10} style={{ ...categoryContainerStyle, alignItems: "start", height: "100%" }}>
-                                <Row style={{ margin: '10px' }}>
+                                <Row style={{ margin: '10px' }} >
                                     {filteredProducts.map((item, index) => (
-                                        <Col md={4} lg={3} key={index}>
+                                        <Col key={index}>
                                             <ProductCard product={item} />
                                         </Col>
                                     ))}

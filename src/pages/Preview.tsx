@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import MainPage from "./Main";
 import About from "./About";
 import Contacts from "./Contacts";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useSwipeable } from "react-swipeable";
 
 export default function Preview(): React.JSX.Element {
 	const [currentComponent, setCurrentComponent] = useState<number>(0);
@@ -14,6 +15,7 @@ export default function Preview(): React.JSX.Element {
 
 	const { search } = useLocation();
 	const [ paramGone, setParamGone ] = useState<boolean>(false);
+
 	const handleWheel = (event: WheelEvent) => {
 		if (isAnimating) return;
 
@@ -36,10 +38,37 @@ export default function Preview(): React.JSX.Element {
 		}
 	};
 
+	const handleSwipe = ({ dir }: { dir: string }) => {
+		if (isAnimating) return;
+
+		if (dir === "Up" && currentComponent < components.length - 1) {
+			setNextComponent(currentComponent + 1);
+			setIsAnimating(true);
+			setTimeout(() => {
+				setCurrentComponent((prev) => prev + 1);
+				setNextComponent(null);
+				setIsAnimating(false);
+			}, animationDuration);
+		} else if (dir === "Down" && currentComponent > 0) {
+			setNextComponent(currentComponent - 1);
+			setIsAnimating(true);
+			setTimeout(() => {
+				setCurrentComponent((prev) => prev - 1);
+				setNextComponent(null);
+				setIsAnimating(false);
+			}, animationDuration);
+		}
+	};
+
+	const swipeHandlers = useSwipeable({
+		onSwipedUp: () => handleSwipe({ dir: "Up" }),
+		onSwipedDown: () => handleSwipe({ dir: "Down" }),
+	});
+
 	useEffect(() => {
 		if (search == '?contact' && !paramGone) { 
 			setCurrentComponent(2); 
-			setParamGone(true)
+			setParamGone(true);
 		} 
 		const container = containerRef.current;
 		if (container) {
@@ -66,8 +95,7 @@ export default function Preview(): React.JSX.Element {
 	const nextStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideInFromBottom' : 'slideInFromTop');
 
 	return (
-		<div style={{ animation: 'fadeIn 1s' }}>
-
+		<div style={{ animation: 'fadeIn 1s' }} {...swipeHandlers}>
 			<div
 				ref={containerRef}
 				style={{ flexGrow: 1, margin: "52px 0px 20px", height: 'calc(100vh - 82px)', overflow: 'hidden', position: 'relative' }}
