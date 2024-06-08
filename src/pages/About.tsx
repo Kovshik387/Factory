@@ -38,14 +38,16 @@ export default function About() {
     justifyContent: 'center',
   };
 
-  const containerStyle: React.CSSProperties = {
+  const containerStyle = (biggerThan920: boolean): React.CSSProperties => ({
     display: 'flex',
     flexDirection: biggerThan920 ? 'row' : 'column',
     justifyContent: biggerThan920 ? 'center' : "center",
     alignItems: 'center',
-    height: '90vh',
+    marginTop: biggerThan920 ? "" : "20px",
+    marginBottom: biggerThan920 ? "" : "20px",
+    height: '80vh',
     width: '100%',
-  };
+  });
 
   const textRight: React.CSSProperties = {
     zIndex: 3,
@@ -67,7 +69,7 @@ export default function About() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle(biggerThan920)}>
       <div style={leftBlockStyle}>
         <div style={textLeft}>
           <h2 style={{ fontWeight: "bold", fontFamily: '"HeroBold"' }}>Почему выбирают нас?</h2>

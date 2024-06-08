@@ -24,8 +24,8 @@ export default function Catalog() {
             <Container>
                 <Row>
                     <Col xs={12}>
-                        <div style={catalogBodyStyle}>
-                            <Stack direction={biggerThan920 ? "horizontal" : "vertical"} style={{ marginBottom: "20px", height: '100%' }}>
+                        <div style={catalogBodyStyle(biggerThan920)}>
+                            <Stack direction={biggerThan920 ? "horizontal" : "vertical"} style={{ marginBottom: "20px", height: "100%" }}>
                                 <div className='searchAndCategoriesStyles'
                                     style={{
                                         alignSelf: 'baseline',
@@ -88,24 +88,24 @@ const categoriesStyle = (biggerThan400: boolean): React.CSSProperties => ({
 const categoryContainerStyle: React.CSSProperties = {
     overflowY: 'auto',
     margin: '20px 0px',
-    height: "calc(100vh - 160px)", // высота контейнера с учетом высоты заголовка, поиска и отступов
+    height: "calc(100vh - 160px)",
     maxWidth: "100%",
     scrollbarColor: '#888 #00000000',
     scrollbarWidth: 'thin',
     paddingRight: '5px'
 }
 
-const catalogBodyStyle: React.CSSProperties = {
-    marginTop: "30px",
-    height: '80vh',
+const catalogBodyStyle = (biggerThan400: boolean): React.CSSProperties => ({
+    // marginTop: "130px",
+    height: biggerThan400 ? '80vh' : "70vh",
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     width: "100%",
     overflow: "hidden",
-    padding: "20px"
-}
+    padding: "20px",
+})
 
 const catalogStyle: React.CSSProperties = {
-    margin: '100px 0px',
+    marginTop: '120px',
     animation: 'fadeIn 1s'
 }

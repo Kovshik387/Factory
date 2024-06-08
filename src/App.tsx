@@ -42,10 +42,10 @@ const App: React.FC = () => {
 		<div className="main-site-content">
 			<Header ref={headerRef}/>
 			<div style={{
-				position:'absolute',
+				// position:'absolute',
 				backgroundColor: '#00000044',
 				width: '100%',
-				height: '100%'
+				height: '100%',
 			}}>
 				<RouterProvider router={router} />
 			</div>
