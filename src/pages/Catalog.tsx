@@ -106,6 +106,6 @@ const catalogBodyStyle = (biggerThan400: boolean): React.CSSProperties => ({
 })
 
 const catalogStyle: React.CSSProperties = {
-    marginTop: '120px',
+    marginTop: '50px',
     animation: 'fadeIn 1s'
 }
