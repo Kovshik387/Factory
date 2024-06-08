@@ -3,17 +3,19 @@ import { Col, Container, Row, Stack } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import SearchBar from '../components/SearchBar';
 import { Database } from '../services/Database';
+import { useMediaPredicate } from "react-media-hook";
 
 export default function Catalog() {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [selectCategory, setSelectedCategory] = useState<string>("Все");
+    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
 
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
     }
 
     const filteredProducts = Database.filter(product =>
-        (selectCategory == "Все" || product.category === selectCategory) &&
+        (selectCategory === "Все" || product.category === selectCategory) &&
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -21,51 +23,76 @@ export default function Catalog() {
         <div style={catalogStyle}>
             <Container>
                 <Row>
-                    <Col md={12}>
-                    <div style={catalogBodyStyle}>
-                        <Stack direction='horizontal' style={{ marginBottom: "20px" }}>
-                            <div style={{
-                                alignSelf: 'baseline',
-                                padding: '50px 0px 0px'
-                            }}>
-                                <div style={{
-                                    margin: '0px 0px 40px'
-                                }}>
-                                    <SearchBar onSearch={setSearchQuery} />
+                    <Col xs={12}>
+                        <div style={catalogBodyStyle}>
+                            <Stack direction={biggerThan920 ? "horizontal" : "vertical"} style={{ marginBottom: "20px", height: '100%' }}>
+                                <div className='searchAndCategoriesStyles'
+                                    style={{
+                                        alignSelf: 'baseline',
+                                        padding: biggerThan920 ? "20px" : "20px 20px 0px 20px",
+                                        width: '100%',
+                                        maxWidth: '250px'
+                                    }}>
+                                    <div style={{ marginBottom: '20px' }}>
+                                        <SearchBar onSearch={setSearchQuery} />
+                                    </div>
+                                    <div style={categoriesStyle(biggerThan920)}>Категории</div>
+                                    <div style={getCategoriesListStyle(biggerThan920)}>
+                                        <ul style={{ display: 'flex', flexDirection: biggerThan920 ? 'column' : 'row', flexWrap: 'wrap', paddingLeft: 0 }}>
+                                            {['Все', 'Грунт', 'Эмаль', 'Лак'].map((category, index) => (
+                                                <li key={index}
+                                                    style={{
+                                                        listStyleType: 'none',
+                                                        margin: biggerThan920 ? '0 0 5px' : '0 10px 5px 0',
+                                                        textDecoration: selectCategory === category ? 'underline' : 'none',
+                                                        textUnderlineOffset: "5px",
+                                                        cursor: 'pointer'
+                                                    }}
+                                                    onClick={() => handleCategoryClick(category)}>
+                                                    {category}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div style={categoriesStyle}>Категории</div>
-                                <ul style={{ textAlign: "left", paddingLeft: "70px" }}>
-                                    <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Все' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Все')}>Все</p>
-                                    <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Грунт' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Грунт')}>Грунты</p>
-                                    <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Эмаль' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Эмаль')}>Эмали</p>
-                                    <p style={{ margin: '0px 0px 5px', textDecoration: selectCategory === 'Лак' ? 'underline' : 'none', textUnderlineOffset: "5px" }} onClick={() => handleCategoryClick('Лак')}>Лаки</p>
-                                </ul>
-                            </div>
-                            <Col sm={10} style={{ ...categoryContainerStyle, alignItems: "start", height: "100%" }}>
-                                <Row style={{ margin: '10px' }} >
-                                    {filteredProducts.map((item, index) => (
-                                        <Col key={index}>
-                                            <ProductCard product={item} />
-                                        </Col>
-                                    ))}
-                                </Row>
-                            </Col>
-                        </Stack>
-                    </div>
+                                <div style={{ ...categoryContainerStyle, alignItems: "start", height: "100%", width: '100%' }}>
+                                    <Row style={{ margin: '0', width: '100%', height: "100%" }}>
+                                        {filteredProducts.map((item, index) => (
+                                            <Col key={index} xs={6} sm={6} md={4} lg={4} className="mb-4">
+                                                <ProductCard product={item} />
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </div>
+                            </Stack>
+                        </div>
                     </Col>
                 </Row>
-            </Container >
-        </div >
+            </Container>
+        </div>
     );
 }
 
+const getCategoriesListStyle = (biggerThan400: boolean): React.CSSProperties => ({
+    textAlign: "left",
+    paddingLeft: biggerThan400 ? "20px" : "0px",
+});
+
+const categoriesStyle = (biggerThan400: boolean): React.CSSProperties => ({
+    fontSize: "24px",
+    fontWeight: "bold",
+    marginBottom: '10px',
+    textAlign: "left"
+})
+
 const categoryContainerStyle: React.CSSProperties = {
-    overflowY: 'scroll',
-    width: '80%',
+    overflowY: 'auto',
     margin: '20px 0px',
-    maxHeight: "700px",
+    height: "calc(100vh - 160px)", // высота контейнера с учетом высоты заголовка, поиска и отступов
+    maxWidth: "100%",
     scrollbarColor: '#888 #00000000',
-    scrollbarWidth: 'thin'
+    scrollbarWidth: 'thin',
+    paddingRight: '5px'
 }
 
 const catalogBodyStyle: React.CSSProperties = {
@@ -73,16 +100,12 @@ const catalogBodyStyle: React.CSSProperties = {
     height: '80vh',
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    width: "100%"
+    width: "100%",
+    overflow: "hidden",
+    padding: "20px"
 }
 
 const catalogStyle: React.CSSProperties = {
     margin: '100px 0px',
     animation: 'fadeIn 1s'
-}
-
-const categoriesStyle: React.CSSProperties = {
-    fontSize: "24px",
-    fontWeight: "bold",
-    marginBottom: '10px'
 }

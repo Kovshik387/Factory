@@ -75,6 +75,14 @@ body {
   border: 2px solid transparent;
 }
 
+::placeholder {
+  color: black;
+}
+
+::-webkit-input-placeholder {
+  color: "black"
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8a8a8;
 }
