@@ -31,7 +31,7 @@ export default function About() {
     paddingRight: biggerThan920 ? "30px" : "10px",
     paddingLeft: biggerThan920 ? "40px" : "10px",
     width: biggerThan920 ? '30%' : '80%',
-    height: biggerThan920 ? "70%" : "35%",
+    height: biggerThan920 ? "70%" : "40%",
     margin: biggerThan920 ? '0 -5%' : '0 auto',
     display: 'flex',
     alignItems: 'center',

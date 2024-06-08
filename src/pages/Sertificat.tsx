@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useMediaPredicate } from "react-media-hook";
 
 export default function Sertificat(): React.JSX.Element {
+    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
     const imagesRef = [
         useRef<HTMLImageElement>(null),
         useRef<HTMLImageElement>(null),
