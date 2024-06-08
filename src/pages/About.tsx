@@ -31,7 +31,7 @@ export default function About() {
     paddingRight: biggerThan920 ? "30px" : "10px",
     paddingLeft: biggerThan920 ? "40px" : "10px",
     width: biggerThan920 ? '30%' : '80%',
-    height: biggerThan920 ? "70%" : "45%",
+    height: biggerThan920 ? "70%" : "35%",
     margin: biggerThan920 ? '0 -5%' : '0 auto',
     display: 'flex',
     alignItems: 'center',
@@ -41,7 +41,7 @@ export default function About() {
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: biggerThan920 ? 'row' : 'column',
-    justifyContent: 'center',
+    justifyContent: biggerThan920 ? 'center' : "center",
     alignItems: 'center',
     height: '90vh',
     width: '100%',
