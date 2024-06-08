@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useMediaPredicate } from "react-media-hook";
 
 export default function Sertificat(): React.JSX.Element {
-    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
+    const biggerThan920 = useMediaPredicate("(min-width: 992px)");
     const imagesRef = [
         useRef<HTMLImageElement>(null),
         useRef<HTMLImageElement>(null),
@@ -18,34 +18,38 @@ export default function Sertificat(): React.JSX.Element {
     }, [])
     return (
     <div style={sertificatStyle}>
-        <Container>
-            {biggerThan920 ? <Row>
-                <Col md={12} style={{
+        {biggerThan920 ? <div>
+                <div style={{
                     display: 'flex',
                     flexFlow: 'column',
-                    marginTop: '120px'
+                    marginBottom: '40px'
                 }}>
                     <a href='/nav' style={{
                         color: '#090C10',
                         fontSize: '20px',
                         alignSelf: 'end',
                         fontFamily: '"Ubuntu", sans-serif',
-                        paddingRight: '100px'
+                        paddingRight: '10%'
                     }}>Назад</a>
-                </Col>
-            </Row> : <div style={{marginTop: '120px'}}></div>}
-            <Row style={{marginTop: '30px'}}>
-                <Col xs={12} md={4}>
+                </div>
+            </div> : <div></div>}
+        
+        <Container fluid={'md'} style={{
+            paddingTop: biggerThan920 ? '0px' : '0px',
+            height: '100%',
+        }}>
+            <Row className='px-5 px-md-0'>
+                <Col xs={12} md={6} lg={4} className='mb-3'>
                     <div>
                         <img ref={imagesRef[0]} style={imageStyle} src='/sert1.png'/>
                     </div>
                 </Col>
-                <Col xs={12} md={4}>
+                <Col xs={12} md={6} lg={4} className='mb-3'>
                     <div>
                         <img ref={imagesRef[1]} style={imageStyle} src='/sert2.png'/>
                     </div>
                 </Col>
-                <Col xs={12} md={4} >
+                <Col xs={12} md={6} lg={4} className='mb-3'>
                     <div>
                         <img ref={imagesRef[2]} style={imageStyle} src='/sert3.png'/>
                     </div>
@@ -57,8 +61,8 @@ export default function Sertificat(): React.JSX.Element {
 }
 const sertificatStyle: React.CSSProperties = {
     width: '100%',
-    height: '100%',
-    animation: `fadeIn 1s`
+    margin: '40px 0px 0px',
+    animation: `fadeIn 1s`,
 }
 const imageStyle: React.CSSProperties = {
     objectFit: 'cover',

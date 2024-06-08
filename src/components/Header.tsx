@@ -19,10 +19,11 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
             justifyContent: 'space-between', 
             alignItems: 'center',
             height: '68px',
-            padding: '0px 14px'
+            padding: '0px 14px',
+            backgroundColor: 'rgba(175, 175, 175, 0.5)'
         }}>
             <a href='/'>
-                <img style={{width: '112px', height: '42px'}} src='logoHeader.svg' alt='...'/>
+                <img style={{width: '130px', height: '52px'}} src='logoHeader.svg' alt='...'/>
             </a>
             <a style={{
                 display: 'flex',
@@ -89,21 +90,12 @@ function HeaderLarge({ color, navPath }: HeaderInfo): React.JSX.Element {
 
 function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
     const [navPath, setNavPath] = React.useState('/nav');
-    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
+    const biggerThan920 = useMediaPredicate("(min-width: 992px)");
     React.useEffect(() => {
         setNavPath(document.location.pathname == '/nav' ? document.referrer : '/nav')
     }, [])
-    const style = React.useMemo<React.CSSProperties>(() => {
-        return biggerThan920 ? {
-            padding: '12px 0px', 
-            backgroundColor:  'transparent'
-        } : {
-            padding: '0px',
-            backgroundImage: '/background.jfif'
-        }
-    }, [biggerThan920])
     return (
-        <div style={{...style, ...headerStyle}}>
+        <div style={{...headerStyle}}>
             { 
             biggerThan920 
                 ? <HeaderLarge color={color} navPath={navPath}/>  
@@ -114,21 +106,26 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
 }
 export interface HeaderHandler {
     setColor: (color: string) => void;
+    getHeader: () => HTMLDivElement
 }
 export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
     const [color, setColor] = React.useState<string>('#000');
+    const biggerThan920 = useMediaPredicate("(min-width: 992px)");
+    const headerRef = React.useRef<HTMLDivElement>(null);
     React.useImperativeHandle(ref, () => ({
         setColor: (color) => setColor(color),
+        getHeader: () => headerRef.current!
     }))
-    return (<HeaderComponent color={color} />)
+    return (
+    <div id='header-component' ref={headerRef} style={{zIndex: 4}}>
+        <HeaderComponent color={color} />
+    </div>)
 })
 const imageStyle: React.CSSProperties = {
     width: '168px',
-    height: '70px'
+    height: '66px'
 }
 const headerStyle: React.CSSProperties = {
-    zIndex: '1',
-    position: 'fixed',
+    zIndex: 4,
     width: '100%',
-    height: '78px',
 }

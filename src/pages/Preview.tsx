@@ -95,12 +95,12 @@ export default function Preview(): React.JSX.Element {
 	const nextStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideInFromBottom' : 'slideInFromTop');
 
 	return (
-		<div style={{ animation: 'fadeIn 1s' }} {...swipeHandlers}>
+		<div style={{ animation: 'fadeIn 1s', height: '100%' }} {...swipeHandlers}>
 			<div
 				ref={containerRef}
-				style={{ flexGrow: 1, margin: "52px 0px 20px", height: 'calc(100vh - 82px)', overflow: 'hidden', position: 'relative' }}
+				style={{ flexGrow: 1, height: '100%', overflow: 'hidden', position: 'relative' }}
 			>
-				<div style={!isAnimating ? {} : currentStyle}>
+				<div style={!isAnimating ? {height: '100%'} : currentStyle}>
 					{components[currentComponent]}
 				</div>
 				{isAnimating && nextComponent !== null && (
