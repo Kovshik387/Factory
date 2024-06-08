@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useMediaPredicate } from "react-media-hook";
 
 export default function Sertificat(): React.JSX.Element {
+    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
     const imagesRef = [
         useRef<HTMLImageElement>(null),
         useRef<HTMLImageElement>(null),
@@ -17,7 +19,7 @@ export default function Sertificat(): React.JSX.Element {
     return (
     <div style={sertificatStyle}>
         <Container>
-            <Row>
+            {biggerThan920 ? <Row>
                 <Col md={12} style={{
                     display: 'flex',
                     flexFlow: 'column',
@@ -31,19 +33,19 @@ export default function Sertificat(): React.JSX.Element {
                         paddingRight: '100px'
                     }}>Назад</a>
                 </Col>
-            </Row>
+            </Row> : <div style={{marginTop: '120px'}}></div>}
             <Row style={{marginTop: '30px'}}>
-                <Col md={4}>
+                <Col xs={12} md={4}>
                     <div>
                         <img ref={imagesRef[0]} style={imageStyle} src='/sert1.png'/>
                     </div>
                 </Col>
-                <Col md={4}>
+                <Col xs={12} md={4}>
                     <div>
                         <img ref={imagesRef[1]} style={imageStyle} src='/sert2.png'/>
                     </div>
                 </Col>
-                <Col md={4} >
+                <Col xs={12} md={4} >
                     <div>
                         <img ref={imagesRef[2]} style={imageStyle} src='/sert3.png'/>
                     </div>
@@ -55,6 +57,7 @@ export default function Sertificat(): React.JSX.Element {
 }
 const sertificatStyle: React.CSSProperties = {
     width: '100%',
+    height: '100%',
     animation: `fadeIn 1s`
 }
 const imageStyle: React.CSSProperties = {
