@@ -61,7 +61,7 @@ export default function Sertificat(): React.JSX.Element {
 }
 const sertificatStyle: React.CSSProperties = {
     width: '100%',
-    margin: '40px 0px 0px',
+    margin: '0px 0px 0px',
     animation: `fadeIn 1s`,
 }
 const imageStyle: React.CSSProperties = {

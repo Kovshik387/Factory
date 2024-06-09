@@ -98,27 +98,17 @@ export default function Product(): React.JSX.Element {
                 >
                     {((product as any).color as any[]).map((item, index) => {
                         return (
-                            <div
-                                key={index}
-                                style={{
-                                    padding: isBiggerThan920 ? '0px 16px' : "0px 10px",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        backgroundColor: item.value,
-                                        width: '46px',
-                                        height: '46px',
-                                        borderRadius: '100px',
-                                        margin: '0px 0px 10px',
-                                    }}
-                                ></div>
-                                <p
-                                    style={{
-                                        fontSize: '14px',
-                                    }}
-                                >
-                                    {item.name}
+                            <div key={index} style={{
+                                padding: isBiggerThan920 ? '0px 16px' : "0px 10px",
+                            }}>
+                                <div style={{
+                                    backgroundColor: item.value,
+                                    width: '46px',
+                                    height: '46px',
+                                    borderRadius: '100px',
+                                    margin: '0px 0px 10px',
+                                }}></div>
+                                <p style={{ fontSize: '14px'}}> {item.name}
                                 </p>
                             </div>
                         );
