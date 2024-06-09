@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createRef } from 'react';
 import { Header, HeaderHandler } from './components/Header';
 import './App.css';

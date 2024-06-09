@@ -36,7 +36,7 @@ export default function Catalog() {
                                     <div style={{ marginBottom: '20px' }}>
                                         <SearchBar onSearch={setSearchQuery} />
                                     </div>
-                                    <div style={categoriesStyle(biggerThan920)}>Категории</div>
+                                    <div style={categoriesStyle()}>Категории</div>
                                     <div style={getCategoriesListStyle(biggerThan920)}>
                                         <ul style={{ display: 'flex', flexDirection: biggerThan920 ? 'column' : 'row', flexWrap: 'wrap', paddingLeft: 0 }}>
                                             {['Все', 'Грунт', 'Эмаль', 'Лак'].map((category, index) => (
@@ -78,7 +78,7 @@ const getCategoriesListStyle = (biggerThan400: boolean): React.CSSProperties => 
     paddingLeft: biggerThan400 ? "20px" : "0px",
 });
 
-const categoriesStyle = (biggerThan400: boolean): React.CSSProperties => ({
+const categoriesStyle = (): React.CSSProperties => ({
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: '10px',

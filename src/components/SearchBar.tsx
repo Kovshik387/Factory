@@ -1,13 +1,11 @@
 import { Stack } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons"
-import { useMediaPredicate } from "react-media-hook";
 
 interface SearchProps {
     onSearch: (query: string) => void;
 }
 
 export default function SearchBar({ onSearch }: SearchProps) {
-    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onSearch(e.target.value);
     };

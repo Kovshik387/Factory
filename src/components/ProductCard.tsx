@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductItemProps) {
             <button style={buttonStyle} onClick={() => { navigation(`/product/${product.id}`) }}>Подробнее</button>
         </div>
     );
-};
+}
 
 const titleStyle: React.CSSProperties = {
     fontSize: '16px',

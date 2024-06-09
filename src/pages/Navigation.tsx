@@ -1,6 +1,5 @@
 import React from 'react';
 import { headerRef } from '../App';
-import { useNavigate } from 'react-router-dom';
 
 export default function Navigation(): React.JSX.Element {
     React.useEffect(() => {
