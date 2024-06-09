@@ -22,7 +22,6 @@ export default function Sertificat(): React.JSX.Element {
                 <div style={{
                     display: 'flex',
                     flexFlow: 'column',
-                    marginBottom: '40px'
                 }}>
                     <a href='/nav' style={{
                         color: '#090C10',
@@ -61,7 +60,7 @@ export default function Sertificat(): React.JSX.Element {
 }
 const sertificatStyle: React.CSSProperties = {
     width: '100%',
-    margin: '40px 0px 0px',
+    padding: '40px 0px 0px',
     animation: `fadeIn 1s`,
 }
 const imageStyle: React.CSSProperties = {

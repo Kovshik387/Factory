@@ -58,6 +58,7 @@ const App: React.FC = () => {
 				width: '100%',
 				flexGrow: 1,
 				zIndex: 2,
+				overflowY: 'hidden',
 				height: `calc(100% - ${headerHeight}px)`,
 			}}>
 				<div style={{overflowY: 'auto', height: '100%', zIndex: 2}}>
@@ -68,7 +69,7 @@ const App: React.FC = () => {
 				position: 'absolute',
 				height: '100%',
 				width: '100%',
-				
+				overflowY: 'hidden',
 				backgroundColor: 'rgba(0, 0, 0, 0.3)'
 			}}></div>
 		</div>
