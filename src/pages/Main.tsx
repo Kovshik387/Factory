@@ -123,7 +123,7 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                             fontFamily: 'Ubuntu',
                             fontSize: '20px'
                         }} onClick={detailsHandler}>
-                            <span style={{color: "#000"}}>
+                            <span style={{color: "#FFF"}}>
                                 КАТАЛОГ
                             </span>
                         </button>
