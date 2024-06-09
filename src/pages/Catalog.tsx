@@ -20,7 +20,7 @@ export default function Catalog() {
     );
 
     return (
-        <div style={catalogStyle}>
+        <div style={catalogStyle(biggerThan920)}>
             <Container>
                 <Row>
                     <Col xs={12}>
@@ -105,7 +105,7 @@ const catalogBodyStyle = (biggerThan400: boolean): React.CSSProperties => ({
     padding: "20px",
 })
 
-const catalogStyle: React.CSSProperties = {
-    marginTop: '50px',
-    animation: 'fadeIn 1s'
-}
+const catalogStyle = (biggerThan920: boolean): React.CSSProperties => ({
+    marginTop: '15px',
+    animation: biggerThan920 ? 'fadeIn 1s' : ""
+})

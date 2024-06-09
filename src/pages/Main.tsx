@@ -1,23 +1,25 @@
 import React from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { useMediaPredicate } from "react-media-hook";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export type WindowSize = {
     width: number;
     height: number
 }
+
 interface MainPageProps {
     detailsHandler: () => void;
     catalogHandler: () => void;
 }
+
 function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
     return (
         <div style={{
             display: 'flex',
             flexFlow: 'column',
             alignItems: 'center',
-            margin: '50px 0px 0px',
+            margin: '30px 0px 0px',
             height: '100%'
         }}>
             <h1 style={{
@@ -27,7 +29,6 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                 textAlign: 'start',
                 lineHeight: '30px',
                 margin: '0px 42px 32px'
-
             }}>
                 Российский производитель лакокрасочной продукции
             </h1>
@@ -50,37 +51,31 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                     justifyContent: 'center'
                 }}>
                     <Stack direction="horizontal">
-                        {
-                            [
-                                { color: '#0F0E0E', text: '9005' },
-                                { color: '#4a1a01', text: '8017' },
-                                { color: '#08382b', text: '6005' },
-                                { color: '#949494', text: '7004' },
-                            ].map((item, index) => {
-                                return (
-                                    <div style={{ padding: '0px 16px' }} key={index}>
-                                        <div style={{
-                                            backgroundColor: item.color,
-                                            width: '46px',
-                                            height: '46px',
-                                            borderRadius: '100px',
-                                            border: '1px solid #626262',
-                                            margin: '0px 0px 10px'
-                                        }}>
-
-                                        </div>
-                                        <p style={{
-                                            fontSize: '14px',
-                                            fontFamily: 'Ubuntu',
-                                            color: '#ADADAD'
-                                        }}>{item.text}</p>
-                                    </div>
-                                )
-                            })
-                        }
+                        {[
+                            { color: '#0F0E0E', text: '9005' },
+                            { color: '#4a1a01', text: '8017' },
+                            { color: '#08382b', text: '6005' },
+                            { color: '#949494', text: '7004' },
+                        ].map((item, index) => (
+                            <div style={{ padding: '0px 16px' }} key={index}>
+                                <div style={{
+                                    backgroundColor: item.color,
+                                    width: '46px',
+                                    height: '46px',
+                                    borderRadius: '100px',
+                                    border: '1px solid #626262',
+                                    margin: '0px 0px 10px'
+                                }} />
+                                <p style={{
+                                    fontSize: '14px',
+                                    fontFamily: 'Ubuntu',
+                                    color: '#ADADAD'
+                                }}>{item.text}</p>
+                            </div>
+                        ))}
                     </Stack>
                 </div>
-                <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }}></div>
+                <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
                 <Stack direction="vertical" gap={2} style={{
                     margin: '20px 0px 40px',
                     textAlign: 'start',
@@ -93,7 +88,7 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                         Адгезия <span style={{ color: '#FF0000' }}> - не более 1</span>
                     </p>
                     <p style={{ fontSize: '15px', margin: '0px 0px 5px' }}>
-                        Время высыхания до степени 3 при t (20,0±0,5)°С, мин ,
+                        Время высыхания до степени 3 при t (20,0±0,5)°С, мин
                         <span style={{ color: '#FF0000' }}> - не более 30</span>
                     </p>
                     <p style={{ fontSize: '15px', margin: '0px 0px 5px' }}>
@@ -118,12 +113,11 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                             padding: '12px 56px',
                             border: 'none',
                             borderRadius: '10px',
-
                             backgroundColor: '#E54E4E',
                             fontFamily: 'Ubuntu',
                             fontSize: '20px'
                         }} onClick={detailsHandler}>
-                            <span style={{color: "#FFF"}}>
+                            <span style={{ color: "#FFF" }}>
                                 КАТАЛОГ
                             </span>
                         </button>
@@ -131,12 +125,13 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
 function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React.JSX.Element {
     return (
-        <Container style={{ marginTop: '150px', }}>
-            <Row className='justify-content-md-center' >
+        <Container style={{ marginTop: '150px' }}>
+            <Row className='justify-content-md-center'>
                 <Col md={5} style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', margin: '0px 150px 0px 0px' }}>
                     <h1 style={{
                         fontWeight: '300',
@@ -190,9 +185,8 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                                     textAlign: 'start',
                                     fontFamily: '"HeroBold"',
                                     letterSpacing: '.2rem'
-                                }}
-                                >Адгезия</p>
-                                <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }}></div>
+                                }}>Адгезия</p>
+                                <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
                                 <p style={{
                                     fontSize: '16px',
                                     textAlign: 'start',
@@ -200,35 +194,29 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                                 }}>Не более 1</p>
                             </div>
                             <Stack direction="horizontal">
-                                {
-                                    [
-                                        { color: '#0F0E0E', text: '9005' },
-                                        { color: '#4a1a01', text: '8017' },
-                                        { color: '#08382b', text: '6005' },
-                                        { color: '#949494', text: '7004' },
-                                    ].map((item, index) => {
-                                        return (
-                                            <div style={{
-                                                padding: '0px 16px'
-                                            }} key={index}>
-                                                <div style={{
-                                                    backgroundColor: item.color,
-                                                    width: '46px',
-                                                    height: '46px',
-                                                    borderRadius: '100px',
-                                                    border: '1px solid #626262',
-                                                    margin: '0px 0px 10px'
-                                                }}>
-
-                                                </div>
-                                                <p style={{
-                                                    fontSize: '14px',
-                                                    fontFamily: '"Hero"'
-                                                }}>{item.text}</p>
-                                            </div>
-                                        )
-                                    })
-                                }
+                                {[
+                                    { color: '#0F0E0E', text: '9005' },
+                                    { color: '#4a1a01', text: '8017' },
+                                    { color: '#08382b', text: '6005' },
+                                    { color: '#949494', text: '7004' },
+                                ].map((item, index) => (
+                                    <div style={{
+                                        padding: '0px 16px'
+                                    }} key={index}>
+                                        <div style={{
+                                            backgroundColor: item.color,
+                                            width: '46px',
+                                            height: '46px',
+                                            borderRadius: '100px',
+                                            border: '1px solid #626262',
+                                            margin: '0px 0px 10px'
+                                        }} />
+                                        <p style={{
+                                            fontSize: '14px',
+                                            fontFamily: '"Hero"'
+                                        }}>{item.text}</p>
+                                    </div>
+                                ))}
                             </Stack>
                         </div>
                         <div style={{ margin: '0px 0px 16px' }}>
@@ -241,7 +229,7 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                             }}>
                                 Время высыхания до степени 3 при t (20,0±0,5)°С, мин
                             </p>
-                            <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }}></div>
+                            <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
                             <p style={{
                                 color: '#FFF',
                                 fontSize: '16px',
@@ -261,7 +249,7 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                             }}>
                                 Условная вязкость по В3-246 (сопло 4), сек
                             </p>
-                            <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }}></div>
+                            <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
                             <p style={{
                                 color: '#FFF',
                                 fontSize: '16px',
@@ -292,7 +280,7 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                 </Col>
             </Row>
         </Container>
-    )
+    );
 }
 
 export default function MainPage() {
@@ -301,6 +289,7 @@ export default function MainPage() {
         width: window.innerWidth,
         height: window.innerHeight
     });
+
     React.useEffect(() => {
         const handleResize = () => {
             setWindowSize({
@@ -312,13 +301,16 @@ export default function MainPage() {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [])
-    const detailsHandler = React.useCallback(() => navigator('/product/1'), [])
-    const catalogHandler = React.useCallback(() => navigator('/catalog'), [])
+    }, []);
+
+    const detailsHandler = React.useCallback(() => navigator('/product/1'), [navigator]);
+    const catalogHandler = React.useCallback(() => navigator('/catalog'), [navigator]);
     const biggerThan920 = useMediaPredicate("(min-width: 992px)");
-    return (biggerThan920
-        ? <MainPageLarge catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
-        : <MainPageSmall catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
+
+    return (
+        biggerThan920
+            ? <MainPageLarge catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
+            : <MainPageSmall catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
     );
 }
 
