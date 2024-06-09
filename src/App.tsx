@@ -71,7 +71,7 @@ const App: React.FC = () => {
 				height: '100%',
 				width: '100%',
 				overflowY: 'hidden',
-				backgroundColor: 'rgba(0, 0, 0, 0.3)'
+				backgroundColor: 'rgba(150, 150, 150, 0.3)'
 			}}></div>
 		</div>
 	);

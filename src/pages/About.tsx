@@ -13,7 +13,7 @@ export default function About() {
     position: 'relative',
     maxHeight: "620px",
     height: !biggerThan920 ? "45%" : "",
-    width: biggerThan920 ? '40%' : '80%',
+    width: biggerThan920 ? '40%' : '100%',
     margin: biggerThan920 ? '0 1%' : '0 auto 0 auto',
     display: 'flex',
     alignItems: 'center',
@@ -30,7 +30,7 @@ export default function About() {
     borderRadius: biggerThan920 ? '10px' : "0px 0px 10px 10px",
     paddingRight: biggerThan920 ? "30px" : "10px",
     paddingLeft: biggerThan920 ? "40px" : "10px",
-    width: biggerThan920 ? '30%' : '80%',
+    width: biggerThan920 ? '30%' : '100%',
     height: biggerThan920 ? "80%" : "40%",
     margin: biggerThan920 ? '0 -5%' : '0 auto',
     display: 'flex',
@@ -56,6 +56,7 @@ export default function About() {
   const textLeft: React.CSSProperties = {
     position: 'relative',
     zIndex: 3,
+    paddingTop: '20px',
     fontSize: "20px",
     textAlign: biggerThan920 ? "left" : "center",
   };

@@ -3,7 +3,7 @@ import MainPage from "./Main";
 import About from "./About";
 import Contacts from "./Contacts";
 import { useLocation } from "react-router-dom";
-import { useSwipeable } from "react-swipeable";
+import { useMediaPredicate } from "react-media-hook";
 
 export default function Preview(): React.JSX.Element {
 	const [currentComponent, setCurrentComponent] = useState<number>(0);
@@ -38,34 +38,37 @@ export default function Preview(): React.JSX.Element {
 		}
 	};
 
-	const handleSwipe = ({ dir }: { dir: string }) => {
-		if (isAnimating) return;
+	// const handleSwipe = ({ dir }: { dir: string }) => {
+	// 	if (isAnimating) return;
 
-		if (dir === "Up" && currentComponent < components.length - 1) {
-			setNextComponent(currentComponent + 1);
-			setIsAnimating(true);
-			setTimeout(() => {
-				setCurrentComponent((prev) => prev + 1);
-				setNextComponent(null);
-				setIsAnimating(false);
-			}, animationDuration);
-		} else if (dir === "Down" && currentComponent > 0) {
-			setNextComponent(currentComponent - 1);
-			setIsAnimating(true);
-			setTimeout(() => {
-				setCurrentComponent((prev) => prev - 1);
-				setNextComponent(null);
-				setIsAnimating(false);
-			}, animationDuration);
-		}
-	};
-
-	const swipeHandlers = useSwipeable({
-		onSwipedUp: () => handleSwipe({ dir: "Up" }),
-		onSwipedDown: () => handleSwipe({ dir: "Down" }),
-	});
-
+	// 	if (dir === "Up" && currentComponent < components.length - 1) {
+	// 		setNextComponent(currentComponent + 1);
+	// 		setIsAnimating(true);
+	// 		setTimeout(() => {
+	// 			setCurrentComponent((prev) => prev + 1);
+	// 			setNextComponent(null);
+	// 			setIsAnimating(false);
+	// 		}, animationDuration);
+	// 	} else if (dir === "Down" && currentComponent > 0) {
+	// 		setNextComponent(currentComponent - 1);
+	// 		setIsAnimating(true);
+	// 		setTimeout(() => {
+	// 			setCurrentComponent((prev) => prev - 1);
+	// 			setNextComponent(null);
+	// 			setIsAnimating(false);
+	// 		}, animationDuration);
+	// 	}
+	// };
+	// const swipeHandlers = useSwipeable({
+	// 	onSwipedUp: () => handleSwipe({ dir: "Up" }),
+	// 	onSwipedDown: () => handleSwipe({ dir: "Down" }),
+	// });
+	const biggerThan920 = useMediaPredicate("(min-width: 992px)");
 	useEffect(() => {
+		if(!biggerThan920) {
+			if(search == '?contact') location.hash = "#contact"
+			return;
+		}
 		if (search == '?contact' && !paramGone) { 
 			setCurrentComponent(2); 
 			setParamGone(true);
@@ -80,7 +83,7 @@ export default function Preview(): React.JSX.Element {
 				container.removeEventListener('wheel', handleWheel);
 			}
 		};
-	}, [currentComponent, components.length, isAnimating, paramGone]);
+	}, [currentComponent, components.length, isAnimating, paramGone, biggerThan920]);
 
 	const getPageStyle = (direction: string): React.CSSProperties => ({
 		animation: `${direction} ${animationDuration}ms forwards`,
@@ -93,9 +96,10 @@ export default function Preview(): React.JSX.Element {
 
 	const currentStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideOutToTop' : 'slideOutToBottom');
 	const nextStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideInFromBottom' : 'slideInFromTop');
-
+	
 	return (
-		<div style={{ animation: 'fadeIn 1s', height: '100%' }} {...swipeHandlers}>
+		biggerThan920 ? 
+		<div style={{ animation: 'fadeIn 1s', height: '100%' }}>
 			<div
 				ref={containerRef}
 				style={{ flexGrow: 1, height: '100%', overflow: 'hidden', position: 'relative' }}
@@ -110,5 +114,6 @@ export default function Preview(): React.JSX.Element {
 				)}
 			</div>
 		</div>
+		: <div>{components.map(item => (<div style={{margin: '0px 0px 100px'}}>{item}</div>))}</div>
 	);
 }

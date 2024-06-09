@@ -282,7 +282,6 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
         </Container>
     );
 }
-
 export default function MainPage() {
     const navigator = useNavigate();
     const [, setWindowSize] = React.useState<WindowSize>({

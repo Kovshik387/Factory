@@ -22,6 +22,7 @@ const ContactsSmall = React.memo((): React.JSX.Element => {
                 backgroundSize: 'cover',
                 padding: '30px 24px',
                 width: '100%',
+                borderRadius: '10px 10px 0px 0px',
                 color: '#FFF'
             }}>
                 <h3 style={{
@@ -50,9 +51,14 @@ const ContactsSmall = React.memo((): React.JSX.Element => {
                     Почта: info.udarnik@mail.ru
                 </h3>
             </div>
-            <div style={{ width: '100%', display: 'flex'}}>
-                <div style={{ width: '50%' }}>
-                    <img style={{objectFit: 'cover', width: '100%', height: '100%'}} src='/map.png'/>
+            <div id='contact' style={{ width: '100%', display: 'flex'}}>
+                <div style={{ width: '50%'}}>
+                    <img style={{
+                        objectFit: 'cover', 
+                        width: '100%', 
+                        height: '100%', 
+                        borderRadius: '0px 0px 0px 10px'
+                    }} src='/map.png'/>
                 </div>
                 <div style={{ 
                     width: '50%',
@@ -61,7 +67,7 @@ const ContactsSmall = React.memo((): React.JSX.Element => {
                     padding: '10px',
                     fontSize: '12px',
                     color: '#FFF',
-                    
+                    borderRadius: '0px 0px 10px 0px'
                 }}>
                     <p style={{fontFamily: 'Ubuntu'}}>
                         Почтовый адрес: 141407, Московская область, г. Химки, ул. Бабакина, д. 5А, пом. 014-8
