@@ -129,8 +129,9 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
 }
 
 function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React.JSX.Element {
+    const biggerThan820 = useMediaPredicate("(max-height: 800px)");
     return (
-        <Container style={{ marginTop: '150px' }}>
+        <Container style={{ marginTop: biggerThan820 ? '50px' : '150px', }}>
             <Row className='justify-content-md-center'>
                 <Col md={5} style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', margin: '0px 150px 0px 0px' }}>
                     <h1 style={{
