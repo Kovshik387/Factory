@@ -28,11 +28,12 @@ export default function ConnectWithUs() {
         };
 
         try {
-            const response = await fetch('localhost:3000/bid', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+            const response = await fetch('http://localhost:3001/bid', {
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }),
+                method: 'Post',
                 body: JSON.stringify(formData)
             });
 
@@ -48,6 +49,7 @@ export default function ConnectWithUs() {
                 setMessage("");
             }
         } catch (error) {
+            console.log(error)
             setError("Произошла ошибка при отправке сообщения.");
             setMessage("");
         }
