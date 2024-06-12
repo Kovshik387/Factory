@@ -158,7 +158,7 @@ export default function Contacts(): React.JSX.Element {
     const rootRef = useRef<HTMLDivElement>(null);
 
     const setStyle = useCallback((anim: string): React.CSSProperties => ({
-        marginTop: windowSize.height < 800 ? '10px' : '120px',
+        marginTop: windowSize.height < 800 && windowSize.width > 500 ? '0px' : '100px',
         animation: window.location.pathname === '/' ? 'none' : `${anim} 1s`
     }), [windowSize.height]);
 

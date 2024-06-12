@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { useMediaPredicate } from "react-media-hook";
-import { useNavigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export type WindowSize = {
     width: number;
@@ -283,10 +283,9 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
         </Container>
     );
 }
-
 export default function MainPage() {
     const navigator = useNavigate();
-    const [windowSize, setWindowSize] = React.useState<WindowSize>({
+    const [, setWindowSize] = React.useState<WindowSize>({
         width: window.innerWidth,
         height: window.innerHeight
     });

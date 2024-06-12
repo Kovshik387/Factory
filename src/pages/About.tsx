@@ -12,8 +12,9 @@ export default function About() {
     zIndex: 2,
     position: 'relative',
     maxHeight: "620px",
-    height: !biggerThan920 ? "45%" : "",
-    width: biggerThan920 ? '40%' : '80%',
+    height: !biggerThan920 ? "45%" : "70%",
+    minHeight: "200px",
+    width: biggerThan920 ? '45%' : '80%',
     margin: biggerThan920 ? '0 1%' : '0 auto 0 auto',
     display: 'flex',
     alignItems: 'center',
@@ -40,10 +41,11 @@ export default function About() {
   const containerStyle = (biggerThan920: boolean): React.CSSProperties => ({
     display: 'flex',
     flexDirection: biggerThan920 ? 'row' : 'column',
-    justifyContent: biggerThan920 ? 'center' : "center",
+    justifyContent: biggerThan920 ? 'center' : "center ",
     alignItems: 'center',
     height: '100%',
     width: '100%',
+    marginLeft: biggerThan920 ? "-35px" : "0px",
   });
 
   const textRight: React.CSSProperties = {
