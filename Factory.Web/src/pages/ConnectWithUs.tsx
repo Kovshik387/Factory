@@ -27,7 +27,7 @@ export default function ConnectWithUs() {
         };
 
         try {
-            const response = await fetch('https://xn----7sblrkqueti.xn--p1ai/api/bid', {
+            const response = await fetch('https://localhost:3001/api/bid', {
                 headers: new Headers({
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
