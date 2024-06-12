@@ -8,7 +8,7 @@ const corsOptions: cors.CorsOptions = {
 }
 async function main(): Promise<void> {
 	const app = express();
-	const port = process.env.PORT || 3000;
+	const port = process.env.PORT || 3001;
 
 	app.use(cors(corsOptions))
 	app.use(bodyParser.urlencoded())

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { headerRef } from "../App";
 import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export interface userData {
-    contact: string,
+    contacts: string,
     FIO: string
 };
 
@@ -23,21 +22,21 @@ export default function ConnectWithUs() {
         e.preventDefault();
 
         const formData: userData = {
-            contact: contact,
+            contacts: contact,
             FIO: FIO
         };
 
         try {
-            const response = await fetch('localhost:3000/bid', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+            const response = await fetch('http://79.174.92.161:3001/bid', {
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }),
+                method: 'Post',
                 body: JSON.stringify(formData)
             });
 
             if (response.ok) {
-                const result = await response.json();
                 setMessage("Ваше сообщение отправлено успешно!");
                 setError("");
                 setContact("");
@@ -48,6 +47,7 @@ export default function ConnectWithUs() {
                 setMessage("");
             }
         } catch (error) {
+            console.log(error)
             setError("Произошла ошибка при отправке сообщения.");
             setMessage("");
         }
