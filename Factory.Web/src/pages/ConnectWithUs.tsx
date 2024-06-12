@@ -27,7 +27,7 @@ export default function ConnectWithUs() {
         };
 
         try {
-            const response = await fetch('http://localhost:3001/bid', {
+            const response = await fetch('http://79.174.92.161:3001/bid', {
                 headers: new Headers({
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
