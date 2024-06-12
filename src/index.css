@@ -59,6 +59,9 @@ body {
   min-height: 100%;
 }
 
+.custom-input:focus {
+  box-shadow: 0 0 0 0.1rem rgba(229, 78, 78, 0.3);
+}
 
 ::-webkit-scrollbar {
   width: 6px;

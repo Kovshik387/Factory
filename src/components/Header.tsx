@@ -47,8 +47,8 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 backgroundColor: '#E54E4E',
                 color: '#FFF',
             }}>
-                <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">+7 499 840 33 17</a>
-                <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">Позвонить</a>
+                <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">Позвонить +7 499 840 33 17</a>
+                <a style={{ margin: '0px', fontSize: '15px' }} href="/connect">Оставить заявку</a>
             </div>
         </div>
     );

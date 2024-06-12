@@ -69,7 +69,7 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                                 <p style={{
                                     fontSize: '14px',
                                     fontFamily: 'Ubuntu',
-                                    color: '#ADADAD'
+                                    color: 'white'
                                 }}>{item.text}</p>
                             </div>
                         ))}
@@ -150,9 +150,10 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                         padding: '12px 56px',
                         backgroundColor: '#E54E4E',
                         fontFamily: '"Ubuntu"',
-                        color: '#FFF'
+                        color: '#FFF',
+                        fontSize: "20px"
                     }} onClick={catalogHandler}>
-                        КАТАЛОГ
+                        Оставить заявку
                     </button>
                 </Col>
                 <Col md={5} style={{
@@ -274,7 +275,7 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                                 left: '0px',
                                 fontFamily: '"Hero"'
                             }} onClick={detailsHandler}>
-                                ПОДРОБНЕЕ
+                                КАТАЛОГ
                             </button>
                         </div>
                     </div>
@@ -303,8 +304,8 @@ export default function MainPage() {
         };
     }, []);
 
-    const detailsHandler = React.useCallback(() => navigator('/product/1'), [navigator]);
-    const catalogHandler = React.useCallback(() => navigator('/catalog'), [navigator]);
+    const detailsHandler = React.useCallback(() => navigator('/catalog'), [navigator]);
+    const catalogHandler = React.useCallback(() => navigator('/connect'), [navigator]);
     const biggerThan920 = useMediaPredicate("(min-width: 992px)");
 
     return (
