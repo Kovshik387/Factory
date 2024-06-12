@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
     logger: true
 });
 router.post('/', async (req, res) => {
-    const requestInfo = req.body as BidInfo;;
+    const requestInfo = req.body as BidInfo;
     const info = await transporter.sendMail({
         from: `"Ударник" <${emailSettings.email}>`,
         to: "daniltulenev26@gmail.com",
@@ -26,9 +26,6 @@ router.post('/', async (req, res) => {
         <p>Контакты: ${requestInfo.contacts}</p>
         `,
     })
-    
-    res.json({
-        info: info
-    })
+    res.json({ info: info })
 })
 export { router }
