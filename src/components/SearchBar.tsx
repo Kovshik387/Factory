@@ -1,6 +1,5 @@
 import { Stack } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons"
-import { useMediaPredicate } from "react-media-hook";
 
 interface SearchProps {
     onSearch: (query: string) => void;
