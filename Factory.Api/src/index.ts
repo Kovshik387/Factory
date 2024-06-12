@@ -25,7 +25,7 @@ async function main(): Promise<void> {
 	})
 	
 	app.listen(port, () => {
-		console.log(`Server running at http://localhost:${port}`);
+		console.log(`Server running at https://localhost:${port}`);
 	});
 }
 main().catch(error => console.log(error));

@@ -23,12 +23,10 @@ export default function ConnectWithUs() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-
         try {
             await emailjs.send(emailJSServiceId, emailJSTemplateId, {
                 FIO: FIO,
                 contacts: contact,
-                replyTo: 'daniltulenev26@gmail.com'
             });
             setMessage("Ваше сообщение отправлено успешно!");
             setError("");
