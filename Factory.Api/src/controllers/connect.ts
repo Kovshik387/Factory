@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     const requestInfo = req.body as BidInfo;;
     const info = await transporter.sendMail({
         from: `"Ударник" <${emailSettings.email}>`,
-        to: "daniltulenev26@gmail.com",
+        to: emailSettings.to,
         subject: 'Заявка на заказ',
         html: `
         <p>ФИО: ${requestInfo.FIO}</p>
