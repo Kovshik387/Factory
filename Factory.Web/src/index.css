@@ -30,6 +30,15 @@ a:hover {
   src: url('/fonts/Hero-Bold.ttf');
 }
 
+@font-face {
+  font-family: "Ubuntu";
+  src: url('/fonts/Ubuntu-Regular.ttf');
+}
+@font-face {
+  font-family: "UbuntuBold";
+  src: url('/fonts/Ubuntu-Bold.ttf');
+}
+
 a {
   font-family: "Ubuntu", sans-serif;
   text-decoration: none;
