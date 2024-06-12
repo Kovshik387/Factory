@@ -3,6 +3,11 @@ import { headerRef } from "../App";
 import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+export interface userData {
+    contact: string,
+    FIO: string
+};
+
 export default function ConnectWithUs() {
     const [contact, setContact] = useState("");
     const [FIO, setFIO] = useState("");
@@ -17,13 +22,13 @@ export default function ConnectWithUs() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
-        const formData = {
+        const formData: userData = {
             contact: contact,
             FIO: FIO
         };
 
         try {
-            const response = await fetch('YOUR_SERVER_ENDPOINT', {
+            const response = await fetch('localhost:3000/bid', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,7 +40,6 @@ export default function ConnectWithUs() {
                 const result = await response.json();
                 setMessage("Ваше сообщение отправлено успешно!");
                 setError("");
-                // Очистка формы после успешной отправки
                 setContact("");
                 setFIO("");
                 navigate("/success");
