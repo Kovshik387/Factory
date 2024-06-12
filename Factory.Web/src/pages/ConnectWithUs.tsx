@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+
+const emailJSPublicKey = 'htvjZHqShDrzmYJzL';
+const emailJSServiceId = 'service_swzkq3d';
+const emailJSTemplateId = 'template_t71d2kr'
 
 export interface userData {
     contacts: string,
     FIO: string
-};
+}
 
 export default function ConnectWithUs() {
     const [contact, setContact] = useState("");
@@ -14,43 +19,55 @@ export default function ConnectWithUs() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    useEffect(() => {
-        //headerRef.current?.setColor('#FFF');
-    }, []);
+    useEffect(() => emailjs.init(emailJSPublicKey), []);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
-        const formData: userData = {
-            contacts: contact,
-            FIO: FIO
-        };
-
         try {
-            const response = await fetch('http://79.174.92.161:3001/bid', {
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                }),
-                method: 'Post',
-                body: JSON.stringify(formData)
+            await emailjs.send(emailJSServiceId, emailJSTemplateId, {
+                FIO: FIO,
+                contacts: contact,
+                replyTo: 'daniltulenev26@gmail.com'
             });
-
-            if (response.ok) {
-                setMessage("Ваше сообщение отправлено успешно!");
-                setError("");
-                setContact("");
-                setFIO("");
-                navigate("/success");
-            } else {
-                setError("Произошла ошибка при отправке сообщения.");
-                setMessage("");
-            }
-        } catch (error) {
+            setMessage("Ваше сообщение отправлено успешно!");
+            setError("");
+            setContact("");
+            setFIO("");
+            navigate("/success");
+        }
+        catch(error) {
             console.log(error)
             setError("Произошла ошибка при отправке сообщения.");
             setMessage("");
         }
+
+        // try {
+        //     const response = await fetch('http://79.174.92.161:3001/bid', {
+        //         headers: new Headers({
+        //             'Content-Type': 'application/json',
+        //             'Access-Control-Allow-Origin': '*'
+        //         }),
+        //         method: 'Post',
+        //         body: JSON.stringify(formData)
+        //     });
+
+        //     if (response.ok) {
+        //         setMessage("Ваше сообщение отправлено успешно!");
+        //         setError("");
+        //         setContact("");
+        //         setFIO("");
+        //         navigate("/success");
+        //     } else {
+        //         setError("Произошла ошибка при отправке сообщения.");
+        //         setMessage("");
+        //     }
+        // } catch (error) {
+        //     console.log(error)
+        //     setError("Произошла ошибка при отправке сообщения.");
+        //     setMessage("");
+        // }
+
     };
 
     return (
