@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { headerRef } from "../App";
 import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export interface userData {
-    contact: string,
+    contacts: string,
     FIO: string
 };
 
@@ -23,7 +22,7 @@ export default function ConnectWithUs() {
         e.preventDefault();
 
         const formData: userData = {
-            contact: contact,
+            contacts: contact,
             FIO: FIO
         };
 
@@ -38,7 +37,6 @@ export default function ConnectWithUs() {
             });
 
             if (response.ok) {
-                const result = await response.json();
                 setMessage("Ваше сообщение отправлено успешно!");
                 setError("");
                 setContact("");
