@@ -4,7 +4,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Justify } from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMediaPredicate } from 'react-media-hook';
-import { useLocation } from 'react-router-dom';
 
 interface HeaderProps {
     color: string;

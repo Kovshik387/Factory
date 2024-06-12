@@ -7,7 +7,6 @@ interface SearchProps {
 }
 
 export default function SearchBar({ onSearch }: SearchProps) {
-    const biggerThan920 = useMediaPredicate("(min-width: 920px)");
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onSearch(e.target.value);
     };
