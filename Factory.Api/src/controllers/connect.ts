@@ -17,15 +17,22 @@ const transporter = nodemailer.createTransport({
 });
 router.post('/', async (req, res) => {
     const requestInfo = req.body as BidInfo;
-    const info = await transporter.sendMail({
-        from: `"Ударник" <${emailSettings.email}>`,
-        to: emailSettings.to,
-        subject: 'Заявка на заказ',
-        html: `
-        <p>ФИО: ${requestInfo.FIO}</p>
-        <p>Контакты: ${requestInfo.contacts}</p>
-        `,
-    })
-    res.json({ info: info })
+    console.log(req.body)
+    try {
+        const info = await transporter.sendMail({
+            from: `"Ударник" <${emailSettings.email}>`,
+            to: emailSettings.to,
+            subject: 'Заявка на заказ',
+            html: `
+            <p>ФИО: ${requestInfo.FIO}</p>
+            <p>Контакты: ${requestInfo.contacts}</p>
+            `,
+        })
+        console.log(info),
+        res.status(200).json({ info: info })
+    }
+    catch(error) {
+        res.status(400).json({error: error})
+    }
 })
 export { router }

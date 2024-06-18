@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import bodyParser from 'body-parser';
 import cors from 'cors'
 import { router } from './controllers/connect';
 
@@ -14,14 +13,13 @@ async function main(): Promise<void> {
 	const port = process.env.PORT || settings.port;
 
 	app.use(cors(corsOptions))
-	app.use(bodyParser.urlencoded())
-	app.use(bodyParser.json())
+	app.use(express.static(path.join(__dirname, settings.public)));
+	app.use(express.urlencoded({extended: false }));
+	app.use(express.json());
 
-	app.use('/assets', express.static(path.join(settings.public, 'assets')))
-	app.use('/fonts', express.static(path.join(settings.public, 'fonts')))
 	app.use('/bid', router);
-	app.get('/static', (req, res) => {
-		res.sendFile(path.join(settings.public, 'index.html'))
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, settings.public, 'index.html'))
 	})
 	
 	app.listen(port, () => {

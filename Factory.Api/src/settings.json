@@ -1,5 +1,5 @@
 {
     "corsOrigin": "http:/192.168.0.10",
     "port": "3001",
-    "public": "./../dist"
+    "public": "./../../dist"
 }

@@ -1,11 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import emailjs from "@emailjs/browser";
-
-const emailJSPublicKey = 'htvjZHqShDrzmYJzL';
-const emailJSServiceId = 'service_swzkq3d';
-const emailJSTemplateId = 'template_t71d2kr'
 
 export interface userData {
     contacts: string,
@@ -19,52 +15,50 @@ export default function ConnectWithUs() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    useEffect(() => emailjs.init(emailJSPublicKey), []);
+    useEffect(() => {}, []);
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        try {
-            await emailjs.send(emailJSServiceId, emailJSTemplateId, {
-                FIO: FIO,
-                contacts: contact,
-            });
-            setMessage("Ваше сообщение отправлено успешно!");
-            setError("");
-            setContact("");
-            setFIO("");
-            navigate("/success");
-        }
-        catch(error) {
-            console.log(error)
-            setError("Произошла ошибка при отправке сообщения.");
-            setMessage("");
-        }
-
+    const handleSubmit = async (event: any) => {
+        event.preventDefault();
         // try {
-        //     const response = await fetch('http://79.174.92.161:3001/bid', {
-        //         headers: new Headers({
-        //             'Content-Type': 'application/json',
-        //             'Access-Control-Allow-Origin': '*'
-        //         }),
-        //         method: 'Post',
-        //         body: JSON.stringify(formData)
+        //     await emailjs.send(emailJSServiceId, emailJSTemplateId, {
+        //         FIO: FIO,
+        //         contacts: contact,
         //     });
-
-        //     if (response.ok) {
-        //         setMessage("Ваше сообщение отправлено успешно!");
-        //         setError("");
-        //         setContact("");
-        //         setFIO("");
-        //         navigate("/success");
-        //     } else {
-        //         setError("Произошла ошибка при отправке сообщения.");
-        //         setMessage("");
-        //     }
-        // } catch (error) {
+        //     setMessage("Ваше сообщение отправлено успешно!");
+        //     setError("");
+        //     setContact("");
+        //     setFIO("");
+        //     navigate("/success");
+        // }
+        // catch(error) {
         //     console.log(error)
         //     setError("Произошла ошибка при отправке сообщения.");
         //     setMessage("");
         // }
+        try {
+            const response = await fetch('/bid', {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify({ FIO: FIO, contacts: contact })
+            });
+
+            if (response.ok) {
+                setMessage("Ваше сообщение отправлено успешно!");
+                setError("");
+                setContact("");
+                setFIO("");
+                navigate("/success");
+            } else {
+                setError("Произошла ошибка при отправке сообщения.");
+                setMessage("");
+            }
+        } catch (error) {
+            console.log(error)
+            setError("Произошла ошибка при отправке сообщения.");
+            setMessage("");
+        }
 
     };
 
