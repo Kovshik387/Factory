@@ -4,10 +4,16 @@ import { router } from './controllers/connect';
 
 import settings from './settings.json'
 import path from 'path';
+import * as filesystem from 'fs'
+import https from 'https'
 
 const corsOptions: cors.CorsOptions = {
 	origin: settings.corsOrigin,
 }
+var sslOptions = {
+	key: filesystem.readFileSync(path.join(__dirname, settings.sslkey)),
+	cert: filesystem.readFileSync(path.join(__dirname, settings.sslcert))
+};
 async function main(): Promise<void> {
 	const app = express();
 	const port = process.env.PORT || settings.port;
@@ -21,8 +27,7 @@ async function main(): Promise<void> {
 	app.get('*', (req, res) => {
 		res.sendFile(path.join(__dirname, settings.public, 'index.html'))
 	})
-	
-	app.listen(port, () => {
+	const server = https.createServer(sslOptions, app).listen(port, function() {
 		console.log(`Server running at https://localhost:${port}`);
 	});
 }
