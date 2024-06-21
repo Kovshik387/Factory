@@ -182,7 +182,7 @@ export default function Product(): React.JSX.Element {
         return product == undefined ? (
             <div></div>
         ) : (
-            <Container style={{ maxHeight: `${windowSize.height - 100}px` }}>
+            <Container style={{ maxHeight: `${windowSize.height - 100}px`, fontFamily: '"HeroBold"'}}>
                 <Row className='justify-content-center' style={{ height: `${windowSize.height - 200}px` }}>
                     <Col
                         md={8}
