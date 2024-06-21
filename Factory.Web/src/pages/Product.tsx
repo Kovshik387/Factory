@@ -58,7 +58,42 @@ export default function Product(): React.JSX.Element {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
+    const colorsStack = () => {
+        function splitArrayByInterval(array: any[], size: number): any[][] {
+            const result = [];
+            for (let i = 0; i < array.length; i += size) {
+                result.push(array.slice(i, i + size));
+            }
+            return result;
+        }
+        const splitColors = splitArrayByInterval(((product as any).color as any[]), 4);
+        return splitColors.map((item, index) => {
+            console.log(item)
+            return (
+            <Stack direction='horizontal' gap={1} style={{
+                justifyContent: 'start',
+            }} key={index}>
+            {item.map((item, index) => {
+                return (
+                    <div key={index} style={{
+                        padding: isBiggerThan920 ? '0px 16px' : "0px 10px",
+                    }}>
+                        <div style={{
+                            backgroundColor: item.value,
+                            width: '46px',
+                            height: '46px',
+                            borderRadius: '100px',
+                            margin: '0px 0px 10px',
+                        }}></div>
+                        <p style={{ fontSize: '14px'}}> {item.name}
+                        </p>
+                    </div>
+                );
+            })}
+            </Stack>
+            )
+        })
+    }
     const renderImageAndColors = () => (
         <>
             {product!.image == null ? (
@@ -89,31 +124,47 @@ export default function Product(): React.JSX.Element {
             {(product as any).color == undefined ? (
                 <div></div>
             ) : (
-                <Stack
-                    direction='horizontal'
-                    gap={1}
-                    style={{
-                        justifyContent: 'center',
-                    }}
-                >
-                    {((product as any).color as any[]).map((item, index) => {
-                        return (
-                            <div key={index} style={{
-                                padding: isBiggerThan920 ? '0px 16px' : "0px 10px",
-                            }}>
-                                <div style={{
-                                    backgroundColor: item.value,
-                                    width: '46px',
-                                    height: '46px',
-                                    borderRadius: '100px',
-                                    margin: '0px 0px 10px',
-                                }}></div>
-                                <p style={{ fontSize: '14px'}}> {item.name}
-                                </p>
-                            </div>
-                        );
-                    })}
-                </Stack>
+                // <Stack
+                //     direction='horizontal'
+                //     gap={1}
+                //     style={{
+                //         justifyContent: 'center',
+                //     }}
+                // >
+                //     {((product as any).color as any[]).map((item, index) => {
+                //         return (
+                //             <div key={index} style={{
+                //                 padding: isBiggerThan920 ? '0px 16px' : "0px 10px",
+                //             }}>
+                //                 <div style={{
+                //                     backgroundColor: item.value,
+                //                     width: '46px',
+                //                     height: '46px',
+                //                     borderRadius: '100px',
+                //                     margin: '0px 0px 10px',
+                //                 }}></div>
+                //                 <p style={{ fontSize: '14px'}}> {item.name}
+                //                 </p>
+                //             </div>
+                //         );
+                //     })}
+                // </Stack>
+                
+                <div style={{
+                    display: 'flex',
+                    flexFlow: 'column nowrap',
+                    alignItems: 'center',
+
+                    maxHeight: '200px',
+                    width: '100%',
+                    overflowY: 'auto',
+                    scrollbarColor: '#888 #00000000',
+                    scrollbarWidth: 'thin',
+                }}>
+                    <div style={{ width: 'max-content' }}>
+                        {colorsStack().map(item => item)}
+                    </div>
+                </div>
             )}
         </>
     );

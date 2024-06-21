@@ -67,7 +67,10 @@ export const Database: IDatabaseRecord[] = [
             { name: '7004', value: '#9fa0a2' },
             { name: '6005', value: '#013427' },
             { name: '8017', value: '#433028' },
-            { name: '9005', value: '#000000' }
+            { name: '9005', value: '#000000' },
+            { name: '7024', value: '#464b4f' },
+            { name: '3005', value: '#850e24' },
+            { name: '9010', value: '#ffffff' },
         ],
         adhesion: '1',
         skinView: 'Однородная глянцевая поверхность',
