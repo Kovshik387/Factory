@@ -36,7 +36,7 @@ export default function ConnectWithUs() {
         //     setMessage("");
         // }
         try {
-            const response = await fetch('/bid', {
+            const response = await fetch('https://xn----7sblrkqueti.xn--p1ai/bid/', {
                 headers: {
                     'Content-Type': 'application/json',
                 },
