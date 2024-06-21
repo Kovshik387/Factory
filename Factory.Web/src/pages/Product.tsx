@@ -151,15 +151,18 @@ export default function Product(): React.JSX.Element {
                 // </Stack>
                 
                 <div style={{
-                    display: 'flex',
-                    flexFlow: 'column nowrap',
-                    alignItems: 'center',
-
-                    maxHeight: '200px',
-                    width: '100%',
-                    overflowY: 'auto',
-                    scrollbarColor: '#888 #00000000',
-                    scrollbarWidth: 'thin',
+                    ...{
+                        display: 'flex',
+                        flexFlow: 'column nowrap',
+                        alignItems: 'center',
+                        width: '100%'
+                    },
+                    ...(isBiggerThan920 ? {
+                        overflowY: 'auto',
+                        scrollbarColor: '#888 #00000000',
+                        scrollbarWidth: 'thin',
+                        height: '200px',
+                    } : {})
                 }}>
                     <div style={{ width: 'max-content' }}>
                         {colorsStack().map(item => item)}
@@ -264,7 +267,7 @@ export default function Product(): React.JSX.Element {
                         >
                             Назад
                         </a>
-                        {isBiggerThan920 && renderImageAndColors()}
+                        {renderImageAndColors()}
                     </Col>
                 </Row>
             </Container>
