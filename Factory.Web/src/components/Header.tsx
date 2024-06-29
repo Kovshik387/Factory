@@ -25,7 +25,7 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 backgroundColor: 'rgba(175, 175, 175, 0.5)'
             }}>
                 <a href='/'>
-                    <img style={{ width: '130px', height: '52px' }} src='logoHeader.svg' alt='...' />
+                    <img style={{ width: '130px', height: '52px' }} src={`/logoHeader.svg`} alt='logo' />
                 </a>
                 <a style={{
                     display: 'flex',
@@ -72,7 +72,7 @@ function HeaderLarge({ color, navPath }: HeaderInfo): React.JSX.Element {
                 </Col>
                 <Col md={2}>
                     <a href='/'>
-                        <img style={imageStyle} src='logoHeader.svg' alt='...' />
+                        <img style={imageStyle} src='/logoHeader.svg' alt='...' />
                     </a>
                 </Col>
                 <Col md={2}>
