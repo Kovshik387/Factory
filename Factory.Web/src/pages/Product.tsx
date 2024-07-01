@@ -253,7 +253,7 @@ export default function Product(): React.JSX.Element {
     const productRender = (): React.JSX.Element => {
         const paragStyle: React.CSSProperties = {
             margin: '0px',
-            fontFamily: '"Ubuntu", sans-serif',
+            fontFamily: '"Ubuntu"',
             textAlign: 'start',
             fontSize: '14px',
             color: '#000',
@@ -359,9 +359,9 @@ export default function Product(): React.JSX.Element {
                                 <Row>
                                     <Col xs="auto">
                                         <FileEarmarkTextFill width={24} height={24}></FileEarmarkTextFill>
-                                    </Col>
-                                    <Col style={{ textAlign: "left" }}>
-                                        <a style={{ ...paragStyle, fontSize: "13px", fontWeight: "bold", }} href={product.passport}>МЕТОДЫ ИСПЫТАНИЙ И ПРИЕМКИ</a>
+                                        <span>
+                                            <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={product.passport}>МЕТОДЫ ИСПЫТАНИЙ И ПРИЕМКИ</a>
+                                        </span>
                                     </Col>
                                 </Row>
                             </div>}
@@ -384,16 +384,11 @@ export default function Product(): React.JSX.Element {
                                                     <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={item.url}>{item.name}</a>
                                                 </span>
                                             </Col>
-                                            {/* <Col style={{ textAlign: "left" }}>
-                                                
-                                            </Col> */}
                                         </Row>
                                     </>
                                 })}
                             </div>}
                         </div>
-
-
                     </Col>
                     <Col
                         md={4}
@@ -410,7 +405,7 @@ export default function Product(): React.JSX.Element {
                                 color: '#090C10',
                                 fontSize: '20px',
                                 alignSelf: 'end',
-                                fontFamily: '"Ubuntu", sans-serif',
+                                fontFamily: '"Ubuntu"',
                             }}
                         >
                             Назад

@@ -286,10 +286,10 @@ export const Database: IDatabaseRecord[] = [
         solvent: "Смесь эфиров и кетонов",
         passport: "https://docs.google.com/document/d/1RdlyRnCLMaMM0wZkgoa_WfcAoPyRW9eSEZEybKOnJx8/edit?usp=sharing",
         documentation: [
-            { name: "СГР", url: "www.google.com" },
-            { name: "Протокол испытаний", url: "href" },
-            { name: "Экспертное заключение", url: "" },
-            { name: "Добровольный сертификат", url: "" }
+            { name: "СГР", url: "/varnish/SGR.pdf" },
+            { name: "Протокол испытаний", url: "/varnish/protocol.pdf" },
+            { name: "Экспертное заключение", url: "/varnish/expert.pdf" },
+            { name: "Добровольный сертификат", url: "/varnish/dobro.pdf" }
         ],
         // viscosity: "От 80",
         density: "Не менее 0,8 кг/м³",
