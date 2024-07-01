@@ -253,7 +253,7 @@ export default function Product(): React.JSX.Element {
     const productRender = (): React.JSX.Element => {
         const paragStyle: React.CSSProperties = {
             margin: '0px',
-            fontFamily: '"Ubuntu"',
+            fontFamily: '"UbuntuBold"',
             textAlign: 'start',
             fontSize: '14px',
             color: '#000',
