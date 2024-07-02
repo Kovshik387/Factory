@@ -245,7 +245,14 @@ export default function Product(): React.JSX.Element {
                 //                     </div> */}
                 //                 </div>
             )}
-            <strong>Возможен заказ любого RAL по каталогу</strong>
+            {
+                product?.name == "Грунт-эмаль 3 в 1" ? (
+                    <strong>Возможен заказ любого RAL по каталогу</strong>
+                )
+                    : (
+                        <></>
+                    )
+            }
             <br />
         </>
     );
