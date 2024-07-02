@@ -7,12 +7,10 @@ export type WindowSize = {
     width: number;
     height: number
 }
-
 interface MainPageProps {
     detailsHandler: () => void;
     catalogHandler: () => void;
 }
-
 function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
     return (
         <div style={{
@@ -127,7 +125,162 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
         </div>
     );
 }
-
+function MainPageMedium({ detailsHandler, catalogHandler }: MainPageProps): React.JSX.Element {
+    const biggerThan820 = useMediaPredicate("(max-height: 800px)");
+    return (
+        <Container style={{ marginTop: biggerThan820 ? '50px' : '150px', }}>
+            <Row className='justify-content-md-center'>
+                <Col md={5} style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', margin: '0px 100px 0px 0px' }}>
+                    <h1 style={{
+                        fontWeight: '300',
+                        fontSize: '36px',
+                        letterSpacing: '.3em',
+                        textAlign: 'start',
+                        lineHeight: '52px',
+                        marginBottom: '32px'
+                    }}>
+                        Российский производитель лакокрасочной продукции
+                    </h1>
+                    <button style={{
+                        border: 'none',
+                        borderRadius: '10px',
+                        padding: '12px 56px',
+                        backgroundColor: '#E54E4E',
+                        fontFamily: '"Ubuntu"',
+                        color: '#FFF',
+                        fontSize: "20px"
+                    }} onClick={catalogHandler}>
+                        Оставить заявку
+                    </button>
+                </Col>
+                <Col md={5} style={{
+                    display: 'flex',
+                    flexFlow: 'column',
+                    alignItems: 'center',
+                }}>
+                    <h2 style={{
+                        fontSize: '24px',
+                        color: '#FFF',
+                        letterSpacing: '.4rem',
+                        margin: '0px 0px 32px 0px',
+                        fontFamily: '"HeroBold"'
+                    }}>
+                        Грунт-эмаль <span style={{ color: '#FF0000' }}>3</span> в 1
+                    </h2>
+                    <div style={{
+                        border: '1px solid #626262',
+                        padding: '14px 18px 0px',
+                        width: '100%'
+                    }}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            color: '#FFF',
+                        }}>
+                            <div>
+                                <p style={{
+                                    margin: '0px 0px 5px',
+                                    fontSize: '26px',
+                                    textAlign: 'start',
+                                    fontFamily: '"HeroBold"',
+                                    letterSpacing: '.2rem'
+                                }}>Адгезия</p>
+                                <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
+                                <p style={{
+                                    fontSize: '16px',
+                                    textAlign: 'start',
+                                    fontFamily: '"Hero"'
+                                }}>Не более 1</p>
+                            </div>
+                            <Stack direction="horizontal">
+                                {[
+                                    { color: '#0F0E0E', text: '9005' },
+                                    { color: '#4a1a01', text: '8017' },
+                                    { color: '#08382b', text: '6005' },
+                                    { color: '#949494', text: '7004' },
+                                ].map((item, index) => (
+                                    <div style={{
+                                        padding: '0px 8px'
+                                    }} key={index}>
+                                        <div style={{
+                                            backgroundColor: item.color,
+                                            width: '36px',
+                                            height: '36px',
+                                            borderRadius: '100px',
+                                            border: '1px solid #626262',
+                                            margin: '0px 0px 10px'
+                                        }} />
+                                        <p style={{
+                                            fontSize: '14px',
+                                            fontFamily: '"Hero"'
+                                        }}>{item.text}</p>
+                                    </div>
+                                ))}
+                            </Stack>
+                        </div>
+                        <div style={{ margin: '0px 0px 16px' }}>
+                            <p style={{
+                                fontSize: '26px',
+                                textAlign: 'start',
+                                lineHeight: '40px',
+                                color: '#FFF',
+                                fontFamily: '"Hero"'
+                            }}>
+                                Время высыхания до степени 3 при t (20,0±0,5)°С, мин
+                            </p>
+                            <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
+                            <p style={{
+                                color: '#FFF',
+                                fontSize: '16px',
+                                textAlign: 'start',
+                                fontFamily: '"Hero"'
+                            }}>
+                                Не более 30
+                            </p>
+                        </div>
+                        <div style={{ margin: '0px 0px 30px' }}>
+                            <p style={{
+                                fontSize: '26px',
+                                textAlign: 'start',
+                                lineHeight: '40px',
+                                color: '#FFF',
+                                fontFamily: '"Hero"'
+                            }}>
+                                Условная вязкость по В3-246 (сопло 4), сек
+                            </p>
+                            <div style={{ width: '100%', height: '1px', backgroundColor: '#FFF' }} />
+                            <p style={{
+                                color: '#FFF',
+                                fontSize: '16px',
+                                textAlign: 'start',
+                                fontFamily: '"Hero"'
+                            }}>
+                                Не менее 80
+                            </p>
+                        </div>
+                        <div style={{
+                            position: 'relative',
+                            width: '176px',
+                            margin: '0 auto'
+                        }}>
+                            <button style={{
+                                padding: '12px 42px',
+                                border: 'none',
+                                borderRadius: '10px',
+                                position: 'absolute',
+                                top: '-24px',
+                                left: '0px',
+                                fontFamily: '"Hero"'
+                            }} onClick={detailsHandler}>
+                                КАТАЛОГ
+                            </button>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
+}
 function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React.JSX.Element {
     const biggerThan820 = useMediaPredicate("(max-height: 800px)");
     return (
@@ -306,12 +459,17 @@ export default function MainPage() {
 
     const detailsHandler = React.useCallback(() => navigator('/catalog'), [navigator]);
     const catalogHandler = React.useCallback(() => navigator('/connect'), [navigator]);
-    const biggerThan920 = useMediaPredicate("(min-width: 992px)");
+    const bigResolution = useMediaPredicate("(min-width: 1400px)");
+    const mediumResolution = useMediaPredicate("(min-width: 992px) and (max-width: 1400px)");
+    const smallResolution = useMediaPredicate("(max-width: 992px)")
 
     return (
-        biggerThan920
+        bigResolution
             ? <MainPageLarge catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
-            : <MainPageSmall catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
+            : mediumResolution 
+            ? <MainPageMedium catalogHandler={catalogHandler} detailsHandler={detailsHandler}/>
+            : smallResolution ? <MainPageSmall catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
+            : <div></div>
     );
 }
 
