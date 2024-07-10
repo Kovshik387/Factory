@@ -15,7 +15,21 @@ export default function ProductCard({ product }: ProductItemProps) {
             {
                 product.image ?
                     (
-                        <img src={product.image} alt={product.name} style={imageStyle} />
+                        <>
+                            {
+                                product.category == "Грунт" ?
+                                    (
+                                        < img src={product.image} alt={product.name} style={imageStyle} />
+                                    )
+                                    :
+                                    (
+                                        < img src={product.image} alt={product.name} style={{
+                                            ...imageStyle, borderRadius: "22px",
+                                            border: "1px black solid"
+                                        }} />
+                                    )
+                            }
+                        </>
                     )
                     :
                     (

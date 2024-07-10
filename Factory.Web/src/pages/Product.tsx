@@ -178,15 +178,48 @@ export default function Product(): React.JSX.Element {
                     Нет фото
                 </p>
             ) : (
-                <img
-                    src={product!.image}
-                    alt='...'
-                    style={{
-                        width: isBiggerThan920 ? '220px' : '150px',
-                        alignSelf: 'center', // Center align for smaller screens
-                        marginBottom: '20px', // Space between image and colors
-                    }}
-                />
+                <>
+
+                    {
+                        product?.category == "Грунт" ?
+                            (
+                                <img
+                                    src={product!.image}
+                                    alt='...'
+                                    style={{
+                                        width: isBiggerThan920 ? '220px' : '150px',
+                                        alignSelf: 'center', // Center align for smaller screens
+                                        marginBottom: '20px', // Space between image and colors
+                                    }}
+                                />
+                            )
+                            :
+                            (
+                                <img
+                                    src={product!.image}
+                                    alt='...'
+                                    style={{
+                                        width: isBiggerThan920 ? '220px' : '150px',
+                                        alignSelf: 'center', // Center align for smaller screens
+                                        marginBottom: '20px', // Space between image and colors
+                                        borderRadius: "70px",
+                                        border: "2px black solid"
+                                    }}
+                                />
+                            )
+                    }
+                </>
+                // <img
+                //     src={product!.image}
+                //     alt='...'
+                //     style={{
+                //         width: isBiggerThan920 ? '220px' : '150px',
+                //         alignSelf: 'center', // Center align for smaller screens
+                //         marginBottom: '20px', // Space between image and colors
+                //         borderRadius: "70px",
+                //         border: "2px black solid"
+                //     }}
+                // />
             )}
             {(product as any).color == undefined ? (
                 <div></div>
@@ -367,7 +400,7 @@ export default function Product(): React.JSX.Element {
                                     <Col xs="auto">
                                         <FileEarmarkTextFill width={24} height={24}></FileEarmarkTextFill>
                                         <span>
-                                            <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={product.passport}>МЕТОДЫ ИСПЫТАНИЙ И ПРИЕМКИ</a>
+                                            <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={product.passport}>Методы испытаний и приемки</a>
                                         </span>
                                     </Col>
                                 </Row>

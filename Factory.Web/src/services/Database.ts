@@ -3,6 +3,7 @@ export interface IDatabaseRecord {
     name: string;
     category: 'Эмаль' | 'Грунт' | 'Лак';
     image: string | null;
+    subImage: string[] | null
     expirationDate: string;
     description: string;
     colorName: string;
@@ -82,15 +83,17 @@ export const Database: IDatabaseRecord[] = [
         colorName: 'RAL',
         baseMaterial: 'Модифицированный алкид',
         documentation: [
-            { name: "СГР", url: "www.google.com" },
-            { name: "Протокол испытаний", url: "href" },
-            { name: "Экспертное заключение", url: "" },
+            { name: "СГР", url: "/emal-grunt/sgr_emal_grunt.pdf" },
+            { name: "Протокол испытаний", url: "/emal-grunt/tests.pdf" },
+            { name: "Протокол испытаний", url: "/emal-grunt/tests1.pdf" },
+            { name: "Протокол испытаний", url: "/emal-grunt/tests2.pdf" },
+            { name: "Экспертное заключение", url: "/emal-grunt/expert.pdf" },
             { name: "Добровольный сертификат", url: "" }
         ],
         // viscosity: '80',
         volatiles: '55-60',
         expirationDate: '12 месяцев',
-        passport: "https://docs.google.com/document/d/1RdlyRnCLMaMM0wZkgoa_WfcAoPyRW9eSEZEybKOnJx8/edit?usp=sharing",
+        passport: "/emal-grunt/reglament.pdf",
         description: `Однокомпонентная быстросохнущая антикоррозионная грунт-эмаль на основе
             модифицированных алкидных смол. Используется как самостоятельное покрытие для
             окрашивания подготовленных металлических поверхностей, подвергающихся атмосферным
@@ -281,7 +284,7 @@ export const Database: IDatabaseRecord[] = [
         id: 9,
         name: "Лак акриловый",
         category: "Лак",
-        image: null,
+        image: "/varnish/varnish.jpg",
         resin: "Акриловый полиол",
         solvent: "Смесь эфиров и кетонов",
         passport: "https://docs.google.com/document/d/1RdlyRnCLMaMM0wZkgoa_WfcAoPyRW9eSEZEybKOnJx8/edit?usp=sharing",
