@@ -17,7 +17,7 @@ export default function ProductCard({ product }: ProductItemProps) {
                     (
                         <>
                             {
-                                product.category == "Грунт" ?
+                                product.name == "Грунт-эмаль 3 в 1" ?
                                     (
                                         < img src={product.image} alt={product.name} style={imageStyle} />
                                     )

@@ -38,7 +38,7 @@ export default function Product(): React.JSX.Element {
     const [passportIsOpen, setpassportIsOpen] = useState(false);
     const [documentationIsOpen, setDocumentationIsOpen] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
-
+    const displayedProperties = new Set();
     const toggleDetails = () => {
         setShowDetails(!showDetails);
     };
@@ -181,7 +181,7 @@ export default function Product(): React.JSX.Element {
                 <>
 
                     {
-                        product?.category == "Грунт" ?
+                        product?.name == "Грунт-эмаль 3 в 1" ?
                             (
                                 <img
                                     src={product!.image}
@@ -321,9 +321,13 @@ export default function Product(): React.JSX.Element {
                         <p style={paragStyle}>Название: {product.name}</p>
                         <p style={paragStyle}>Категория: {product.category}</p>
                         {productFields.map(item => {
-                            for (const prop in product) {
-                                if (prop === item.property)
-                                    return <p key={item.property} style={paragStyle}>{item.name} {(product as any)[prop]}</p>;
+                            if (!displayedProperties.has(item.property)) {
+                                for (const prop in product) {
+                                    if (prop === item.property) {
+                                        displayedProperties.add(item.property);
+                                        return <p key={item.property} style={paragStyle}>{item.name} {(product as any)[prop]}</p>;
+                                    }
+                                }
                             }
                             return null;
                         })}
