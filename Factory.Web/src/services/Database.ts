@@ -68,7 +68,7 @@ export const Database: IDatabaseRecord[] = [
         id: 1,
         name: 'Грунт-эмаль 3 в 1',
         category: "Грунт",
-        image: `/product.png`,
+        image: '/grunt/grunt.jpg',
         color: [
             { name: '7004', value: '#9fa0a2' },
             { name: '6005', value: '#013427' },
@@ -84,11 +84,11 @@ export const Database: IDatabaseRecord[] = [
         baseMaterial: 'Модифицированный алкид',
         documentation: [
             { name: "СГР", url: "/emal-grunt/sgr_emal_grunt.pdf" },
-            { name: "Протокол испытаний", url: "/emal-grunt/tests.pdf" },
-            { name: "Протокол испытаний", url: "/emal-grunt/tests1.pdf" },
-            { name: "Протокол испытаний", url: "/emal-grunt/tests2.pdf" },
-            { name: "Экспертное заключение", url: "/emal-grunt/expert.pdf" },
-            { name: "Добровольный сертификат", url: "" }
+            { name: `Протокол испытаний "ИЦККП"`, url: "/emal-grunt/tests.pdf" },
+            { name: `Протокол испытаний "ТЕСТ-ГРУПП"` , url: "/emal-grunt/test1.pdf" },
+            { name: `Протокол испытаний "Дельма"`, url: "/emal-grunt/test2.pdf" },
+            { name: "Экспертное заключение", url: "/emal-grunt/expert_end.pdf" },
+            // { name: "Добровольный сертификат", url: "" }
         ],
         // viscosity: '80',
         volatiles: '55-60',
@@ -213,7 +213,7 @@ export const Database: IDatabaseRecord[] = [
         id: 6,
         name: "Грунт-порозаполнитель",
         category: "Грунт",
-        image: '/grunt/grunt.jpg',
+        image: null,
         resin: "Полиэфирполиол",
         solvent: "Смесь эфиров и кетонов",
         viscosity: "От 80",

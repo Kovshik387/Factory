@@ -15,21 +15,10 @@ export default function ProductCard({ product }: ProductItemProps) {
             {
                 product.image ?
                     (
-                        <>
-                            {
-                                product.name == "Грунт-эмаль 3 в 1" ?
-                                    (
-                                        < img src={product.image} alt={product.name} style={imageStyle} />
-                                    )
-                                    :
-                                    (
-                                        < img src={product.image} alt={product.name} style={{
-                                            ...imageStyle, borderRadius: "22px",
-                                            border: "1px black solid"
-                                        }} />
-                                    )
-                            }
-                        </>
+                        < img src={product.image} alt={product.name} style={{
+                            ...imageStyle, borderRadius: "22px",
+                            border: "1px #999494 solid"
+                        }} />
                     )
                     :
                     (

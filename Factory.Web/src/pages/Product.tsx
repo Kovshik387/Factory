@@ -180,34 +180,17 @@ export default function Product(): React.JSX.Element {
             ) : (
                 <>
 
-                    {
-                        product?.name == "Грунт-эмаль 3 в 1" ?
-                            (
-                                <img
-                                    src={product!.image}
-                                    alt='...'
-                                    style={{
-                                        width: isBiggerThan920 ? '220px' : '150px',
-                                        alignSelf: 'center', // Center align for smaller screens
-                                        marginBottom: '20px', // Space between image and colors
-                                    }}
-                                />
-                            )
-                            :
-                            (
-                                <img
-                                    src={product!.image}
-                                    alt='...'
-                                    style={{
-                                        width: isBiggerThan920 ? '220px' : '150px',
-                                        alignSelf: 'center', // Center align for smaller screens
-                                        marginBottom: '20px', // Space between image and colors
-                                        borderRadius: "70px",
-                                        border: "2px black solid"
-                                    }}
-                                />
-                            )
-                    }
+                    <img
+                        src={product!.image}
+                        alt='...'
+                        style={{
+                            width: isBiggerThan920 ? '220px' : '150px',
+                            alignSelf: 'center', // Center align for smaller screens
+                            marginBottom: '20px', // Space between image and colors
+                            borderRadius: "70px",
+                            border: "2px #999494 solid"
+                        }}
+                    />
                 </>
                 // <img
                 //     src={product!.image}
@@ -419,18 +402,30 @@ export default function Product(): React.JSX.Element {
                                 </div>
                             </div>
                             {documentationIsOpen && <div style={styles.content}>
-                                {product.documentation.map((item, index) => {
-                                    return <>
-                                        <Row key={index}>
-                                            <Col xs="auto">
-                                                <FiletypePdf width={24} height={24}></FiletypePdf>
-                                                <span>
-                                                    <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={item.url}>{item.name}</a>
-                                                </span>
-                                            </Col>
-                                        </Row>
-                                    </>
-                                })}
+                                {
+                                    product.documentation == null ?
+                                        (
+                                            <>
+                                            </>
+                                        )
+                                        :
+                                        (
+                                            <>
+                                                {product.documentation.map((item, index) => {
+                                                    return <>
+                                                        <Row key={index}>
+                                                            <Col xs="auto">
+                                                                <FiletypePdf width={24} height={24}></FiletypePdf>
+                                                                <span>
+                                                                    <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={item.url}>{item.name}</a>
+                                                                </span>
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                })}
+                                            </>
+                                        )
+                                }
                             </div>}
                         </div>
                     </Col>

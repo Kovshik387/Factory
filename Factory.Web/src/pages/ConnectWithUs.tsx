@@ -59,7 +59,6 @@ export default function ConnectWithUs() {
             setError("Произошла ошибка при отправке сообщения.");
             setMessage("");
         }
-
     };
 
     return (
