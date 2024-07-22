@@ -36,13 +36,13 @@ function MainPageSmall({ detailsHandler, catalogHandler }: MainPageProps): React
                         letterSpacing: '.3em',
                         textAlign: 'start',
                         lineHeight: '30px',
-                        fontFamily: '"HeroLight"',
+                        fontFamily: '"Hero"',
                         fontWeight: 'bold',
                         color: "#000000",
                         paddingLeft: "50px"
                         // margin: '0px 0px 32px 0px',
                     }}>
-                        {"Российский производитель лакокрасочной продукци".toUpperCase()}
+                        {"Российский производитель лакокрасочной продукции".toUpperCase()}
                     </p>
                     <button style={{
                         border: 'none',
