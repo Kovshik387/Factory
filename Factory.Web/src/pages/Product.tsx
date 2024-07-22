@@ -96,7 +96,7 @@ export default function Product(): React.JSX.Element {
         return (
             <>
                 <div style={{
-                    maxWidth: "40vh"
+                    maxWidth: "250px"
                 }} >
                     <Row className="mb-2 align-items-center" style={{maxHeight: !isBiggerThan700 && isBiggerThan1400 ? "" : "120px", overflowY: "auto"}}>
                         {splitColors.map((item) => (
