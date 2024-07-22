@@ -11,29 +11,62 @@ interface MainPageProps {
     detailsHandler: () => void;
     catalogHandler: () => void;
 }
-function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
+function MainPageSmall({ detailsHandler, catalogHandler }: MainPageProps): React.JSX.Element {
+    const smallestWidth = useMediaPredicate("(min-weight: 320px)");
+
+
     return (
         <div style={{
             display: 'flex',
             flexFlow: 'column',
             alignItems: 'center',
-            margin: '30px 0px 0px',
-            height: '100%'
+            margin: '50px 0px 0px',
+            height: '100%',
+
         }}>
-            <h1 style={{
-                fontWeight: '300',
-                fontSize: '28px',
-                letterSpacing: '.3em',
-                textAlign: 'start',
-                lineHeight: '30px',
-                margin: '0px 42px 32px'
-            }}>
-                Российский производитель лакокрасочной продукции
-            </h1>
+            <>
+                <div style={{
+                    WebkitBackdropFilter: "blur(5px)",
+                    backdropFilter: "blur(10px)",
+                    background: 'linear - gradient(90deg, rgba(255, 255, 255, 1) 20 %, rgba(252, 252, 252, 1) 100 %)'
+                }}>
+
+                    <p style={{
+                        fontSize: smallestWidth ? '24px' : "20px",
+                        letterSpacing: '.3em',
+                        textAlign: 'start',
+                        lineHeight: '30px',
+                        fontFamily: '"HeroLight"',
+                        fontWeight: 'bold',
+                        color: "#000000",
+                        paddingLeft: "50px"
+                        // margin: '0px 0px 32px 0px',
+                    }}>
+                        {"Российский производитель лакокрасочной продукци".toUpperCase()}
+                    </p>
+                    <button style={{
+                        border: 'none',
+                        borderRadius: '10px',
+                        padding: '12px 40px',
+                        marginBottom: "-50px",
+                        backgroundColor: '#E54E4E',
+                        fontFamily: '"Ubuntu"',
+                        color: '#FFF',
+                        fontSize: "20px"
+                    }} onClick={catalogHandler}>
+                        Оставить заявку
+                    </button>
+                </div>
+
+            </>
+            {/* </div> */}
+            <div style={{ paddingTop: "50px" }}>
+
+            </div>
             <div style={{
                 backgroundColor: '#545454',
                 width: '100%',
-                padding: '14px 36px'
+                padding: '14px 36px',
             }}>
                 <h2 style={{
                     fontSize: '17px',
@@ -122,7 +155,7 @@ function MainPageSmall({ detailsHandler }: MainPageProps): React.JSX.Element {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 function MainPageMedium({ detailsHandler, catalogHandler }: MainPageProps): React.JSX.Element {

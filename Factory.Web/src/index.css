@@ -10,7 +10,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
+
 
 /* a {
   font-weight: 500;
@@ -25,6 +27,13 @@ a:hover {
   font-family: "Hero";
   src: url('/fonts/Hero-Regular.ttf');
 }
+
+@font-face {
+  font-family: "HeroLight";
+  src: url('/fonts/Hero-Light.ttf');
+}
+
+
 @font-face {
   font-family: "HeroBold";
   src: url('/fonts/Hero-Bold.ttf');
@@ -34,6 +43,7 @@ a:hover {
   font-family: "Ubuntu";
   src: url('/fonts/Ubuntu-Regular.ttf');
 }
+
 @font-face {
   font-family: "UbuntuBold";
   src: url('/fonts/Ubuntu-Bold.ttf');
@@ -50,12 +60,14 @@ p {
   font-family: "Ubuntu", sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: "Hero", sans-serif;
   text-transform: uppercase;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
