@@ -2,7 +2,7 @@ import React from 'react';
 import { useMediaPredicate } from 'react-media-hook';
 
 export default function About() {
-  const biggerThan920 = useMediaPredicate("(min-width: 1000px)");
+  const biggerThan920 = useMediaPredicate("(min-width: 1025px)");
   // const smallerThan1200 = useMediaPredicate("(min-width: 1400px)");
 
   const leftBlockStyle: React.CSSProperties = {

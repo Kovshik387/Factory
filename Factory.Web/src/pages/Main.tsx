@@ -152,6 +152,25 @@ function MainPageMedium({ detailsHandler, catalogHandler }: MainPageProps): Reac
                     }} onClick={catalogHandler}>
                         Оставить заявку
                     </button>
+                    <div style={{ textAlign: "left" }}>
+                        <p
+                            style={{
+                                fontSize: "40px",
+                                paddingTop: "25px",
+                                color: 'white',
+                            }}
+                        >
+                            Хотите узнать больше? Звоните!
+                            <span style={{
+                                color: '#FF0000',
+                                fontFamily: '"Ubuntu"',
+                                fontWeight: "bold",
+                                display: "block"
+                            }}>
+                                &nbsp;+7 499 840 33 17
+                            </span>
+                        </p>
+                    </div>
                 </Col>
                 <Col md={5} style={{
                     display: 'flex',
@@ -270,9 +289,12 @@ function MainPageMedium({ detailsHandler, catalogHandler }: MainPageProps): Reac
                                 position: 'absolute',
                                 top: '-24px',
                                 left: '0px',
-                                fontFamily: '"Hero"'
+                                fontFamily: '"Hero"',
+                                backgroundColor: "#626262"
                             }} onClick={detailsHandler}>
-                                КАТАЛОГ
+                                <span style={{ color: "#FFF" }}>
+                                    КАТАЛОГ
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -308,6 +330,25 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                     }} onClick={catalogHandler}>
                         Оставить заявку
                     </button>
+                    <div style={{}}>
+                        <p
+                            style={{
+                                fontSize: "40px",
+                                color: 'white',
+                                paddingTop: "25px",
+                                fontFamily: '"Hero"',
+                            }}
+                        >
+                            Хотите узнать больше? Звоните!
+                            <span style={{
+                                color: '#FF0000',
+                                fontFamily: '"Ubuntu"',
+                                fontWeight: "bold"
+                            }}>
+                                &nbsp;+7 499 840 33 17
+                            </span>
+                        </p>
+                    </div>
                 </Col>
                 <Col md={5} style={{
                     display: 'flex',
@@ -426,15 +467,36 @@ function MainPageLarge({ detailsHandler, catalogHandler }: MainPageProps): React
                                 position: 'absolute',
                                 top: '-24px',
                                 left: '0px',
-                                fontFamily: '"Hero"'
+                                fontFamily: '"Hero"',
+                                backgroundColor: "#626262"
                             }} onClick={detailsHandler}>
-                                КАТАЛОГ
+                                <span style={{ color: "#FFF" }}>
+                                    КАТАЛОГ
+                                </span>
                             </button>
                         </div>
                     </div>
                 </Col>
             </Row>
-        </Container>
+            {/* <Row className='justify-content-start'>
+                <div style={{textAlign: "left"}}>
+                    <p
+                        style={{
+                            fontSize: "40px",
+                            paddingTop: "25px"
+                        }}
+                    >
+                        Хотите узнать больше? Звоните!
+                    </p>
+                    <p style={{
+                        fontSize: "40px",
+                        color: "#FF0000",
+                    }}>
+                        +7 499 840 33 17
+                    </p>
+                </div>
+            </Row> */}
+        </Container >
     );
 }
 export default function MainPage() {
@@ -466,10 +528,10 @@ export default function MainPage() {
     return (
         bigResolution
             ? <MainPageLarge catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
-            : mediumResolution 
-            ? <MainPageMedium catalogHandler={catalogHandler} detailsHandler={detailsHandler}/>
-            : smallResolution ? <MainPageSmall catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
-            : <div></div>
+            : mediumResolution
+                ? <MainPageMedium catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
+                : smallResolution ? <MainPageSmall catalogHandler={catalogHandler} detailsHandler={detailsHandler} />
+                    : <div></div>
     );
 }
 

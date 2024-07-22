@@ -47,8 +47,9 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 backgroundColor: '#E54E4E',
                 color: '#FFF',
             }}>
-                <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">Позвонить +7 499 840 33 17</a>
-                <a style={{ margin: '0px', fontSize: '15px' }} href="/connect">Оставить заявку</a>
+                <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">Позвонить</a>
+                <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">+7 499 840 33 17</a>
+                {/* <a style={{ margin: '0px', fontSize: '15px' }} href="/connect">Оставить заявку</a> */}
             </div>
         </div>
     );
@@ -58,7 +59,7 @@ function HeaderLarge({ color, navPath }: HeaderInfo): React.JSX.Element {
     return (
         <Container>
             <Row className="justify-content-md-between align-items-md-center">
-                <Col md={2}>
+                <Col md={3}>
                     <a style={{
                         display: 'flex',
                         flexFlow: 'row',
@@ -70,17 +71,17 @@ function HeaderLarge({ color, navPath }: HeaderInfo): React.JSX.Element {
                         <Justify height={24} width={24} color={color} />
                     </a>
                 </Col>
-                <Col md={2}>
+                <Col md={6}>
                     <a href='/'>
                         <img style={imageStyle} src='/logoHeader.svg' alt='...' />
                     </a>
                 </Col>
-                <Col md={2}>
+                <Col md={3}>
                     <p style={{
                         fontSize: '16px',
                         fontFamily: '"Ubuntu", sans-serif',
                         letterSpacing: '.1rem',
-                        color: color,
+                        color: '#FF0000',
                         margin: '0px'
                     }}>+7 499 840 33 17</p>
                 </Col>
@@ -132,7 +133,8 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
 
 const imageStyle: React.CSSProperties = {
     width: '168px',
-    height: '66px'
+    height: '66px',
+    paddingRight: "10px"
 };
 
 const headerStyle: React.CSSProperties = {

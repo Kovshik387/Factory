@@ -34,6 +34,8 @@ export default function Product(): React.JSX.Element {
     const navigation = useParams();
     const [product, setProduct] = useState<IDatabaseRecord>();
     const isBiggerThan920 = useMediaPredicate("(min-width: 920px)");
+    const isBiggerThan700 = useMediaPredicate("(min-height: 700px)");
+    const isBiggerThan1400 = useMediaPredicate("(min-width: 1400px");
     const [descriptionIsOpen, setdeDcriptionIsOpen] = useState(false);
     const [passportIsOpen, setpassportIsOpen] = useState(false);
     const [documentationIsOpen, setDocumentationIsOpen] = useState(false);
@@ -94,22 +96,22 @@ export default function Product(): React.JSX.Element {
         return (
             <>
                 <div style={{
-                    maxWidth: "30vh"
+                    maxWidth: "40vh"
                 }} >
-                    <Row className="mb-2 align-items-center">
+                    <Row className="mb-2 align-items-center" style={{maxHeight: !isBiggerThan700 && isBiggerThan1400 ? "" : "120px", overflowY: "auto"}}>
                         {splitColors.map((item) => (
-                            <Col xs={6} sm={3} key={item.name}>
+                            <Col xs={4} sm={3} lg={3} key={item.name}>
                                 <Stack direction="vertical">
                                     <div
                                         style={{
                                             backgroundColor: item.value,
-                                            width: '46px',
-                                            height: '46px',
+                                            width: '40px',
+                                            height: '40px',
                                             borderRadius: '100px',
                                             margin: '0px 0px 10px',
                                         }}
                                     ></div>
-                                    <p style={{ textAlign: "left", paddingLeft: "5px" }}>{item.name}</p>
+                                    <p style={{ textAlign: "left", paddingLeft: "3px" }}>{item.name}</p>
                                 </Stack>
                             </Col>
                         ))}
@@ -184,7 +186,7 @@ export default function Product(): React.JSX.Element {
                         src={product!.image}
                         alt='...'
                         style={{
-                            width: isBiggerThan920 ? '220px' : '150px',
+                            width: isBiggerThan920 ? '190px' : '150px',
                             alignSelf: 'center', // Center align for smaller screens
                             marginBottom: '20px', // Space between image and colors
                             borderRadius: "70px",
@@ -263,7 +265,7 @@ export default function Product(): React.JSX.Element {
             )}
             {
                 product?.name == "Грунт-эмаль 3 в 1" ? (
-                    <strong>Возможен заказ любого RAL по каталогу</strong>
+                    <strong style={{paddingLeft: "10px"}}>Возможен заказ любого RAL по каталогу</strong>
                 )
                     : (
                         <></>
