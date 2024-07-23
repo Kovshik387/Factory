@@ -298,8 +298,8 @@ export const Database: IDatabaseRecord[] = [
             { name: "Добровольный сертификат", url: "/varnish/dobro.pdf" }
         ],
         subImage: [
-            { name: "Блеск 30%",url: "/varnish/30%.jpg"},
-            { name: "Блеск 5%", url: "/varnish/5%.jpg"}
+            { name: "Блеск 30%",url: "/varnish/30percent.jpg"},
+            { name: "Блеск 5%", url: "/varnish/5percent.jpg"}
         ],
         // viscosity: "От 80",
         density: "Не менее 0,8 кг/м³",
