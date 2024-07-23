@@ -132,9 +132,9 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
 });
 
 const imageStyle: React.CSSProperties = {
-    width: '168px',
+    width: '250px',
     height: '66px',
-    paddingRight: "10px"
+    paddingRight: "90px"
 };
 
 const headerStyle: React.CSSProperties = {

@@ -3,7 +3,10 @@ export interface IDatabaseRecord {
     name: string;
     category: 'Эмаль' | 'Грунт' | 'Лак';
     image: string | null;
-    subImage: string[] | null
+    subImage: {
+        name: string;
+        url: string;
+    }[];
     expirationDate: string;
     description: string;
     colorName: string;
@@ -293,6 +296,10 @@ export const Database: IDatabaseRecord[] = [
             { name: "Протокол испытаний", url: "/varnish/protocol.pdf" },
             { name: "Экспертное заключение", url: "/varnish/expert.pdf" },
             { name: "Добровольный сертификат", url: "/varnish/dobro.pdf" }
+        ],
+        subImage: [
+            { name: "Блеск 30%",url: "/varnish/30%.jpg"},
+            { name: "Блеск 5%", url: "/varnish/5%.jpg"}
         ],
         // viscosity: "От 80",
         density: "Не менее 0,8 кг/м³",

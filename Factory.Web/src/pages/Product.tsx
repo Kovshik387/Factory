@@ -37,6 +37,7 @@ export default function Product(): React.JSX.Element {
     const isBiggerThan700 = useMediaPredicate("(min-height: 700px)");
     const isBiggerThan1400 = useMediaPredicate("(min-width: 1400px");
     const [descriptionIsOpen, setdeDcriptionIsOpen] = useState(false);
+    const [galeryIsOpen, setGaleryIsOpen] = useState(false);
     const [passportIsOpen, setpassportIsOpen] = useState(false);
     const [documentationIsOpen, setDocumentationIsOpen] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
@@ -44,6 +45,10 @@ export default function Product(): React.JSX.Element {
     const toggleDetails = () => {
         setShowDetails(!showDetails);
     };
+
+    const toggleGaleryAccordion = () => {
+        setGaleryIsOpen(!galeryIsOpen);
+    }
 
     const toggleDescriptAccordion = () => {
         setdeDcriptionIsOpen(!descriptionIsOpen);
@@ -98,7 +103,7 @@ export default function Product(): React.JSX.Element {
                 <div style={{
                     maxWidth: "250px"
                 }} >
-                    <Row className="mb-2 align-items-center" style={{maxHeight: !isBiggerThan700 && isBiggerThan1400 ? "" : "120px", overflowY: "auto"}}>
+                    <Row className="mb-2 align-items-center" style={{ maxHeight: !isBiggerThan700 && isBiggerThan1400 ? "" : "120px", overflowY: "auto" }}>
                         {splitColors.map((item) => (
                             <Col xs={4} sm={3} lg={3} key={item.name}>
                                 <Stack direction="vertical">
@@ -265,7 +270,7 @@ export default function Product(): React.JSX.Element {
             )}
             {
                 product?.name == "Грунт-эмаль 3 в 1" ? (
-                    <strong style={{paddingLeft: "10px"}}>Возможен заказ любого RAL по каталогу</strong>
+                    <strong style={{ paddingLeft: "10px" }}>Возможен заказ любого RAL по каталогу</strong>
                 )
                     : (
                         <></>
@@ -430,6 +435,60 @@ export default function Product(): React.JSX.Element {
                                 }
                             </div>}
                         </div>
+                        <br />
+
+                        {product.subImage == null ? (
+                            <>
+                            </>
+
+                        )
+                            :
+                            (
+                                <>
+
+                                    <div style={styles4.accordion}>
+                                        <div style={styles4.header} onClick={toggleGaleryAccordion}>
+                                            <p style={{ ...paragStyle, fontWeight: "bold", fontSize: "24px" }}>Галерея</p>
+                                            <div style={{ ...styles4.icon, ...(galeryIsOpen ? styles4.iconOpen : {}) }}>
+                                                <ChevronDown></ChevronDown>
+                                            </div>
+                                        </div>
+                                        {galeryIsOpen && <div style={styles.content}>
+                                            {
+                                                product.subImage == null ?
+                                                    (
+                                                        <>
+                                                        </>
+                                                    )
+                                                    :
+                                                    (
+                                                        <>
+                                                            <Row xs={2} lg={2} mg={2}>
+                                                                {product.subImage.map((item, index) => {
+                                                                    return <>
+                                                                        <a target="_blank" href={item.url} style={{color: "black"}}>
+                                                                            <Col key={index} style={{ width: "200px" }}>
+                                                                                <span>
+                                                                                    <img style={{ height: "150px", fontSize: "14px", fontWeight: "bold", }} src={item.url} alt={item.name}></img>
+                                                                                </span>
+                                                                                <p style={{ textAlign: "start" }}>
+                                                                                    {item.name}
+                                                                                </p>
+                                                                            </Col >
+                                                                        </a>
+                                                                    </>
+                                                                })}
+                                                            </Row>
+                                                        </>
+                                                    )
+                                            }
+                                        </div>}
+                                    </div>
+
+                                </>
+                            )
+                        }
+
                     </Col>
                     <Col
                         md={4}
@@ -526,6 +585,25 @@ const styles2: { [key: string]: React.CSSProperties } = {
 };
 
 const styles3: { [key: string]: React.CSSProperties } = {
+    accordion: {
+    },
+    header: {
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+    },
+    icon: {
+        transition: 'transform 0.5s',
+    },
+    iconOpen: {
+        transform: 'rotate(180deg)',
+    },
+    content: {
+        paddingTop: "10px"
+    },
+};
+
+const styles4: { [key: string]: React.CSSProperties } = {
     accordion: {
     },
     header: {
