@@ -463,7 +463,7 @@ export default function Product(): React.JSX.Element {
                                                     :
                                                     (
                                                         <>
-                                                            <Row xs={2} lg={2} mg={2}>
+                                                            <Row xs={1} lg={2} mg={2}>
                                                                 {product.subImage.map((item, index) => {
                                                                     return <>
                                                                         <a target="_blank" href={item.url} style={{color: "black"}}>
