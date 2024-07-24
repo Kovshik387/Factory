@@ -421,7 +421,7 @@ export default function Product(): React.JSX.Element {
                                                 {product.documentation.map((item, index) => {
                                                     return <>
                                                         <Row key={index}>
-                                                            <Col xs="auto">
+                                                            <Col xs="auto" style={{ textAlign: "left" }}>
                                                                 <FiletypePdf width={24} height={24}></FiletypePdf>
                                                                 <span>
                                                                     <a style={{ ...paragStyle, fontSize: "14px", fontWeight: "bold", }} href={item.url}>{item.name}</a>
