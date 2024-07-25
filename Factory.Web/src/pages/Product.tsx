@@ -41,6 +41,8 @@ export default function Product(): React.JSX.Element {
     const [passportIsOpen, setpassportIsOpen] = useState(false);
     const [documentationIsOpen, setDocumentationIsOpen] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [currentImage, setCurrentImage] = useState('');
     const displayedProperties = new Set();
     const toggleDetails = () => {
         setShowDetails(!showDetails);
@@ -58,6 +60,16 @@ export default function Product(): React.JSX.Element {
         setpassportIsOpen(!passportIsOpen);
     };
 
+
+    const openModal = (url: string) => {
+        setCurrentImage(url);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setCurrentImage('');
+    };
 
     const toggleDocumentationcAccordion = () => {
         setDocumentationIsOpen(!documentationIsOpen);
@@ -197,7 +209,10 @@ export default function Product(): React.JSX.Element {
                             borderRadius: "70px",
                             border: "2px #999494 solid"
                         }}
-                    />
+                        onClick={(e) => {
+                            e.preventDefault();
+                            openModal(product!.image!);
+                        }} />
                 </>
                 // <img
                 //     src={product!.image}
@@ -406,8 +421,7 @@ export default function Product(): React.JSX.Element {
                                 <p style={{ ...paragStyle, fontWeight: "bold", fontSize: "24px" }}>Документация</p>
                                 <div style={{ ...styles3.icon, ...(documentationIsOpen ? styles3.iconOpen : {}) }}>
                                     <ChevronDown></ChevronDown>
-                                </div>
-                            </div>
+                                </div>                            </div>
                             {documentationIsOpen && <div style={styles.content}>
                                 {
                                     product.documentation == null ?
@@ -466,10 +480,20 @@ export default function Product(): React.JSX.Element {
                                                             <Row xs={1} lg={2} mg={2}>
                                                                 {product.subImage.map((item, index) => {
                                                                     return <>
-                                                                        <a target="_blank" href={item.url} style={{color: "black"}}>
-                                                                            <Col key={index} style={{ width: "200px" }}>
+                                                                        <a style={{ color: "black" }}
+                                                                            onClick={(e) => {
+                                                                                e.preventDefault();
+                                                                                openModal(item.url);
+                                                                            }}>
+                                                                            <Col key={index} style={{ width: "150px" }}>
                                                                                 <span>
-                                                                                    <img style={{ height: "150px", fontSize: "14px", fontWeight: "bold", }} src={item.url} alt={item.name}></img>
+                                                                                    <img style={{
+                                                                                        transform: "rotate(90deg)",
+                                                                                        height: "150px",
+                                                                                        fontSize: "14px",
+                                                                                        fontWeight: "bold",
+                                                                                        borderRadius: "10px",
+                                                                                    }} src={item.url} alt={item.name}></img>
                                                                                 </span>
                                                                                 <p style={{ textAlign: "start" }}>
                                                                                     {item.name}
@@ -532,6 +556,20 @@ export default function Product(): React.JSX.Element {
                         <div style={productStyle}>{productRender()}</div>
                     </Col>
                 </Row>
+                {modalOpen && (
+                    <div style={modalOverlayStyle} onClick={closeModal}>
+                        <div
+                            style={modalContentStyle}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img
+                                src={currentImage}
+                                alt="Modal"
+                                style={imageStyle}
+                            />
+                        </div>
+                    </div>
+                )}
             </Container>
         </div>
     );
@@ -620,4 +658,27 @@ const styles4: { [key: string]: React.CSSProperties } = {
     content: {
         paddingTop: "10px"
     },
+};
+
+const modalOverlayStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+};
+
+const modalContentStyle: React.CSSProperties = {
+    position: 'relative',
+};
+
+const imageStyle: React.CSSProperties = {
+    maxWidth: '90%',
+    maxHeight: '90vh',
+    borderRadius: '10px',
 };
