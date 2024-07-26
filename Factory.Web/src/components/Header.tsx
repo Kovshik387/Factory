@@ -25,7 +25,7 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 backgroundColor: 'rgba(175, 175, 175, 0.5)'
             }}>
                 <a href='/'>
-                    <img style={{ width: '130px', height: '52px' }} src={`/logoHeader.svg`} alt='logo' />
+                    <img style={{ width: '110px', height: '60px' }} src={`/logoHeader.svg`} alt='logo' />
                 </a>
                 <a style={{
                     display: 'flex',
@@ -133,8 +133,8 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
 
 const imageStyle: React.CSSProperties = {
     width: '250px',
-    height: '66px',
-    paddingRight: "90px"
+    height: '86px',
+    // paddingRight: "45px"
 };
 
 const headerStyle: React.CSSProperties = {

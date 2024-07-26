@@ -557,7 +557,7 @@ export default function Product(): React.JSX.Element {
                     </Col>
                 </Row>
                 {modalOpen && (
-                    <div style={modalOverlayStyle} onClick={closeModal}>
+                    <div style={modalOverlayStyle(isBiggerThan920)} onClick={closeModal}>
                         <div
                             style={modalContentStyle}
                             onClick={(e) => e.stopPropagation()}
@@ -573,6 +573,8 @@ export default function Product(): React.JSX.Element {
             </Container>
         </div>
     );
+
+
 }
 
 const productStyle: React.CSSProperties = {
@@ -660,19 +662,6 @@ const styles4: { [key: string]: React.CSSProperties } = {
     },
 };
 
-const modalOverlayStyle: React.CSSProperties = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 1000,
-};
-
 const modalContentStyle: React.CSSProperties = {
     position: 'relative',
 };
@@ -682,3 +671,17 @@ const imageStyle: React.CSSProperties = {
     maxHeight: '90vh',
     borderRadius: '10px',
 };
+
+const modalOverlayStyle = (biggerThan920: boolean): React.CSSProperties => ({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    paddingTop: biggerThan920 ? "0px" : "120px",
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+});
