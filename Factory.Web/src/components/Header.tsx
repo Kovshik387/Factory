@@ -134,7 +134,7 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
 const imageStyle: React.CSSProperties = {
     width: '250px',
     height: '86px',
-    // paddingRight: "45px"
+    paddingRight: "65px"
 };
 
 const headerStyle: React.CSSProperties = {
