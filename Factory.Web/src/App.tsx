@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import { Header, HeaderHandler } from './components/Header';
 import './App.css';
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Preview from './pages/Preview';
 import Contacts from './pages/Contacts';
 import Navigation from './pages/Navigation';
@@ -15,26 +15,26 @@ import Success from './pages/Success';
 export const headerRef = createRef<HeaderHandler>();
 const App: React.FC = () => {
 	const [headerHeight, setHeaderHeight] = React.useState<number>(0);
-	const router = createBrowserRouter([
+	const routes = [
 		{
 			path: "/?:step?",
-			element: <Preview/>,
+			element: <Preview />,
 		},
 		{
 			path: '/contacts',
-			element: <Contacts/>
+			element: <Contacts />
 		},
 		{
 			path: '/nav',
-			element: <Navigation/>
+			element: <Navigation />
 		},
 		{
 			path: '/sertificat',
-			element: <Sertificat/>
+			element: <Sertificat />
 		},
 		{
 			path: "/catalog",
-			element: <Catalog/>
+			element: <Catalog />
 		},
 		{
 			path: '/product/:id',
@@ -42,13 +42,13 @@ const App: React.FC = () => {
 		},
 		{
 			path: '/connect',
-			element: <ConnectWithUs/>
+			element: <ConnectWithUs />
 		},
 		{
 			path: '/success',
-			element: <Success/>
+			element: <Success />
 		}
-	]);
+	];
 	React.useEffect(() => {
 		const rezizeHandler = () => {
 			setHeaderHeight(headerRef.current!.getHeader().offsetHeight)
@@ -60,28 +60,33 @@ const App: React.FC = () => {
 			window.addEventListener('load', rezizeHandler)
 		}
 	}, [])
-	console.log(headerHeight)
 	return (
 		<div className="main-site-content">
-			<Header ref={headerRef}/>
-			<div style={{
-				width: '100%',
-				flexGrow: 1,
-				zIndex: 2,
-				overflowY: 'hidden',
-				height: `calc(100% - ${headerHeight}px)`,
-			}}>
-				<div style={{overflowY: 'auto', height: '100%', zIndex: 2}}>
-					<RouterProvider router={router} />
+			<Router>
+				<Header ref={headerRef} />
+				<div style={{
+					width: '100%',
+					flexGrow: 1,
+					zIndex: 2,
+					overflowY: 'hidden',
+					height: `calc(100% - ${headerHeight}px)`,
+				}}>
+					<div style={{ overflowY: 'auto', height: '100%', zIndex: 2 }}>
+						<Routes>
+							{routes.map((route, index) => (
+								<Route key={index} path={route.path} element={route.element} />
+							))}
+						</Routes>
+					</div>
 				</div>
-			</div>
-			<div style={{
-				position: 'absolute',
-				height: '100%',
-				width: '100%',
-				overflowY: 'hidden',
-				backgroundColor: 'rgba(0, 0, 0, 0.3)'
-			}}></div>
+				<div style={{
+					position: 'absolute',
+					height: '100%',
+					width: '100%',
+					overflowY: 'hidden',
+					backgroundColor: 'rgba(0, 0, 0, 0.3)'
+				}}></div>
+			</Router>
 		</div>
 	);
 };

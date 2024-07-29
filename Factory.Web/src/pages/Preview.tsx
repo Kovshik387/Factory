@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useMediaPredicate } from "react-media-hook";
 
 export default function Preview(): React.JSX.Element {
-	const [currentComponent, setCurrentComponent] = useState<number>(0);
+	const [currentComponent, setCurrentComponent] = useState<number>(1);
 	const [nextComponent, setNextComponent] = useState<number | null>(null);
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
 	const components = [<MainPage key="main" />, <About key="about" />, <Contacts key="contacts" />];
@@ -14,7 +14,7 @@ export default function Preview(): React.JSX.Element {
 	const animationDuration = 500;
 
 	const { search } = useLocation();
-	const [ paramGone, setParamGone ] = useState<boolean>(false);
+	const [paramGone, setParamGone] = useState<boolean>(false);
 
 	const handleWheel = (event: WheelEvent) => {
 		if (isAnimating) return;
@@ -65,14 +65,14 @@ export default function Preview(): React.JSX.Element {
 	// });
 	const biggerThan920 = useMediaPredicate("(min-width: 992px)");
 	useEffect(() => {
-		if(!biggerThan920) {
-			if(search == '?contact') location.hash = "#contact"
+		if (!biggerThan920) {
+			if (search == '?contact') location.hash = "#contact"
 			return;
 		}
-		if (search == '?contact' && !paramGone) { 
-			setCurrentComponent(2); 
+		if (search == '?contact' && !paramGone) {
+			setCurrentComponent(2);
 			setParamGone(true);
-		} 
+		}
 		const container = containerRef.current;
 		if (container) {
 			container.addEventListener('wheel', handleWheel);
@@ -96,24 +96,31 @@ export default function Preview(): React.JSX.Element {
 
 	const currentStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideOutToTop' : 'slideOutToBottom');
 	const nextStyle = getPageStyle(nextComponent !== null && nextComponent > currentComponent ? 'slideInFromBottom' : 'slideInFromTop');
-	
+
 	return (
-		biggerThan920 ? 
-		<div style={{ animation: 'fadeIn 1s', height: '100%' }}>
-			<div
-				ref={containerRef}
-				style={{ flexGrow: 1, height: '100%', overflow: 'hidden', position: 'relative' }}
-			>
-				<div style={!isAnimating ? {height: '100%'} : currentStyle}>
-					{components[currentComponent]}
-				</div>
-				{isAnimating && nextComponent !== null && (
-					<div style={nextStyle}>
-						{components[nextComponent]}
+		biggerThan920 ?
+			<div style={{ animation: 'fadeIn 1s', height: '100%' }}>
+				<div
+					ref={containerRef}
+					style={{ flexGrow: 1, height: '100%', overflow: 'hidden', position: 'relative' }}
+				>
+					<div style={!isAnimating ? { height: '100%' } : currentStyle}>
+						{components[currentComponent]}
 					</div>
-				)}
+					{isAnimating && nextComponent !== null && (
+						<div style={nextStyle}>
+							{components[nextComponent]}
+						</div>
+					)}
+				</div>
 			</div>
-		</div>
-		: <div>{components.map(item => (<div style={{margin: '0px 0px 100px'}}>{item}</div>))}</div>
+			:
+			<div>
+				{components.map((item, index) => (
+					<div key={index} style={{ margin: '0px 0px 100px' }}>
+						{item}
+					</div>
+				))}
+			</div>
 	);
 }

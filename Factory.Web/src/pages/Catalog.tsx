@@ -97,7 +97,7 @@ const categoryContainerStyle: React.CSSProperties = {
 
 const catalogBodyStyle = (biggerThan400: boolean): React.CSSProperties => ({
     // marginTop: "130px",
-    height: biggerThan400 ? '80vh' : "70vh",
+    height: biggerThan400 ? '80vh' : "80vh",
     borderRadius: '40px',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     width: "100%",
