@@ -1,22 +1,23 @@
 import React from 'react';
 import { headerRef } from '../App';
+import { Link } from 'react-router-dom';
 
 export default function Navigation(): React.JSX.Element {
     React.useEffect(() => {
         headerRef.current?.setColor('#FFF')
     }, [])
     return (
-    <div style={navigationStyle}>
-        <div style={{marginBottom: '20px'}}>
-            <a href={'/sertificat'} style={linkStyle}>Сертификаты</a>
+        <div style={navigationStyle}>
+            <div style={{ marginBottom: '20px' }}>
+                <Link to={'/sertificat'} style={linkStyle}>Сертификаты</Link>
+            </div>
+            <div style={{ marginBottom: '20px' }}>
+                <Link to={'/catalog'} style={linkStyle}>Каталог</Link>
+            </div>
+            <div style={{ marginBottom: '20px' }}>
+                <Link to={'/?contact'} style={linkStyle}>Контакты</Link>
+            </div>
         </div>
-        <div style={{marginBottom: '20px'}}>
-            <a href={'/catalog'} style={linkStyle}>Каталог</a>
-        </div>
-        <div style={{marginBottom: '20px'}}>
-            <a href={'/?contact'} style={linkStyle}>Контакты</a>
-        </div>
-    </div>
     )
 }
 

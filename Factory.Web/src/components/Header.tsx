@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Justify } from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMediaPredicate } from 'react-media-hook';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
     color: string;
@@ -23,19 +24,19 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 padding: '0px 14px',
                 backgroundColor: 'rgba(175, 175, 175, 0.5)'
             }}>
-                <a href='/'>
+                <Link to='/'>
                     <img style={{ width: '110px', height: '60px' }} src={`/logoHeader.svg`} alt='logo' />
-                </a>
-                <a style={{
+                </Link>
+                <Link style={{
                     display: 'flex',
                     flexFlow: 'row',
                     justifyContent: 'start',
                     color: color,
                     border: 'none',
                     backgroundColor: 'transparent'
-                }} href={navPath}>
+                }} to={navPath}>
                     <Justify height={24} width={24} color={color} />
-                </a>
+                </Link>
             </div>
             <div onClick={contact} style={{
                 display: color === '#FFF' ? 'none' : 'flex',
@@ -59,21 +60,21 @@ function HeaderLarge({ color, navPath }: HeaderInfo): React.JSX.Element {
         <Container>
             <Row className="justify-content-md-between align-items-md-center">
                 <Col md={3}>
-                    <a style={{
+                    <Link style={{
                         display: 'flex',
                         flexFlow: 'row',
                         justifyContent: 'start',
                         color: color,
                         border: 'none',
                         backgroundColor: 'transparent'
-                    }} href={navPath}>
+                    }} to={navPath}>
                         <Justify height={24} width={24} color={color} />
-                    </a>
+                    </Link>
                 </Col>
                 <Col md={6}>
-                    <a href='/'>
+                    <Link to='/'>
                         <img style={imageStyle} src='/logoHeader.svg' alt='...' />
-                    </a>
+                    </Link>
                 </Col>
                 <Col md={3}>
                     <p style={{

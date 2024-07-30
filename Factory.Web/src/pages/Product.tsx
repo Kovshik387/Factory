@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { IDatabaseRecord, findById } from "../services/Database";
 import { useMediaPredicate } from "react-media-hook";
 import { ChevronDown, FileEarmarkTextFill, FiletypePdf } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 export type WindowSize = {
     width: number;
@@ -523,8 +524,8 @@ export default function Product(): React.JSX.Element {
                             marginBottom: isBiggerThan920 ? '0' : '20px'
                         }}
                     >
-                        <a
-                            href='/catalog'
+                        <Link
+                            to='/catalog'
                             style={{
                                 color: '#090C10',
                                 fontSize: '20px',
@@ -533,7 +534,7 @@ export default function Product(): React.JSX.Element {
                             }}
                         >
                             Назад
-                        </a>
+                        </Link>
                         {
                             isBiggerThan920 ? (
                                 renderImageAndColors()
