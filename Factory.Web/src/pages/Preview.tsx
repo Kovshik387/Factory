@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useMediaPredicate } from "react-media-hook";
 
 export default function Preview(): React.JSX.Element {
-	const [currentComponent, setCurrentComponent] = useState<number>(1);
+	const [currentComponent, setCurrentComponent] = useState<number>(0);
 	const [nextComponent, setNextComponent] = useState<number | null>(null);
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
 	const components = [<MainPage key="main" />, <About key="about" />, <Contacts key="contacts" />];
