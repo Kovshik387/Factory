@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Justify } from 'react-bootstrap-icons';
@@ -93,14 +92,22 @@ function HeaderLarge({ color, navPath }: HeaderInfo): React.JSX.Element {
 function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
     const [navPath, setNavPath] = React.useState('/nav');
     const biggerThan920 = useMediaPredicate("(min-width: 992px)");
+    const [isVisible, setIsVisible] = React.useState(false);
 
     React.useEffect(() => {
         setNavPath(document.location.pathname === '/nav' ? document.referrer : '/nav');
+        setIsVisible(true);
     }, []);
 
-    // Render the correct component based on the screen size
+    // Применяем стиль для скрытия компонента при начальной загрузке
+    const headerStyle: React.CSSProperties = {
+        zIndex: 4,
+        width: '100%',
+        visibility: isVisible ? 'visible' : 'hidden'
+    };
+
     return (
-        <div style={{ ...headerStyle }}>
+        <div style={headerStyle}>
             {
                 biggerThan920
                     ? <HeaderLarge color={color} navPath={navPath} />
@@ -135,9 +142,4 @@ const imageStyle: React.CSSProperties = {
     width: '250px',
     height: '86px',
     paddingRight: "65px"
-};
-
-const headerStyle: React.CSSProperties = {
-    zIndex: 4,
-    width: '100%',
 };
