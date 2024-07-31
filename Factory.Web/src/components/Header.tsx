@@ -39,7 +39,8 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 </Link>
             </div>
             <div onClick={contact} style={{
-                display: color === '#FFF' ? 'none' : 'flex',
+                // display: color === '#FFF' ? 'none' : 'flex',
+                display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 height: '38px',
@@ -98,9 +99,9 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
     React.useEffect(() => {
         setNavPath(document.location.pathname === '/nav' ? document.referrer : '/nav');
         setIsVisible(true);
+        
     }, []);
 
-    // Применяем стиль для скрытия компонента при начальной загрузке
     const headerStyle: React.CSSProperties = {
         zIndex: 4,
         width: '100%',
