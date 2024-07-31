@@ -14,6 +14,7 @@ interface HeaderInfo extends HeaderProps {
 
 function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
     const contact = React.useCallback(() => { }, []);
+    console.log(color);
     return (
         <div>
             <div style={{
@@ -39,8 +40,7 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
                 </Link>
             </div>
             <div onClick={contact} style={{
-                // display: color === '#FFF' ? 'none' : 'flex',
-                display: 'flex',
+                display: color === '#FFF' ? 'none' : 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 height: '38px',
@@ -50,7 +50,6 @@ function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
             }}>
                 <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">Позвонить</a>
                 <a style={{ margin: '0px', fontSize: '15px' }} href="tel: +7 499 840 33 17">+7 499 840 33 17</a>
-                {/* <a style={{ margin: '0px', fontSize: '15px' }} href="/connect">Оставить заявку</a> */}
             </div>
         </div>
     );
@@ -99,7 +98,6 @@ function HeaderComponent({ color }: HeaderProps): React.JSX.Element {
     React.useEffect(() => {
         setNavPath(document.location.pathname === '/nav' ? document.referrer : '/nav');
         setIsVisible(true);
-        
     }, []);
 
     const headerStyle: React.CSSProperties = {
@@ -132,7 +130,7 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
         setColor: (color) => setColor(color),
         getHeader: () => headerRef.current!
     }));
-
+    
     return (
         <div id='header-component' ref={headerRef} style={{ zIndex: 4 }}>
             <HeaderComponent color={color} />

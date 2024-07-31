@@ -4,6 +4,7 @@ import About from "./About";
 import Contacts from "./Contacts";
 import { useLocation } from "react-router-dom";
 import { useMediaPredicate } from "react-media-hook";
+import { headerRef } from "../App";
 
 export default function Preview(): React.JSX.Element {
 	const [currentComponent, setCurrentComponent] = useState<number>(0);
@@ -12,7 +13,7 @@ export default function Preview(): React.JSX.Element {
 	const components = [<MainPage key="main" />, <About key="about" />, <Contacts key="contacts" />];
 	const containerRef = useRef<HTMLDivElement>(null);
 	const animationDuration = 500;
-
+	headerRef.current?.setColor('#000');
 	const { search } = useLocation();
 	const [paramGone, setParamGone] = useState<boolean>(false);
 

@@ -9,13 +9,13 @@ export default function Navigation(): React.JSX.Element {
     return (
         <div style={navigationStyle}>
             <div style={{ marginBottom: '20px' }}>
-                <Link to={'/sertificat'} style={linkStyle}>Сертификаты</Link>
+                <Link to={'/sertificat'} onClick={() => { headerRef.current?.setColor('#000') }} style={linkStyle}>Сертификаты</Link>
             </div>
             <div style={{ marginBottom: '20px' }}>
-                <Link to={'/catalog'} style={linkStyle}>Каталог</Link>
+                <Link to={'/catalog'} onClick={() => { headerRef.current?.setColor('#000') }} style={linkStyle}>Каталог</Link>
             </div>
             <div style={{ marginBottom: '20px' }}>
-                <Link to={'/?contact'} style={linkStyle}>Контакты</Link>
+                <Link to={'/?contact'} onClick={() => { headerRef.current?.setColor('#000') }} style={linkStyle}>Контакты</Link>
             </div>
         </div>
     )
