@@ -20,7 +20,7 @@ function MainPageSmall({ detailsHandler, catalogHandler }: MainPageProps): React
             display: 'flex',
             flexFlow: 'column',
             alignItems: 'center',
-            margin: '50px 0px 0px',
+            margin: '25px 0px 0px',
             height: '100%',
 
         }}>

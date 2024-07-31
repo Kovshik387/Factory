@@ -14,7 +14,6 @@ interface HeaderInfo extends HeaderProps {
 
 function HeaderSmall({ color, navPath }: HeaderInfo): React.JSX.Element {
     const contact = React.useCallback(() => { }, []);
-    console.log(color);
     return (
         <div>
             <div style={{
@@ -130,7 +129,7 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
         setColor: (color) => setColor(color),
         getHeader: () => headerRef.current!
     }));
-    
+
     return (
         <div id='header-component' ref={headerRef} style={{ zIndex: 4 }}>
             <HeaderComponent color={color} />
@@ -140,6 +139,6 @@ export const Header = React.forwardRef<HeaderHandler, {}>((_, ref) => {
 
 const imageStyle: React.CSSProperties = {
     width: '250px',
-    height: '86px',
+    height: '66px',
     // paddingRight: "65px"
 };
