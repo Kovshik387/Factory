@@ -199,21 +199,65 @@ export default function Product(): React.JSX.Element {
                 </p>
             ) : (
                 <>
+                    <Row>
+                        <div>
+                            <img
+                                src={product!.image}
+                                alt='...'
+                                style={{
+                                    width: isBiggerThan920 ? '190px' : '150px',
+                                    alignSelf: 'center',
+                                    marginBottom: '20px',
+                                    borderRadius: "70px",
+                                    border: "2px #999494 solid"
+                                }}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    openModal(product!.image!);
+                                }} />
+                        </div>
+                    </Row>
+                    <Row>
 
-                    <img
-                        src={product!.image}
-                        alt='...'
-                        style={{
-                            width: isBiggerThan920 ? '190px' : '150px',
-                            alignSelf: 'center', // Center align for smaller screens
-                            marginBottom: '20px', // Space between image and colors
-                            borderRadius: "70px",
-                            border: "2px #999494 solid"
-                        }}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            openModal(product!.image!);
-                        }} />
+                        <div style={{
+                            maxHeight: isBiggerThan920 ? "200px" : "",
+                            overflowY: "auto"
+                        }}>
+                            {product?.price != null ? (
+                                <div style={{ textAlign: "left" }}>
+                                    <p style={priceStyle}>Розничная цена: <span style={addictionPriceStyle}>
+                                        {product.price.retail}
+                                    </span>
+                                    </p>
+                                    <p style={priceStyle}>Оптовая цена: <span style={addictionPriceStyle}>
+                                        {product.price.wholesale}
+                                    </span>
+                                    </p>
+                                    <br />
+
+                                    {product.addictionProducts.map((item) => {
+                                        return <>
+                                            <p style={priceStyle}>{item.name}</p>
+                                            <p style={addictionStyle}>Розничная цена:  <span style={addictionPriceStyle}>
+                                                {item.retail}
+                                            </span>
+                                            </p>
+                                            <p style={addictionStyle}>Оптовая цена: <span style={addictionPriceStyle}>
+                                                {item.wholesale}
+                                            </span>
+                                            </p>
+                                        </>
+                                    })}
+
+                                </div>
+                            )
+                                :
+                                (
+                                    <></>
+                                )
+                            }
+                        </div>
+                    </Row>
                 </>
                 // <img
                 //     src={product!.image}
@@ -226,6 +270,7 @@ export default function Product(): React.JSX.Element {
                 //         border: "2px black solid"
                 //     }}
                 // />
+
             )}
             {(product as any).color == undefined ? (
                 <div></div>
@@ -578,6 +623,16 @@ export default function Product(): React.JSX.Element {
 
 }
 
+const addictionStyle: React.CSSProperties = {
+    fontSize: "12px"
+};
+
+const addictionPriceStyle: React.CSSProperties = {
+    color: "#FF0000",
+    fontSize: "12px",
+    fontWeight: "bold"
+}
+
 const productStyle: React.CSSProperties = {
     height: '100%',
     maxWidth: '100%',
@@ -672,6 +727,11 @@ const imageStyle: React.CSSProperties = {
     maxHeight: '90vh',
     borderRadius: '10px',
 };
+
+const priceStyle: React.CSSProperties = {
+    fontWeight: "bold",
+    fontSize: "12px"
+}
 
 const modalOverlayStyle = (biggerThan920: boolean): React.CSSProperties => ({
     position: 'fixed',

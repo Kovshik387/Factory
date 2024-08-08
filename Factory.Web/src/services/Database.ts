@@ -11,6 +11,15 @@ export interface IDatabaseRecord {
     description: string;
     colorName: string;
     passport: string;
+    price: {
+        retail: string;
+        wholesale: string;
+    };
+    addictionProducts: {
+        name: string;
+        retail: string;
+        wholesale: string;
+    }[];
     documentation: {
         name: string;
         url: string;
@@ -67,6 +76,74 @@ export function findById(id: number): IDatabaseRecord | null {
 }
 
 export const Database: IDatabaseRecord[] = [
+    <Varnish><unknown>{
+        id: 9,
+        name: "Лак акриловый",
+        category: "Лак",
+        image: "/varnish/varnish1.jpg",
+        resin: "Акриловый полиол",
+        solvent: "Смесь эфиров и кетонов",
+        passport: "https://docs.google.com/document/d/1RdlyRnCLMaMM0wZkgoa_WfcAoPyRW9eSEZEybKOnJx8/edit?usp=sharing",
+        documentation: [
+            { name: "СГР", url: "/varnish/SGR.pdf" },
+            { name: "Протокол испытаний", url: "/varnish/protocol.pdf" },
+            { name: "Экспертное заключение", url: "/varnish/expert.pdf" },
+            { name: "Добровольный сертификат", url: "/varnish/dobro.pdf" }
+        ],
+        subImage: [
+            { name: "Блеск 30%", url: "/varnish/30percent.jpg" },
+            { name: "Блеск 5%", url: "/varnish/5percent.jpg" }
+        ],
+        // viscosity: "От 80",
+        density: "Не менее 0,8 кг/м³",
+        shine: "5% 10% 20% 30%",
+        colorName: "Прозрачный",
+        fireHazard: "Да",
+        coldResist: "Да",
+        expirationDate: "12 месяцев",
+        description: `Самогрунтующийся, бесцветный, двухкомпонентный лак на основе смеси акриловых
+смол для послойного нанесения методом распыления или кистью. Характеризуется
+высокой степенью прозрачности, высокой заполняющей способностью, коротким
+временем отверждения, простотой нанесения, высокими эксплуатационными
+характеристиками получаемого покрытия и широким диапазоном применения.
+
+        Рекомендуется для промышленного производства, индивидуальной, мелкосерийной отделки
+        всех видов мебели и предметов интерьера, эксплуатируемых внутри помещений.
+        Материал применяется для финишной отделки, паркета, дверей, предметов интерьера из
+        массива древесины и плитных материалов.`,
+        properties: [
+            'высокая твердость',
+            'стойкость к истиранию',
+            'стойкость к УФ излучению',
+            `простота нанесения`,
+            'стойкость к моющим средствам и пищевым продуктам',
+            'химстойкость',
+            'хорошие декоративные свойства'
+        ],
+        appointment: [
+            'паркета и лестниц',
+            'межкомнатных дверей',
+            'кухонных фасадов',
+            'столешниц',
+        ],
+        addictionProducts: [
+            {
+                name: "Отвердитель акриловый",
+                retail: "850 руб/л",
+                wholesale: "по запросу"
+            },
+            {
+                name: "Разбавитель",
+                retail: "235 руб/л",
+                wholesale: "по запросу"
+            }
+        ],
+        price: {
+            retail: "850 руб/л",
+            wholesale: "по запросу"
+        }
+    },
+
     <PrimingEnamel>{
         id: 1,
         name: 'Грунт-эмаль 3 в 1',
@@ -88,7 +165,7 @@ export const Database: IDatabaseRecord[] = [
         documentation: [
             { name: "СГР", url: "/emal-grunt/sgr_emal_grunt.pdf" },
             { name: `Протокол испытаний "ИЦККП"`, url: "/emal-grunt/tests.pdf" },
-            { name: `Протокол испытаний "ТЕСТ-ГРУПП"` , url: "/emal-grunt/test1.pdf" },
+            { name: `Протокол испытаний "ТЕСТ-ГРУПП"`, url: "/emal-grunt/test1.pdf" },
             { name: `Протокол испытаний "Дельма"`, url: "/emal-grunt/test2.pdf" },
             { name: "Экспертное заключение", url: "/emal-grunt/expert_end.pdf" },
             // { name: "Добровольный сертификат", url: "" }
@@ -118,7 +195,8 @@ export const Database: IDatabaseRecord[] = [
             'эстакад и платформ',
             'металлических опор ЛЭП и антенных мачт'
         ],
-
+        // { name: "Отвердитель акриловый", price: {} },
+        // { name: "Разбавитель", price: "235 руб/л" }
     },
     // <Priming>{
     //     id: 2,
@@ -283,55 +361,4 @@ export const Database: IDatabaseRecord[] = [
     //     интерьера из массива древесины и плитных материалов (МДФ, ДСП). Наносится по
     //     полиуретановому грунту.`
     // },
-    <Varnish><unknown>{
-        id: 9,
-        name: "Лак акриловый",
-        category: "Лак",
-        image: "/varnish/varnish1.jpg",
-        resin: "Акриловый полиол",
-        solvent: "Смесь эфиров и кетонов",
-        passport: "https://docs.google.com/document/d/1RdlyRnCLMaMM0wZkgoa_WfcAoPyRW9eSEZEybKOnJx8/edit?usp=sharing",
-        documentation: [
-            { name: "СГР", url: "/varnish/SGR.pdf" },
-            { name: "Протокол испытаний", url: "/varnish/protocol.pdf" },
-            { name: "Экспертное заключение", url: "/varnish/expert.pdf" },
-            { name: "Добровольный сертификат", url: "/varnish/dobro.pdf" }
-        ],
-        subImage: [
-            { name: "Блеск 30%",url: "/varnish/30percent.jpg"},
-            { name: "Блеск 5%", url: "/varnish/5percent.jpg"}
-        ],
-        // viscosity: "От 80",
-        density: "Не менее 0,8 кг/м³",
-        shine: "5% 10% 20% 30%",
-        colorName: "Прозрачный",
-        fireHazard: "Да",
-        coldResist: "Да",
-        expirationDate: "12 месяцев",
-        description: `Самогрунтующийся, бесцветный, двухкомпонентный лак на основе смеси акриловых
-смол для послойного нанесения методом распыления или кистью. Характеризуется
-высокой степенью прозрачности, высокой заполняющей способностью, коротким
-временем отверждения, простотой нанесения, высокими эксплуатационными
-характеристиками получаемого покрытия и широким диапазоном применения.
-
-        Рекомендуется для промышленного производства, индивидуальной, мелкосерийной отделки
-        всех видов мебели и предметов интерьера, эксплуатируемых внутри помещений.
-        Материал применяется для финишной отделки, паркета, дверей, предметов интерьера из
-        массива древесины и плитных материалов.`,
-        properties: [
-            'высокая твердость',
-            'стойкость к истиранию',
-            'стойкость к УФ излучению',
-            `простота нанесения`,
-            'стойкость к моющим средствам и пищевым продуктам',
-            'химстойкость',
-            'хорошие декоративные свойства'
-        ],
-        appointment: [
-            'паркета и лестниц',
-            'межкомнатных дверей',
-            'кухонных фасадов',
-            'столешниц',
-        ],
-    }
 ]
