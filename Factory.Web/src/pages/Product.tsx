@@ -624,13 +624,15 @@ export default function Product(): React.JSX.Element {
 }
 
 const addictionStyle: React.CSSProperties = {
-    fontSize: "12px"
+    fontSize: "12px",
+    fontFamily: '"Ubuntu"',
 };
 
 const addictionPriceStyle: React.CSSProperties = {
     color: "#FF0000",
     fontSize: "12px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: '"UbuntuBold"',
 }
 
 const productStyle: React.CSSProperties = {
@@ -729,6 +731,7 @@ const imageStyle: React.CSSProperties = {
 };
 
 const priceStyle: React.CSSProperties = {
+    fontFamily: '"UbuntuBold"',
     fontWeight: "bold",
     fontSize: "12px"
 }
