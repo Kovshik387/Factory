@@ -221,7 +221,9 @@ export default function Product(): React.JSX.Element {
 
                         <div style={{
                             maxHeight: isBiggerThan920 ? "200px" : "",
-                            overflowY: "auto"
+                            overflowY: "auto",
+                            scrollbarColor: '#888 #00000000',
+                            scrollbarWidth: 'thin',
                         }}>
                             {product?.price != null ? (
                                 <div style={{ textAlign: "left" }}>
