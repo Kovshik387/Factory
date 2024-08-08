@@ -207,7 +207,8 @@ export default function Product(): React.JSX.Element {
                                 style={{
                                     width: isBiggerThan920 ? '190px' : '150px',
                                     alignSelf: 'center',
-                                    marginBottom: '20px',
+                                    marginBottom: isBiggerThan1400 ? '10px' : "20px",
+                                    marginTop: isBiggerThan1400 ? "-30px" : "0px",
                                     borderRadius: "70px",
                                     border: "2px #999494 solid"
                                 }}
@@ -218,9 +219,9 @@ export default function Product(): React.JSX.Element {
                         </div>
                     </Row>
                     <Row>
-
                         <div style={{
-                            maxHeight: isBiggerThan920 ? "200px" : "",
+                            // maxHeight: isBiggerThan920 ? "200px" : "",
+                            maxHeight: isBiggerThan920 ? `${windowSize.height - 380}px` : "",
                             overflowY: "auto",
                             scrollbarColor: '#888 #00000000',
                             scrollbarWidth: 'thin',
@@ -235,7 +236,6 @@ export default function Product(): React.JSX.Element {
                                         {product.price.wholesale}
                                     </span>
                                     </p>
-                                    <br />
 
                                     {product.addictionProducts.map((item) => {
                                         return <>

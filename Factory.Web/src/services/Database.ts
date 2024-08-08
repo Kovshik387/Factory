@@ -78,7 +78,7 @@ export function findById(id: number): IDatabaseRecord | null {
 export const Database: IDatabaseRecord[] = [
     <Varnish><unknown>{
         id: 9,
-        name: "Лак акриловый",
+        name: "Лак акриловый паркетный",
         category: "Лак",
         image: "/varnish/varnish1.jpg",
         resin: "Акриловый полиол",
