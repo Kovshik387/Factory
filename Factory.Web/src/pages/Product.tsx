@@ -209,7 +209,7 @@ export default function Product(): React.JSX.Element {
                                     alignSelf: 'center',
                                     marginBottom: isBiggerThan1400 ? '10px' : "20px",
                                     marginTop: isBiggerThan1400 ? "-30px" : "0px",
-                                    borderRadius: "70px",
+                                    borderRadius: "50px",
                                     border: "2px #999494 solid"
                                 }}
                                 onClick={(e) => {
