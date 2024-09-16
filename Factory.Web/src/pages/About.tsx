@@ -101,7 +101,7 @@ export default function About() {
           <div style={textRight}>
             <p style={paragRightStyle}>-Доставка от 100 тыс. рублей бесплатно по Московской области</p>
             <p style={paragRightStyle}>-Тех поддержка 24/7</p>
-            <p style={paragRightStyle}>-Выезд технолога/моляра на объект для демонстрации продукции</p>
+            <p style={paragRightStyle}>-Выезд технолога/маляра на объект для демонстрации продукции</p>
             <p style={paragRightStyle}>-Собственные разработки</p>
             <p style={paragRightStyle}>-Полная ответственность за свою продукцию перед покупателями</p>
             <p style={paragRightStyle}>-Сертификаты и экспертные заключения на все товары</p>
